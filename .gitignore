@@ -1,0 +1,21 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+Lib/
+Scripts/
+.idea/
+.vscode/
+Pipfile.lock
+Pipfile
+# Ignore Django Migrations in Development if you are working on team
+
+# Only for Development only
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py

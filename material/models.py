@@ -15,6 +15,7 @@ from django.core.files import File
 
 class Material(models.Model):
     parent_course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    file_name = models.CharField(max_length=100, null=True, blank=True)
     url = models.URLField(max_length=5000)
     file_path = models.FilePathField(max_length=500, path="uploads/media", blank=True, null=True)
     file = models.FileField(default='', blank=True, null=True)
@@ -25,16 +26,23 @@ class Material(models.Model):
 
 @receiver(pre_save, sender=Material)
 def pre_save_material(sender, instance, *args, **kwargs):
-    URL = instance.url
-    filename = URL.split('/')[-1]
-    filename = filename.split('?')[0]
-    print(filename)
-    path = os.path.join('uploads/media', filename)
-    # 2. download the data behind the URL
-    response = requests.get(URL)
-    open(path, "wb").write(response.content)
-    print(path)
-    instance.file_path = path
-    path = path.split('/')[-1]
-    instance.file = path
-
+    if not instance.file:
+        URL = instance.url
+        filename = instance.file_name
+        filename += ".pdf"
+        print(filename)
+        print(filename)
+        path = os.path.join('uploads/media', filename)
+        # 2. download the data behind the URL
+        try:
+            headers = {
+                'Authorization': 'Bearer EAAQMJrRQMU0BAIR7hUa1A9pD4tWroJrWsDSZBJTwEktAyGcXB8ZBIW7CSHBCCCiZC5ygZAdE1aec8h0xgktYK4i69ssUKN1JEI5DEguvGiX8Dy8386IYbbOH19m22CGJQUJ8orZCKSEffEv18aoCDltnWt0I7ZBfjnZCxeoj0xeavd2txsoBqpQyO6NUJWs1EJqX1i4YtCRJwZDZD'
+            }
+            response = requests.get(URL, headers=headers)
+            open(path, "wb").write(response.content)
+            print(path)
+            instance.file_path = path
+            path = path.split('/')[-1]
+            instance.file = path
+        except:
+            print("Error in downloading file")

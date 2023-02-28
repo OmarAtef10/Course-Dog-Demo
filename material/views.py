@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
@@ -17,16 +18,15 @@ class MaterialViewSet(viewsets.ModelViewSet):
 def add_materials(request):
     if request.method == "POST":
         print("We are inside post request")
+        url = request.data['url']
+        course_code = request.data['course_code']
+        file_name = request.data.get('file_name', 'default.pdf')
+        print(course_code)
+        course = get_object_or_404(Course, code=course_code)
+        material = Material.objects.create(parent_course=course, file_name=file_name, url=url)
+        material.save()
+        return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
 
-        try:
-            url = request.data['url']
-            course_code = request.data['course_code']
-            course = Course.objects.get(code=course_code)
-            material = Material.objects.create(parent_course=course, url=url)
-            material.save()
-            return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
-        except:
-            return Response({'message': 'Course does not exist'}, status=status.HTTP_400_BAD_REQUEST)
     if request.method == "GET":
         materials = Material.objects.all()
         serializer = MaterialSerializer(materials, many=True)

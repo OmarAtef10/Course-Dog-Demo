@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'course',
     'material',
     'announcement',
+    'organization'
 ]
 
 MIDDLEWARE = [

@@ -24,8 +24,25 @@ SECRET_KEY = 'django-insecure-*%oh90*#+*b(exl!bd098kk)*t%rxfm$gov)t!axjoh-=+)47l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
+DOMAIN = ('localhost:8000')
+SITE_NAME = ('CourseDog')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+########## SEND GRID EMAIL CONFIGURATION ###########
+SENDGRID_API_KEY = "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"
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = "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"
+
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
+ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,6 +53,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
+    'django_extensions',
+    'djoser',
+    'authentication',
     'course',
     'material',
     'announcement',
@@ -51,22 +73,40 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+DJOSER = {
+    "USER_ID_FIELD": "username",
+    'ACTIVATION_URL': 'auth/activate-user/{uid}/{token}/',
+    'SEND_ACTIVATION_EMAIL': True,
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/password/{uid}/{token}/',
+    'SERIALIZERS': {},
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+    "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 4,
 }
 ROOT_URLCONF = 'ServerDemo.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -29,20 +29,6 @@ ALLOWED_HOSTS = ['*']
 DOMAIN = ('localhost:8000')
 SITE_NAME = ('CourseDog')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-########## SEND GRID EMAIL CONFIGURATION ###########
-SENDGRID_API_KEY = "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"
-
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
-EMAIL_HOST_PASSWORD = "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"
-
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
-ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
 # Application definition
 
 INSTALLED_APPS = [

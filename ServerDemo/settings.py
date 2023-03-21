@@ -25,10 +25,24 @@ SECRET_KEY = 'django-insecure-*%oh90*#+*b(exl!bd098kk)*t%rxfm$gov)t!axjoh-=+)47l
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CORS_ORIGIN_ALLOW_ALL = True
 DOMAIN = ('localhost:8000')
 SITE_NAME = ('CourseDog')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+########## SEND GRID EMAIL CONFIGURATION ###########
+SENDGRID_API_KEY = "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"
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'  # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = "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"
+
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
+ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
@@ -54,6 +69,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

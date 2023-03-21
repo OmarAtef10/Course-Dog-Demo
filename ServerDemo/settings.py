@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-DOMAIN = ('localhost:8000')
+DOMAIN = ('course-dog-demo-production.up.railway.app')
 SITE_NAME = ('CourseDog')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

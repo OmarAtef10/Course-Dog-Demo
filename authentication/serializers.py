@@ -24,3 +24,24 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name']
+
+
+from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+
+
+class UserRegistrationSerializer(BaseUserRegistrationSerializer):
+    class Meta(BaseUserRegistrationSerializer.Meta):
+        fields = ('username', 'email', 'password',)
+
+    def create(self, validated_data):
+        email = validated_data['email']
+        username = validated_data['username']
+        # check username
+        if User.objects.filter(username=username).exists():
+            raise serializers.ValidationError({'username': ['Username already exists']})
+        # check email
+        if User.objects.filter(email=email).exists():
+            raise serializers.ValidationError({'email': ['Email already exists']})
+
+        user = User.objects.create_user(**validated_data, is_active=False)
+        return user

@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-DOMAIN = ('course-dog-demo-production.up.railway.app')
+DOMAIN = ('localhost:8000')
 SITE_NAME = ('CourseDog')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -81,7 +81,9 @@ DJOSER = {
     'ACTIVATION_URL': 'auth/activate-user/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/password/{uid}/{token}/',
-    'SERIALIZERS': {},
+    'SERIALIZERS': {
+        'user_create': 'authentication.serializers.UserRegistrationSerializer',
+    },
 }
 
 REST_FRAMEWORK = {

@@ -22,6 +22,10 @@ def get_base_url():
     return f"http://{domain}/"
 
 
+def get_domain(email):
+    return email.split('@')[-1]
+
+
 def send_email(subject, body, to_email):
     try:
         send_mail(
@@ -100,12 +104,11 @@ def send_mass_email_api(request):
     return Response({'code': '0'}, 500)
 
 
-"""
-User Mail Activation Link
-"""
-
-
 class ActivateUser(GenericAPIView):
+    """
+    User Mail Activation Link
+    """
+
     def get(self, request, uid, token, format=None):
         payload = {'uid': uid, 'token': token}
 

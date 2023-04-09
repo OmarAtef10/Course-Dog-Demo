@@ -6,6 +6,7 @@ from course.models import Course
 class Announcement(models.Model):
     announcement = models.TextField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    creation_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Announcement for {self.course.code}"

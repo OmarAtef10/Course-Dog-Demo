@@ -9,6 +9,7 @@ class Course(models.Model):
                             unique=True, blank=False, default="")
     organization = models.ForeignKey(
         Organization, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=256, unique=True, blank=True, null=True)
 
     class Meta:
         indexes = [

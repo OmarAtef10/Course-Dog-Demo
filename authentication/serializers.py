@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+from user_profile.models import Profile
+from organization.models import Organization, OrganizationSubdomain
 
 
 class EmailSerializer(serializers.Serializer):
@@ -27,6 +29,10 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name']
 
 
+def get_domain(email):
+    return email.split('@')[-1]
+
+
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta(BaseUserRegistrationSerializer.Meta):
         fields = ('username', 'email', 'password',)
@@ -34,6 +40,7 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     def create(self, validated_data):
         email = validated_data['email']
         username = validated_data['username']
+        user_domain = get_domain(email)
         # check username
         if User.objects.filter(username=username).exists():
             raise serializers.ValidationError(
@@ -44,4 +51,15 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
                 {'email': ['Email already exists']})
 
         user = User.objects.create_user(**validated_data, is_active=False)
+        student_group = Group.objects.get(name='Student')
+        user.groups.add(student_group)
+        user_profile = Profile(user=user)
+        try:
+            organization = OrganizationSubdomain.objects.get(
+                subdomain=user_domain).organization
+            user_profile.organization = organization
+        except OrganizationSubdomain.DoesNotExist:
+            pass
+        user_profile.save()
+
         return user

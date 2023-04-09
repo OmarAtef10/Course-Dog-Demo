@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
 
 
 class EmailSerializer(serializers.Serializer):
@@ -26,9 +27,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name']
 
 
-from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
-
-
 class UserRegistrationSerializer(BaseUserRegistrationSerializer):
     class Meta(BaseUserRegistrationSerializer.Meta):
         fields = ('username', 'email', 'password',)
@@ -38,10 +36,12 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
         username = validated_data['username']
         # check username
         if User.objects.filter(username=username).exists():
-            raise serializers.ValidationError({'username': ['Username already exists']})
+            raise serializers.ValidationError(
+                {'username': ['Username already exists']})
         # check email
         if User.objects.filter(email=email).exists():
-            raise serializers.ValidationError({'email': ['Email already exists']})
+            raise serializers.ValidationError(
+                {'email': ['Email already exists']})
 
         user = User.objects.create_user(**validated_data, is_active=False)
         return user

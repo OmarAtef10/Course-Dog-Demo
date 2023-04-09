@@ -9,14 +9,6 @@ class Organization(models.Model):
     name = models.CharField(max_length=356, primary_key=True)
 
 
-class UserOrganization(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = (('user', 'organization'),)
-
-
 class UserOrganizationAdmin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)

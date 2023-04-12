@@ -7,6 +7,10 @@ router = routers.DefaultRouter()
 router.register(r'', views.CourseViewSet)
 
 urlpatterns = [
+    path('list-courses/', views.UserOrganizationCoursesAPIView.as_view()),
+    path('manage-user-courses/<int:course_id>/',
+         views.UserCourseSubscribtionsAPIView.as_view()),
+    path('list-user-courses/', views.user_subscriptions),
+
     path('', include(router.urls)),
 ]
-

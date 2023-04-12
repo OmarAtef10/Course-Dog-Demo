@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     code = models.CharField(max_length=100,
-                            unique=True, blank=False, default="")
+                            blank=False, default="")
     organization = models.ForeignKey(
         Organization, on_delete=models.SET_NULL, null=True, blank=True)
-    name = models.CharField(max_length=256, unique=True, blank=True, null=True)
+    name = models.CharField(max_length=256, blank=True, null=True)
 
     class Meta:
         indexes = [

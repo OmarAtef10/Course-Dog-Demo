@@ -7,5 +7,5 @@ from .views import *
 urlpatterns = [
     path(r'', AnnouncementViewSet.as_view({'get': 'list', "post": "create"})),
     path('create/', add_announcement, name='announcement-create'),
-    path('<int:course_id>/', views.UploadCourseAnnouncementAPIView.as_view())
+    path('manage-announcements/<int:course_id>/', views.UploadCourseAnnouncementAPIView.as_view())
 ]

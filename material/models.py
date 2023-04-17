@@ -21,7 +21,7 @@ class Material(models.Model):
     file = models.FileField(default='', blank=True, null=True)
 
     def __str__(self):
-        return f"material for{self.parent_course}"
+        return f"material for {self.parent_course}"
 
 
 @receiver(pre_save, sender=Material)

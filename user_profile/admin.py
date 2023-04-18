@@ -3,4 +3,14 @@ from .models import Profile
 
 # Register your models here.
 
-admin.site.register(Profile)
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'organization',
+                    'facebook_username', 'whatsapp_number', 'is_admin')
+    list_filter = ('is_admin',)
+    search_fields = ('user__username', 'user__email',
+                     'facebook_username', 'whatsapp_number', 'organization__name')
+    fields = (('id', 'user', 'organization', 'facebook_username',
+              'whatsapp_number', 'is_admin'))
+    readonly_fields = ('id',)

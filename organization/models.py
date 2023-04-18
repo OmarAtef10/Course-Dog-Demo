@@ -8,6 +8,9 @@ class Organization(models.Model):
     organization_name = models.CharField(max_length=128)
     name = models.CharField(max_length=356, primary_key=True)
 
+    def __str__(self) -> str:
+        return f'{self.name}'
+
 
 class UserOrganizationAdmin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -21,3 +24,6 @@ class OrganizationSubdomain(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     subdomain = models.CharField(
         max_length=128, null=False, blank=False, primary_key=True)
+
+    def __str__(self) -> str:
+        return f'{self.subdomain} - {self.organization.name}'

@@ -9,4 +9,4 @@ class Announcement(models.Model):
     creation_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Announcement for {self.course.code}"
+        return f"Announcement {self.course.code} - {self.course.organization.name}"

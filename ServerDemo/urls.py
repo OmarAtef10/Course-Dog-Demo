@@ -19,13 +19,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('auth/', include('authentication.urls')),
-    path('courses/', include('course.urls')),
-    path('materials/', include('material.urls')),
-    path('announcements/', include('announcement.urls')),
-    path('organization/', include('organization.urls')),
+                  path('admin/', admin.site.urls),
+                  path('api-auth/', include('rest_framework.urls')),
+                  path('auth/', include('authentication.urls')),
+                  path('courses/', include('course.urls')),
+                  path('materials/', include('material.urls')),
+                  path('announcements/', include('announcement.urls')),
+                  path('organization/', include('organization.urls')),
+                  path('user-profile/', include('user_profile.urls')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
-    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -64,7 +64,13 @@ INSTALLED_APPS = [
     'announcement',
     'organization',
     'user_profile',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

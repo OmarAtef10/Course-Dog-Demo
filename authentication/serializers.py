@@ -53,13 +53,13 @@ class UserRegistrationSerializer(BaseUserRegistrationSerializer):
         user = User.objects.create_user(**validated_data, is_active=False)
         student_group = Group.objects.get(name='Student')
         user.groups.add(student_group)
-        user_profile = Profile(user=user)
-        try:
-            organization = OrganizationSubdomain.objects.get(
-                subdomain=user_domain).organization
-            user_profile.organization = organization
-        except OrganizationSubdomain.DoesNotExist:
-            pass
-        user_profile.save()
+        # user_profile = Profile(user=user) ##TODO FIX
+        # try:
+        #     organization = OrganizationSubdomain.objects.get(
+        #         subdomain=user_domain).organization
+        #     user_profile.organization = organization
+        # except OrganizationSubdomain.DoesNotExist:
+        #     pass
+        # user_profile.save()
 
         return user

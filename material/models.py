@@ -17,8 +17,8 @@ class Material(models.Model):
     parent_course = models.ForeignKey(Course, on_delete=models.CASCADE)
     file_name = models.CharField(max_length=100, null=True, blank=True)
     url = models.URLField(max_length=5000)
-    file_path = models.FilePathField(max_length=500, path="uploads/media", blank=True, null=True)
-    file = models.FileField(default='', blank=True, null=True)
+    file_path = models.FilePathField(max_length=500, path="uploads/course_material", blank=True, null=True)
+    file = models.FileField(default='', blank=True, null=True, upload_to='course_material/')
 
     def __str__(self):
         return f"material for {self.parent_course}"

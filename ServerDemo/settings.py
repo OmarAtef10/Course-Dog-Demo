@@ -71,6 +71,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -138,8 +139,12 @@ WSGI_APPLICATION = 'ServerDemo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'course-dog-db',
+        'USER': 'course-dog',
+        'PASSWORD': '1010abab',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -185,5 +190,5 @@ STATIC_ROOT = "static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / 'uploads/media'
+MEDIA_ROOT = BASE_DIR / 'uploads/'
 MEDIA_URL = '/files/'

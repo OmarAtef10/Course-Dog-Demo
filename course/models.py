@@ -1,19 +1,21 @@
 from django.db import models
 from organization.models import Organization
 from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 
 class Course(models.Model):
-    code = models.CharField(max_length=100,
-                            blank=False, default="")
-    organization = models.ForeignKey(
-        Organization, on_delete=models.SET_NULL, null=True, blank=True)
+    id = models.BigIntegerField(primary_key=True, db_index=True, unique=True)
+    code = models.CharField(max_length=100,blank=True, null=True)
+    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=256, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         indexes = [
-            models.Index(fields=['code',]),
+            models.Index(fields=['code', ]),
         ]
 
     def __str__(self):

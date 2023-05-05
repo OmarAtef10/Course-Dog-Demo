@@ -93,38 +93,38 @@ from google.oauth2.credentials import Credentials
 
 import shutil
 
-
 SCOPES = ["https://www.googleapis.com/auth/drive",
           "https://www.googleapis.com/auth/classroom.courses",
           "https://www.googleapis.com/auth/classroom.announcements.readonly",
           "https://www.googleapis.com/auth/classroom.courses.readonly",
           "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly"]
+CLIENT_ID = "854703669001-kj8rfqmeu6crm173ocsl3luueh61n16t.apps.googleusercontent.com"
+CLIENT_SECRET = "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"
+
+
+def creds_refresher(user):
+    tokens = get_object_or_404(SocialToken, account__user=user)
+    context = {"access_token": tokens.token, "refresh_token": tokens.token_secret, "client_id": CLIENT_ID,
+               "client_secret": CLIENT_SECRET, "scopes": SCOPES}
+    creds = Credentials.from_authorized_user_info(context, scopes=SCOPES)
+    if creds and creds.expired and creds.refresh_token:
+        try:
+            creds.refresh(Request())
+            tokens.token = creds.token
+            tokens.token_secret = creds.refresh_token
+            tokens.save()
+            return creds
+        except Exception as e:
+            print(e)
+            return None
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_tokens(request):
-    tokens = SocialToken.objects.get(account__user=request.user)
-    social_acc = SocialAccount.objects.get(user=request.user)
-    creds_data = social_acc.socialtoken_set.first()
-    print(creds_data)
-    ctx = {"access_token": tokens.token, "refresh_token": tokens.token_secret,
-           "client_id": "854703669001-kj8rfqmeu6crm173ocsl3luueh61n16t.apps.googleusercontent.com",
-           "client_secret": "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"}
-
-    creds = Credentials.from_authorized_user_info(info=ctx, scopes=SCOPES, )
-    if creds and creds.expired and creds.refresh_token:
-        try:
-            creds.refresh(Request())
-            print(creds.to_json())
-            tokens.token = creds.token
-            tokens.token_secret = creds.refresh_token
-            tokens.save()
-            print('refreshed')
-        except Exception as e:
-            print(e)
-            print('refresh failed')
+    creds = creds_refresher(request.user)
     service = build("drive", "v3", credentials=creds)
-    file_id = "1kAJpel0o6gxVj2r5-6GNqkxqIvnnRxf7"
+    file_id = "12JNetOqALdhvqmKQ9Ak8m1P_Kwr4Ee9R"
     request2 = service.files().get_media(fileId=file_id)
     fh = io.BytesIO()
     downloader = MediaIoBaseDownload(fd=fh, request=request2)
@@ -133,9 +133,9 @@ def get_tokens(request):
         status, done = downloader.next_chunk()
         print("Download %d%%." % int(status.progress() * 100))
     fh.seek(0)
-    file_name = "test.pdf"
+    file_name = "week 7 testing.pdf"
     with open(os.path.join(".", file_name), "wb") as f:
         f.write(fh.read())
     shutil.move(f"./{file_name}", f"./uploads/course_material/{file_name}")
 
-    return Response(ctx, status=200)
+    return Response({"Access token": creds.token, "Refresh Token":creds.refresh_token}, status=200)

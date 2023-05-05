@@ -8,7 +8,6 @@ class CourseSiteAdmin(admin.ModelAdmin):
     list_filter = ()
     search_fields = ('code', 'name', 'organization__name',
                      'organization__organization_name')
-    fields = ('code', 'organization', 'name')
     readonly_fields = ('id',)
 
 

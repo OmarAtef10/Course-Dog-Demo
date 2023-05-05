@@ -73,6 +73,29 @@ INSTALLED_APPS = [
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
+
+
+SOCIALACCOUNT_STORE_TOKENS = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        "SCOPE": [
+            'profile',
+            'email',
+            "https://www.googleapis.com/auth/drive",
+            "https://www.googleapis.com/auth/classroom.courses",
+            "https://www.googleapis.com/auth/classroom.announcements.readonly",
+            "https://www.googleapis.com/auth/classroom.courses.readonly",
+            "https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly"
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "offline",
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    },
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -21,9 +21,9 @@ class Profile(models.Model):
 
 
 # Creates a profile on user creation
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        service = pickle_helper.create_service(instance.username)
-        file = f"OAuth_files/token_{instance.username}.pickle"
-        Profile.objects.create(user=instance, oAuth_file=file)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         service = pickle_helper.create_service(instance.username)
+#         file = f"OAuth_files/token_{instance.username}.pickle"
+#         Profile.objects.create(user=instance, oAuth_file=file)

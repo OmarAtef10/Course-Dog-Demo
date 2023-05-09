@@ -11,7 +11,36 @@ from user_profile.views import get_user_profile
 from organization.models import *
 from material.models import Material
 from material.serializers import MaterialSerializer
+from allauth.socialaccount.models import SocialAccount, SocialToken
+from user_profile.views import creds_refresher
+from user_profile.models import Profile
+from user_profile import OAuth_helpers
+
+
 # Create your views here.
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def load_courses_from_user(request):
+    creds = creds_refresher(request.user)
+    if creds:
+        profile = None
+        try:
+            profile = Profile.objects.get(user=request.user)
+        except:
+            return Response({'error': 'User profile not found'}, status=status.HTTP_404_NOT_FOUND)
+        organization = profile.organization
+        courses = OAuth_helpers.get_courses(creds.token)
+        for key, val in courses.items():
+            for entry in val:
+                course = Course.objects.filter(id=entry['id'])
+                if not course:
+                    course = Course(id=entry['id'], name=entry['name'], organization=organization,
+                                    description=entry['descriptionHeading'])
+                    course.save()
+        return Response({"Message": "Courses Loaded!!", "Courses": courses}, status=status.HTTP_200_OK)
+    else:
+        return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
 def get_all_organization_courses(organization):

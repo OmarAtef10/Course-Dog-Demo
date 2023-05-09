@@ -20,8 +20,30 @@ from organization.models import *
 from material.models import Material
 from material.serializers import MaterialSerializer
 from course.models import *
+from user_profile.views import creds_refresher
+from user_profile import OAuth_helpers
+
 
 # Create your views here.
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def load_course_announcements(request, course_id):
+    token = creds_refresher(request.user)
+    course = get_object_or_404(Course, id=course_id)
+    announcements = OAuth_helpers.get_announcements(auth_token=token.token, course_id=course_id)
+    for key, val in announcements.items():
+        for entry in val:
+            announcement = Announcement.objects.filter(id=entry['id'])
+            if not announcement:
+                announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
+                                            title=entry.get('title', 'New Announcement'),
+                                            creation_date=entry['creationTime'])
+                announcement.save()
+
+    return Response({"Message": "Announcements Loaded!!", "Announcements": announcements}, status=status.HTTP_200_OK)
+
 
 class AnnouncementViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all().order_by('id')
@@ -67,7 +89,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcements = Announcement.objects.filter(course=course)
         serialized_announcements = self.get_serializer(announcements, many=True)
         serialized_course = CourseSerializer(course)
-        return Response({"announcement": serialized_announcements.data, "course":serialized_course.data}, 200)
+        return Response({"announcement": serialized_announcements.data, "course": serialized_course.data}, 200)
 
     def post(self, request, course_id):
         user = request.user
@@ -85,11 +107,10 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
 
         announcementData = self.get_serializer(data=request.data)
         if announcementData.is_valid():
-            announcement = Announcement(course=course, announcement = announcementData.validated_data['announcement'])
+            announcement = Announcement(course=course, announcement=announcementData.validated_data['announcement'])
             announcement.save()
         return Response({}, 200)
-    
-    
+
     def put(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization

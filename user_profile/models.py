@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from organization.models import Organization
 from django.contrib.auth.models import User
-from . import pickle_helper
+from . import OAuth_helpers
 
 
 # Create your models here.

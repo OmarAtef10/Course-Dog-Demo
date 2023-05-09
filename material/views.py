@@ -1,15 +1,39 @@
 from django.shortcuts import get_object_or_404
 from organization.models import Organization
 from rest_framework import viewsets, status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .serializers import *
 from .models import Material
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from course.models import Course
+from user_profile.views import creds_refresher
+from user_profile import OAuth_helpers
 
 
 # Create your views here.
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def load_course_materials(request, course_id):
+    token = creds_refresher(request.user)
+    course = get_object_or_404(Course, id=course_id)
+    materials = OAuth_helpers.get_coursework(auth_token=token.token, course_id=course_id)
+    for key, val in materials.items():
+        for entry in val:
+            material = Material.objects.filter(id=entry['id'])
+            if not material:
+                material = Material(id=entry['materials'][0]['driveFile']['driveFile']['id'], parent_course=course,
+                                    title=entry['title'],
+                                    file_name=entry['materials'][0]['driveFile']['driveFile']['title'],
+                                    creation_date=entry['creationTime'])
+                OAuth_helpers.download_drive_file(creds=token, file_id=material.id, file_name=material.file_name)
+                material.file = f"./course_material/{material.file_name}"
+                material.save()
+
+    return Response({"Message": "Materials Loaded!!", "Materials": materials}, status=status.HTTP_200_OK)
+
+
 class MaterialViewSet(viewsets.ModelViewSet):
     queryset = Material.objects.all().order_by('id')
     serializer_class = MaterialSerializer

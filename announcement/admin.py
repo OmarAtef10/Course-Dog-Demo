@@ -7,7 +7,6 @@ from .models import Announcement
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ('id', 'course', 'creation_date')
-    list_filter = ()
+    list_filter = ('course__name',)
     search_fields = ('id', 'course__id', 'course__name',)
-    fields = ('id', 'announcement', 'course', 'creation_date')
     readonly_fields = ('id', 'creation_date')

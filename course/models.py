@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
     id = models.BigIntegerField(primary_key=True, db_index=True, unique=True)
-    code = models.CharField(max_length=100,blank=True, null=True)
+    code = models.CharField(max_length=100, blank=True, null=True)
     organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)

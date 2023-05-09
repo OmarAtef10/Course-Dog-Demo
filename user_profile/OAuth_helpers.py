@@ -1,4 +1,11 @@
+import io
+import os
+import shutil
+
 import requests
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaIoBaseDownload
+
 
 def get_courses(auth_token):
     url = 'https://classroom.googleapis.com/v1/courses'
@@ -40,3 +47,17 @@ def get_coursework(course_id, auth_token):
         print(res.json())
         return (res.json())
 
+
+def download_drive_file(creds, file_name, file_id):
+    service = build("drive", "v3", credentials=creds)
+    request2 = service.files().get_media(fileId=file_id)
+    fh = io.BytesIO()
+    downloader = MediaIoBaseDownload(fd=fh, request=request2)
+    done = False
+    while done is False:
+        status, done = downloader.next_chunk()
+        print("Download %d%%." % int(status.progress() * 100))
+    fh.seek(0)
+    with open(os.path.join(".", file_name), "wb") as f:
+        f.write(fh.read())
+    shutil.move(f"./{file_name}", f"./uploads/course_material/{file_name}")

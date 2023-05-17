@@ -130,8 +130,8 @@ def get_tokens(request):
                     status=200)
 
 
-@permission_classes([IsAuthenticated])
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def check_user(request):
     if not request.user.has_usable_password():
         return redirect("/accounts/password/set/")

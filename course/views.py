@@ -69,6 +69,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 class UserOrganizationCoursesAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = CourseSerializer
+    queryset = Course.objects.all()
 
     def get(self, request):
         user = request.user

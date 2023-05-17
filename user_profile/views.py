@@ -1,7 +1,8 @@
 import json
 
+import allauth.account.signals
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -9,7 +10,6 @@ from rest_framework.response import Response
 import os
 from google_auth_oauthlib.flow import Flow, InstalledAppFlow
 from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseDownload
 from google.auth.transport.requests import Request
 
 from allauth.socialaccount.models import SocialAccount, SocialToken
@@ -17,6 +17,7 @@ from allauth.socialaccount.models import SocialAccount, SocialToken
 from .serializers import ProfileSerializer
 import pickle
 from .models import Profile
+from rest_framework.authtoken.models import Token
 
 
 # Create your views here.
@@ -122,20 +123,24 @@ def creds_refresher(user):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_tokens(request):
+    drf_token = Token.objects.get_or_create(user=request.user)
     creds = creds_refresher(request.user)
-    service = build("drive", "v3", credentials=creds)
-    file_id = "12JNetOqALdhvqmKQ9Ak8m1P_Kwr4Ee9R"
-    request2 = service.files().get_media(fileId=file_id)
-    fh = io.BytesIO()
-    downloader = MediaIoBaseDownload(fd=fh, request=request2)
-    done = False
-    while done is False:
-        status, done = downloader.next_chunk()
-        print("Download %d%%." % int(status.progress() * 100))
-    fh.seek(0)
-    file_name = "week 7 testing.pdf"
-    with open(os.path.join(".", file_name), "wb") as f:
-        f.write(fh.read())
-    shutil.move(f"./{file_name}", f"./uploads/course_material/{file_name}")
+    print(drf_token[0].key)
+    return Response({"DRF Token": drf_token[0].key, "Access token": creds.token, "Refresh Token": creds.refresh_token},
+                    status=200)
 
-    return Response({"Access token": creds.token, "Refresh Token":creds.refresh_token}, status=200)
+
+@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+def check_user(request):
+    if not request.user.has_usable_password():
+        return redirect("/accounts/password/set/")
+    else:
+        print(request.user.password)
+        return Response({"message": "User is logged in"}, status=200)
+
+
+@api_view(['GET'])
+def logged_out(request):
+    if request.user.is_anonymous:
+        return Response({"message": "User is logged out"}, status=200)

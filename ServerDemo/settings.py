@@ -70,6 +70,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 ]
 
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = 'db+postgresql://course-dog:1010abab@localhost/course-dog-db'
+
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/user-profile/check/'
 

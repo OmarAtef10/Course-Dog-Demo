@@ -20,7 +20,7 @@ def load_course_materials(request, course_id):
     token = creds_refresher(request.user)
     course = get_object_or_404(Course, id=course_id)
     materials = OAuth_helpers.get_coursework(auth_token=token.token, course_id=course_id)
-    download_materials.delay(materials, token.token, course.name)
+    download_materials.delay(materials, token.token, course.name, request.user.id)
     # for key, val in materials.items():
     #     for entry in val:
     #         material = Material.objects.filter(id=entry['id'])

@@ -1,0 +1,11 @@
+---Run celery
+    celery -A ServerDemo worker -l info
+    --for Windows!!
+        -install eventlet
+           celery -A ServerDemo worker -l info -P gevent
+
+        - with auto reload
+               watchmedo auto-restart --directory=. --pattern="*.py" --recursive -- celery -A ServerDemo worker -l info -P gevent
+
+--install rabbitmq
+    sudo apt-get install rabbitmq-server

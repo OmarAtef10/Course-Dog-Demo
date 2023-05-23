@@ -10,6 +10,7 @@ from rest_framework.decorators import api_view, permission_classes
 from course.models import Course
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
+from .tasks import download_materials
 
 
 # Create your views here.
@@ -19,17 +20,18 @@ def load_course_materials(request, course_id):
     token = creds_refresher(request.user)
     course = get_object_or_404(Course, id=course_id)
     materials = OAuth_helpers.get_coursework(auth_token=token.token, course_id=course_id)
-    for key, val in materials.items():
-        for entry in val:
-            material = Material.objects.filter(id=entry['id'])
-            if not material:
-                material = Material(id=entry['materials'][0]['driveFile']['driveFile']['id'], parent_course=course,
-                                    title=entry['title'],
-                                    file_name=entry['materials'][0]['driveFile']['driveFile']['title'],
-                                    creation_date=entry['creationTime'])
-                OAuth_helpers.download_drive_file(creds=token, file_id=material.id, file_name=material.file_name)
-                material.file = f"./course_material/{material.file_name}"
-                material.save()
+    download_materials.delay(materials, token.token, course.name, request.user.id)
+    # for key, val in materials.items():
+    #     for entry in val:
+    #         material = Material.objects.filter(id=entry['id'])
+    #         if not material:
+    #             material = Material(id=entry['materials'][0]['driveFile']['driveFile']['id'], parent_course=course,
+    #                                 title=entry['title'],
+    #                                 file_name=entry['materials'][0]['driveFile']['driveFile']['title'],
+    #                                 creation_date=entry['creationTime'])
+    #             OAuth_helpers.download_drive_file(creds=token, file_id=material.id, file_name=material.file_name)
+    #             material.file = f"./course_material/{material.file_name}"
+    #             material.save()
 
     return Response({"Message": "Materials Loaded!!", "Materials": materials}, status=status.HTTP_200_OK)
 

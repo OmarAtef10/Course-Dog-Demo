@@ -1,3 +1,14 @@
+--Prerequisite
+   if on windows, install the following:
+    - WSL (Ubuntu)
+    - redis
+
+    run the following commands after finishing the installation:
+       redis-server
+
+    to check the redis server is running:
+       redis-cli ping
+
 ---Run celery
     celery -A ServerDemo worker -l info
     --for Windows!!

@@ -1,3 +1,6 @@
+import datetime
+import random
+
 from django.shortcuts import render, get_object_or_404
 from organization.models import Organization
 from rest_framework import viewsets
@@ -64,8 +67,16 @@ def add_announcement(request):
         announcement = request.data['announcement']
         course = Course.objects.get(code=course_code)
         if course.organization == organization:
-            announcement = Announcement.objects.create(course=course, announcement=announcement)
-            announcement.save()
+
+            while True:
+                id = random.randint(100000, 999999)
+                if not Announcement.objects.filter(id=id):
+                    announcement = Announcement.objects.create(id=id, course=course, announcement=announcement,
+                                                               title="From Admin Student Via Webhooks!",
+                                                               creation_date=datetime.datetime.now())
+                    announcement.save()
+                    break
+
             return Response({'message': 'Announcement created successfully'}, status=HTTP_201_CREATED)
         else:
             return Response({'message': f'Course not found for {org_name} organization'}, status=HTTP_404_NOT_FOUND)

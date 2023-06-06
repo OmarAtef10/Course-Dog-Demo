@@ -1,3 +1,4 @@
+import user_profile.models
 from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets
 from rest_framework.decorators import api_view, permission_classes
@@ -41,6 +42,17 @@ def load_courses_from_user(request):
     else:
         return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
                         status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def list_user_courses_by_phone_number(request, phone_number):
+    try:
+        organization = user_profile.models.Profile.objects.get(whatsapp_number=phone_number).organization
+        courses = Course.objects.filter(organization=organization)
+        serializer = CourseSerializer(courses, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 def get_all_organization_courses(organization):

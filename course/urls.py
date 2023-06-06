@@ -8,7 +8,9 @@ router.register(r'', views.CourseViewSet)
 
 urlpatterns = [
     path('load-courses/', views.load_courses_from_user, name='load-courses'),
+
     path('list-courses/', views.UserOrganizationCoursesAPIView.as_view()),
+    path('list-courses/<int:phone_number>/', views.list_user_courses_by_phone_number, name='list-user-courses-by-phone-number'),
     path('manage-user-courses/<int:course_id>/',
          views.UserCourseSubscribtionsAPIView.as_view()),
     path('list-user-courses/', views.user_subscriptions),
@@ -17,4 +19,5 @@ urlpatterns = [
     path('delete-material/<int:course_id>/<int:file_id>/',
          views.delete_course_content),
     path('', include(router.urls)),
+
 ]

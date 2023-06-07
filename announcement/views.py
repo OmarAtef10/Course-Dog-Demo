@@ -69,7 +69,7 @@ def add_announcement(request):
         if course.organization == organization:
 
             while True:
-                id = random.randint(100000, 999999)
+                id = random.randint(100, 999999)
                 if not Announcement.objects.filter(id=id):
                     announcement = Announcement.objects.create(id=id, course=course, announcement=announcement,
                                                                title="From Admin Student Via Webhooks!",

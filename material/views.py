@@ -11,6 +11,7 @@ from course.models import Course
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
 from .tasks import download_materials
+import uuid
 
 
 # Create your views here.
@@ -42,7 +43,7 @@ class MaterialViewSet(viewsets.ModelViewSet):
 
 
 @api_view(["POST", "GET"])
-def add_materials(request):
+def add_materials_webhooks(request):
     if request.method == "POST":
         print("We are inside post request")
         url = request.data['url']
@@ -54,7 +55,10 @@ def add_materials(request):
         try:
             course = get_object_or_404(Course, code=course_code)
             if course.organization == organization:
-                material = Material.objects.create(parent_course=course, file_name=file_name, url=url)
+                id = uuid.uuid4()
+                id = str(id)
+                material = Material.objects.create(id=id, parent_course=course, file_name=file_name, url=url,
+                                                   title="By Admin Student Via Webhooks!")
                 material.save()
                 return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
             else:

@@ -20,3 +20,4 @@ Pipfile
 !**/migrations/__init__.py
 uploads/
 serverdemo_env/
+coursedog_env/

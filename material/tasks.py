@@ -1,10 +1,25 @@
 import allauth.socialaccount.models
-import course.models
+from course.models import Course
 from celery import shared_task
 from djoser.conf import User
 from material.models import Material
 from user_profile import OAuth_helpers
 from user_profile.views import creds_refresher
+from .utilities import calculate_file_hash
+
+
+@shared_task
+def load_user_course_material(user_id, course_id):
+    user = User.objects.get(id=user_id)
+    token = creds_refresher(user)
+    try:
+        course = Course.objects.get(id=course_id)
+        materials = OAuth_helpers.get_coursework(
+            auth_token=token.token, course_id=course_id)
+        download_materials.delay(materials, token.token, course.name, user.id)
+        return True
+    except Course.DoesNotExist:
+        return False
 
 
 @shared_task
@@ -12,7 +27,7 @@ def download_materials(materials, token, course_name, user):
     print("We are inside download materials")
     user = User.objects.get(id=user)
     token = creds_refresher(user)
-    course_name = course.models.Course.objects.get(name=course_name)
+    course_name = Course.objects.get(name=course_name)
     # print(materials['courseWorkMaterial'][0]['materials'])
     for key, val in materials.items():
         for entry in val:
@@ -22,7 +37,8 @@ def download_materials(materials, token, course_name, user):
             for file in entry['materials']:
                 print("FILE :- ", file)
                 print("FILE ID :- ", file['driveFile']['driveFile']['id'])
-                material = Material.objects.filter(id=file['driveFile']['driveFile']['id'])
+                material = Material.objects.filter(
+                    id=file['driveFile']['driveFile']['id'])
                 if not material:
                     try:
                         if file['driveFile']['driveFile']['title'].split('.')[-1] == 'mp4':
@@ -37,13 +53,10 @@ def download_materials(materials, token, course_name, user):
                         print("Downloading file!!")
                         OAuth_helpers.download_drive_file(creds=token, file_id=material.id,
                                                           file_name=material.file_name)
-                        material.file = f"./course_material/{material.file_name}"
+                        filepath = f"./course_material/{material.file_name}"
+                        material.file = filepath
+                        material.hash_code = calculate_file_hash(material.file)
                         material.save()
-                    except:
-                        print("File is Not DOWNLOADABLE!!!")
+                    except Exception as e:
+                        print(e)
                         pass
-
-
-@shared_task
-def add(x, y):
-    return x + y

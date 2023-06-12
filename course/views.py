@@ -16,28 +16,37 @@ from allauth.socialaccount.models import SocialAccount, SocialToken
 from user_profile.views import creds_refresher
 from user_profile.models import Profile
 from user_profile import OAuth_helpers
-
+from material.tasks import load_user_course_material
 
 # Create your views here.
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def load_courses_from_user(request):
-    creds = creds_refresher(request.user)
+    user = request.user
+    creds = creds_refresher(user)
     if creds:
         profile = None
         try:
-            profile = Profile.objects.get(user=request.user)
+            profile = Profile.objects.get(user=user)
         except:
             return Response({'error': 'User profile not found'}, status=status.HTTP_404_NOT_FOUND)
         organization = profile.organization
         courses = OAuth_helpers.get_courses(creds.token)
         for key, val in courses.items():
             for entry in val:
-                course = Course.objects.filter(id=entry['id'])
-                if not course:
+                try:
+                    course = Course.objects.get(id=entry['id'])
+                except Course.DoesNotExist:
+                    course = None
+
+                if course == None:
                     course = Course(id=entry['id'], name=entry['name'], organization=organization,
                                     description=entry['descriptionHeading'])
                     course.save()
+
+                load_user_course_material.delay(user.id, course.id)
         return Response({"Message": "Courses Loaded!!", "Courses": courses}, status=status.HTTP_200_OK)
     else:
         return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
@@ -47,7 +56,8 @@ def load_courses_from_user(request):
 @api_view(['GET'])
 def list_user_courses_by_phone_number(request, phone_number):
     try:
-        organization = user_profile.models.Profile.objects.get(whatsapp_number=phone_number).organization
+        organization = user_profile.models.Profile.objects.get(
+            whatsapp_number=phone_number).organization
         courses = Course.objects.filter(organization=organization)
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

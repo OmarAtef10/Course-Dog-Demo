@@ -18,3 +18,5 @@ Pipfile
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+uploads/
+serverdemo_env/

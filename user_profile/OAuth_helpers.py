@@ -21,7 +21,7 @@ def get_courses(auth_token):
 
 
 def get_announcements(course_id, auth_token):
-    url = 'https://classroom.googleapis.com/v1/courses/' + course_id + '/announcements'
+    url = 'https://classroom.googleapis.com/v1/courses/' + str(course_id) + '/announcements'
     headers = {
         'Authorization': 'Bearer ' + auth_token
     }

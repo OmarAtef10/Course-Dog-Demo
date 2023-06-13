@@ -16,18 +16,18 @@ def load_user_course_material(user_id, course_id):
         course = Course.objects.get(id=course_id)
         materials = OAuth_helpers.get_coursework(
             auth_token=token.token, course_id=course_id)
-        download_materials.delay(materials, token.token, course.name, user.id)
+        download_materials.delay(materials, token.token, course.id, user.id)
         return True
     except Course.DoesNotExist:
         return False
 
 
 @shared_task
-def download_materials(materials, token, course_name, user):
+def download_materials(materials, token, course_id, user):
     print("We are inside download materials")
     user = User.objects.get(id=user)
     token = creds_refresher(user)
-    course_name = Course.objects.get(name=course_name)
+    course_id = Course.objects.get(id=course_id)
     # print(materials['courseWorkMaterial'][0]['materials'])
     for key, val in materials.items():
         for entry in val:
@@ -46,7 +46,7 @@ def download_materials(materials, token, course_name, user):
 
                         print("HERE!!")
                         material = Material(id=file['driveFile']['driveFile']['id'],
-                                            parent_course=course_name,
+                                            parent_course=course_id,
                                             title=entry['title'],
                                             file_name=file['driveFile']['driveFile']['title'],
                                             creation_date=entry['creationTime'])

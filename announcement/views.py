@@ -25,6 +25,7 @@ from material.serializers import MaterialSerializer
 from course.models import *
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
+from .tasks import load_announcements
 
 
 # Create your views here.
@@ -36,14 +37,15 @@ def load_course_announcements(request, course_id):
     token = creds_refresher(request.user)
     course = get_object_or_404(Course, id=course_id)
     announcements = OAuth_helpers.get_announcements(auth_token=token.token, course_id=course_id)
-    for key, val in announcements.items():
-        for entry in val:
-            announcement = Announcement.objects.filter(id=entry['id'])
-            if not announcement:
-                announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
-                                            title=entry.get('title', 'New Announcement'),
-                                            creation_date=entry['creationTime'])
-                announcement.save()
+    load_announcements.delay(request.user.id, course_id, announcements)
+    # for key, val in announcements.items():
+    #     for entry in val:
+    #         announcement = Announcement.objects.filter(id=entry['id'])
+    #         if not announcement:
+    #             announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
+    #                                         title=entry.get('title', 'New Announcement'),
+    #                                         creation_date=entry['creationTime'])
+    #             announcement.save()
 
     return Response({"Message": "Announcements Loaded!!", "Announcements": announcements}, status=status.HTTP_200_OK)
 

@@ -23,7 +23,7 @@ def load_course_materials(request, course_id):
     materials = OAuth_helpers.get_coursework(
         auth_token=token.token, course_id=course_id)
     download_materials.delay(materials, token.token,
-                             course.name, request.user.id)
+                             course.id, request.user.id)
     # for key, val in materials.items():
     #     for entry in val:
     #         material = Material.objects.filter(id=entry['id'])

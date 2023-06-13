@@ -17,6 +17,8 @@ from user_profile.views import creds_refresher
 from user_profile.models import Profile
 from user_profile import OAuth_helpers
 from material.tasks import load_user_course_material
+from announcement.tasks import load_announcement_helper
+
 
 # Create your views here.
 
@@ -38,15 +40,17 @@ def load_courses_from_user(request):
             for entry in val:
                 try:
                     course = Course.objects.get(id=entry['id'])
+                    load_user_course_material.delay(user.id, course.id)
+                    load_announcement_helper.delay(user.id, course.id)
                 except Course.DoesNotExist:
                     course = None
 
-                if course == None:
+                if course is None:
                     course = Course(id=entry['id'], name=entry['name'], organization=organization,
                                     description=entry['descriptionHeading'])
                     course.save()
-
-                load_user_course_material.delay(user.id, course.id)
+                    load_user_course_material.delay(user.id, course.id)
+                    load_announcement_helper.delay(user.id, course.id)
         return Response({"Message": "Courses Loaded!!", "Courses": courses}, status=status.HTTP_200_OK)
     else:
         return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},

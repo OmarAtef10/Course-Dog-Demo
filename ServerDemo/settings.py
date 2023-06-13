@@ -24,8 +24,8 @@ SECRET_KEY = 'django-insecure-*%oh90*#+*b(exl!bd098kk)*t%rxfm$gov)t!axjoh-=+)47l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['localhost:3000', 'http://localhost:3000', 'https://localhost:3000', 'localhost:8000', '127.0.0.1',
+                 'localhost']
 DOMAIN = ('localhost:8000')
 SITE_NAME = ('CourseDog')
 
@@ -43,6 +43,42 @@ EMAIL_USE_TLS = True
 
 DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
 ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://localhost:3000'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'https://localhost:3000'
+]
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000',
+                         'https://localhost:3000']
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    'access-control-allow-origin',
+    'access-control-allow-headers',
+    'access-control-allow-methods',
+    'access-control-allow-credentials',
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -109,8 +145,8 @@ SOCIALACCOUNT_PROVIDERS = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

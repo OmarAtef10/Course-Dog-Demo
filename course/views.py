@@ -157,7 +157,8 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
 
 class UploadCourseContentAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
-
+    serializer_class = MaterialSerializer
+    queryset = Material.objects.all()
     def get(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization

@@ -24,8 +24,7 @@ SECRET_KEY = 'django-insecure-*%oh90*#+*b(exl!bd098kk)*t%rxfm$gov)t!axjoh-=+)47l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost:3000', 'http://localhost:3000', 'https://localhost:3000', 'localhost:8000', '127.0.0.1',
-                 'localhost']
+ALLOWED_HOSTS = ['*']
 DOMAIN = ('localhost:8000')
 SITE_NAME = ('CourseDog')
 
@@ -44,7 +43,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
 ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
 CORS_ALLOW_CREDENTIALS = True
-
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://localhost:3000'

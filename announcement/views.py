@@ -26,7 +26,7 @@ from course.models import *
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
 from .tasks import load_announcements
-from course.models import Subscription
+from course.views import is_course_admin
 
 
 # Create your views here.
@@ -53,16 +53,6 @@ def load_course_announcements(request, course_id):
     #             announcement.save()
 
     return Response({"Message": "Announcements Loaded!!", "Announcements": announcements}, status=status.HTTP_200_OK)
-
-
-class AnnouncementViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all().order_by('id')
-    serializer_class = AnnouncementSerializer
-
-    def list(self, request, *args, **kwargs):
-        queryset = Announcement.objects.all()
-        serializer = AnnouncementSerializer(queryset, many=True)
-        return Response(serializer.data)
 
 
 @api_view(["POST"])
@@ -116,7 +106,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         serialized_announcements = self.get_serializer(
             announcements, many=True)
         serialized_course = CourseSerializer(course)
-        return Response({"course": serialized_course.data, "announcements": serialized_announcements.data}, 200)
+        is_admin = is_course_admin(user, course)
+        return Response({"course": serialized_course.data, "is_course_admin": is_admin, "announcements": serialized_announcements.data}, 200)
 
     def post(self, request, course_id):
         user = request.user

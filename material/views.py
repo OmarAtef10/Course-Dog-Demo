@@ -3,18 +3,24 @@ from organization.models import Organization
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.generics import GenericAPIView
 
 from .serializers import *
 from .models import Material
 from rest_framework.decorators import api_view, permission_classes
-from course.models import Course
+from course.models import Course, UserCourseAdmin
+from course.serializers import CourseSerializer
+from user_profile.views import get_user_profile
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
 from .tasks import download_materials
 import uuid
-
+from .utilities import calculate_file_hash
+from course.views import is_course_admin
 
 # Create your views here.
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def load_course_materials(request, course_id):
@@ -24,24 +30,8 @@ def load_course_materials(request, course_id):
         auth_token=token.token, course_id=course_id)
     download_materials.delay(materials, token.token,
                              course.id, request.user.id)
-    # for key, val in materials.items():
-    #     for entry in val:
-    #         material = Material.objects.filter(id=entry['id'])
-    #         if not material:
-    #             material = Material(id=entry['materials'][0]['driveFile']['driveFile']['id'], parent_course=course,
-    #                                 title=entry['title'],
-    #                                 file_name=entry['materials'][0]['driveFile']['driveFile']['title'],
-    #                                 creation_date=entry['creationTime'])
-    #             OAuth_helpers.download_drive_file(creds=token, file_id=material.id, file_name=material.file_name)
-    #             material.file = f"./course_material/{material.file_name}"
-    #             material.save()
 
     return Response({"Message": "Materials Loaded!!", "Materials": materials}, status=status.HTTP_200_OK)
-
-
-class MaterialViewSet(viewsets.ModelViewSet):
-    queryset = Material.objects.all().order_by('id')
-    serializer_class = MaterialSerializer
 
 
 @api_view(["POST", "GET"])
@@ -73,3 +63,70 @@ def add_materials_webhooks(request):
         materials = Material.objects.all()
         serializer = MaterialSerializer(materials, many=True)
         return Response(serializer.data)
+
+
+class UploadCourseContentAPIView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MaterialSerializer
+    queryset = Material.objects.all()
+
+    def get(self, request, course_id):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+        if user_organization == None:
+            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+        course = get_object_or_404(
+            Course, id=course_id, organization=user_organization)
+        serialized_course = CourseSerializer(course).data
+
+        files = Material.objects.filter(parent_course=course)
+        serialized_files = MaterialSerializer(files, many=True).data
+        is_admin = is_course_admin(user, course)
+        return Response({"course": serialized_course, "is_course_admin": is_admin, "materials": serialized_files}, 200)
+
+    def post(self, request, course_id):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+        if user_organization == None:
+            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+        course = get_object_or_404(
+            Course, id=course_id, organization=user_organization)
+        try:
+            UserCourseAdmin.objects.get(course=course, user=user)
+        except UserCourseAdmin.DoesNotExist:
+            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        file = request.FILES.get('file')
+        if file == None:
+            return Response({"message": "No file was uploaded"}, status=status.HTTP_400_BAD_REQUEST)
+        file_name = request.POST.get('file_name')
+        if file_name == None:
+            file_name = file.name
+        file_hash = calculate_file_hash(file)
+        id = uuid.uuid4()
+        id = str(id)
+        material = Material(id=id, parent_course=course,
+                            file=file, file_name=file_name, hash_code=file_hash)
+        material.save()
+        return Response({}, 200)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_course_content(request, course_id, file_id):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+    if user_organization == None:
+        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+    course = get_object_or_404(
+        Course, id=course_id, organization=user_organization)
+
+    try:
+        is_course_admin = UserCourseAdmin.objects.get(course=course, user=user)
+    except UserCourseAdmin.DoesNotExist:
+        return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+
+    material = get_object_or_404(Material, id=file_id, parent_course=course)
+    material.delete()
+
+    return Response({}, 200)

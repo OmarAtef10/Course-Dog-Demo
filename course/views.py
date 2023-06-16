@@ -87,9 +87,9 @@ def get_all_course_admins(course):
     return UserCourseAdmin.objects.filter(course=course)
 
 
-class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all().order_by('id')
-    serializer_class = CourseSerializer
+def is_course_admin(user, course):
+    is_admin = UserCourseAdmin.objects.filter(user=user, course=course)
+    return is_admin.exists()
 
 
 class UserOrganizationCoursesAPIView(GenericAPIView):
@@ -162,64 +162,3 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
             return Response({"message": "There is no such user course subscribtion"}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)
-
-
-class UploadCourseContentAPIView(GenericAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = MaterialSerializer
-    queryset = Material.objects.all()
-
-    def get(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-
-        files = Material.objects.filter(parent_course=course)
-        serialized_files = MaterialSerializer(files, many=True)
-        return Response(serialized_files.data, 200)
-
-    def post(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-
-        try:
-            is_course_admin = UserCourseAdmin.objects.get(
-                course=course, user=user)
-        except UserCourseAdmin.DoesNotExist:
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-
-        file = request.FILES.get('file')
-        file_name = request.POST.get('file_name')
-
-        material = Material(parent_course=course,
-                            file=file, file_name=file_name)
-        material.save()
-        return Response({}, 200)
-
-
-@api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
-def delete_course_content(request, course_id, file_id):
-    user = request.user
-    user_organization = get_user_profile(user).organization
-    if user_organization == None:
-        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-    course = get_object_or_404(
-        Course, id=course_id, organization=user_organization)
-
-    try:
-        is_course_admin = UserCourseAdmin.objects.get(course=course, user=user)
-    except UserCourseAdmin.DoesNotExist:
-        return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-
-    material = get_object_or_404(Material, id=file_id, parent_course=course)
-    material.delete()
-
-    return Response({}, 200)

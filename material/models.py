@@ -45,7 +45,7 @@ def pre_save_material(sender, instance, *args, **kwargs):
         # 2. download the data behind the URL
         try:
             headers = {
-                'Authorization': 'Bearer EAAQMJrRQMU0BAMncRnNvNYnke7pJ9XWN2oCJ8DhmvKmLuWo2A9LnusrSGApuRaPKFTRFGavpU5J9ZC0a8ZAq8A96zYVkHL6R3vyNUYygGXwWF8ZCjawRT4FwlmBw5i79gEPiKuTs2KdIdZAEeCZBLZAleKXjzHZBFXUdMBBmAwZAHFOccg8DjswiZBELsmlyi84usuvnBohCjLurC2QjbfDZCPGp6rdhJIrOwZD'
+                'Authorization': 'Bearer EAAQMJrRQMU0BAOb1FovuFQJD1BzsE94ZB0sWlmnhlZAM1hTZBNnoF84RqCbx4QyxNQLBQZCSZCkEdTeVQvA2n5UiJLCzMmTZBY5J1cNiH1PVF4DtWsLFpNtuzHTvaIH8DfOnhOljJgKRlBCZBw9EiTAtdPXlkXt9kaSDrAyxCmjKEmZB8iA85pZCjKTsUhT55fcxIBuaLSr3xXZBqF2JLWFLekzOUiZBxTAM8gZD'
             }
             response = requests.get(URL, headers=headers)
             open(path, "wb").write(response.content)

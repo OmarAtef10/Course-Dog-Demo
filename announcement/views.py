@@ -69,7 +69,7 @@ def add_announcement(request):
                 id = random.randint(100, 999999)
                 if not Announcement.objects.filter(id=id):
                     announcement = Announcement.objects.create(id=id, course=course, announcement=announcement,
-                                                               title="From Admin Student Via Webhooks!",
+                                                               title="By Admin Student Via Webhooks!",
                                                                creation_date=datetime.datetime.now())
                     announcement.save()
                     break
@@ -98,7 +98,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             user_subscription = Subscription.objects.filter(
                 user=user, course=course)
             if not user_subscription.exists():
-                return Response({"message": "user is not subscribed to this course"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"message": "user is not subscribed to this course"},
+                                status=status.HTTP_400_BAD_REQUEST)
 
         except Course.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
@@ -107,7 +108,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             announcements, many=True)
         serialized_course = CourseSerializer(course)
         is_admin = is_course_admin(user, course)
-        return Response({"course": serialized_course.data, "is_course_admin": is_admin, "announcements": serialized_announcements.data}, 200)
+        return Response({"course": serialized_course.data, "is_course_admin": is_admin,
+                         "announcements": serialized_announcements.data}, 200)
 
     def post(self, request, course_id):
         user = request.user
@@ -124,37 +126,43 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         except Course.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        announcement_data = self.get_serializer(data=request.data)
-        if announcement_data.is_valid():
-            announcement_id = generate_announcement_id()
-            announcement = Announcement(
-                id=announcement_id,
-                course=course,
-                title=announcement_data.validated_data['title'],
-                announcement=announcement_data.validated_data['announcement'],
-                creation_date=announcement_data.validated_data['creation_date'],
-            )
-            announcement.save()
+        announcement_id = generate_announcement_id()
+        title = request.data.get("title", "New Announcement")
+        if title == "":
+            title = "New Announcement"
+
+        announcement_details = request.data.get("announcement", "")
+        if announcement_details == "":
+            return Response({"message": "Announcement cannot be empty"}, status=status.HTTP_400_BAD_REQUEST)
+
+        announcement = Announcement(
+            id=announcement_id,
+            course=course,
+            title=title,
+            announcement=announcement_details,
+        )
+        announcement.save()
         return Response({"message": "success"}, 200)
 
-    def delete(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
 
-        try:
-            course = get_object_or_404(
-                Course, id=course_id, organization=user_organization)
+def delete(self, request, course_id):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+    if user_organization == None:
+        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
 
-            is_course_admin = UserCourseAdmin.objects.filter(
-                course=course, user=user)
-            if not is_course_admin.exists():
-                return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-        except Course.DoesNotExist:
-            return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    try:
+        course = get_object_or_404(
+            Course, id=course_id, organization=user_organization)
 
-        announcement_id = request.data['announcement_id']
-        announcement = get_object_or_404(Announcement, id=announcement_id)
-        announcement.delete()
-        return Response({"message": "success"}, 200)
+        is_course_admin = UserCourseAdmin.objects.filter(
+            course=course, user=user)
+        if not is_course_admin.exists():
+            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+    except Course.DoesNotExist:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    announcement_id = request.data['announcement_id']
+    announcement = get_object_or_404(Announcement, id=announcement_id)
+    announcement.delete()
+    return Response({"message": "success"}, 200)

@@ -139,6 +139,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             announcement = Announcement(
                 id=announcement_id,
                 course=course,
+                title=announcement_data.validated_data['title'],
                 announcement=announcement_data.validated_data['announcement'],
                 creation_date=announcement_data.validated_data['creation_date'],
             )

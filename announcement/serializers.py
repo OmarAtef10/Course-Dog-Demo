@@ -17,7 +17,7 @@ class AnnouncementFullSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Announcement
-        fields = ['announcement', 'creation_date', 'id']
+        fields = ['announcement', 'creation_date', 'id','title']
         depth = 1
 
 

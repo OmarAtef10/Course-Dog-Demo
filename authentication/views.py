@@ -14,7 +14,7 @@ from django.core.mail import send_mail, send_mass_mail
 
 from .serializers import EmailSerializer, MassEmailSerializer, UidTokenSerializer
 from .permissions import IsSupportAdmin
-
+from user_profile.views import get_user_profile
 import string
 import secrets
 # Create your views here.
@@ -140,3 +140,24 @@ class ResetUserPassword(GenericAPIView):
         send_email("Change Password Request",
                    f"Your new password is {new_password}", user_email)
         return Response({'message': 'Email was sent successfully'}, 200)
+
+
+class RetriveUserInfoAPIView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        user_group = user.groups.all()[0].name
+        user_profile = get_user_profile(user)
+        user_info = {
+            'username': user.username,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+            'is_staff': user.is_staff,
+            'is_superuser': user.is_superuser,
+            'is_active': user.is_active,
+            'group': user_group,
+            'organization': user_profile.organization.name,
+        }
+        return Response(user_info)

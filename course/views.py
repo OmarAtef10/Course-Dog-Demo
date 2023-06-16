@@ -138,11 +138,16 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
         try:
             course = Course.objects.get(
                 id=course_id, organization=user_organization)
+            user_subscription = Subscription.objects.filter(
+                user=user, course=course)
+            if user_subscription.exists():
+                return Response({"message": "user is already subscribed to this course"}, status=status.HTTP_400_BAD_REQUEST)
+
             Subscription.objects.create(user=user, course=course)
         except Course.DoesNotExist:
             return Response({"message": "course doesn't exist."}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({}, status=status.HTTP_200_OK)
+        return Response({"message": "success"}, status=status.HTTP_200_OK)
 
     def delete(self, request, course_id):
         user = request.user
@@ -153,8 +158,8 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
 
         try:
             Subscription.objects.get(user=user, course=course_id).delete()
-        except Course.DoesNotExist:
-            return Response({"message": "user is not subscribed to such course"}, status=status.HTTP_400_BAD_REQUEST)
+        except Subscription.DoesNotExist:
+            return Response({"message": "There is no such user course subscribtion"}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)
 
@@ -163,6 +168,7 @@ class UploadCourseContentAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
+
     def get(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization

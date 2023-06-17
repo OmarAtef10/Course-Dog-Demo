@@ -153,6 +153,7 @@ MIDDLEWARE = [
 ]
 
 DJOSER = {
+    'LOGIN_FIELD': 'email',
     "USER_ID_FIELD": "username",
     'ACTIVATION_URL': 'auth/activate-user/{uid}/{token}/',
     'SEND_ACTIVATION_EMAIL': True,

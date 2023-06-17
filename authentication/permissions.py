@@ -22,3 +22,10 @@ class IsOrganizationAdmin(BasePermission):
             raise exceptions.NotAuthenticated()
 
         return request.user.groups.filter(name='OrganizationAdmin').exists()
+
+class IsCourseAdmin(BasePermission):
+    def has_permission(self, request, view):
+        if not request.user.is_authenticated:
+            raise exceptions.NotAuthenticated()
+
+        return request.user.groups.filter(name='CourseAdmin').exists()

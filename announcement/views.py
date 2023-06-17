@@ -144,25 +144,24 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement.save()
         return Response({"message": "success"}, 200)
 
+    def delete(self, request, course_id):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+        if user_organization == None:
+            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
 
-def delete(self, request, course_id):
-    user = request.user
-    user_organization = get_user_profile(user).organization
-    if user_organization == None:
-        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            course = get_object_or_404(
+                Course, id=course_id, organization=user_organization)
 
-    try:
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
+            is_course_admin = UserCourseAdmin.objects.filter(
+                course=course, user=user)
+            if not is_course_admin.exists():
+                return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+        except Course.DoesNotExist:
+            return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        is_course_admin = UserCourseAdmin.objects.filter(
-            course=course, user=user)
-        if not is_course_admin.exists():
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-    except Course.DoesNotExist:
-        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
-
-    announcement_id = request.data['announcement_id']
-    announcement = get_object_or_404(Announcement, id=announcement_id)
-    announcement.delete()
-    return Response({"message": "success"}, 200)
+        announcement_id = request.data['announcement_id']
+        announcement = get_object_or_404(Announcement, id=announcement_id)
+        announcement.delete()
+        return Response({"message": "success"}, 200)

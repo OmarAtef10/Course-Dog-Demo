@@ -141,7 +141,8 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
             user_subscription = Subscription.objects.filter(
                 user=user, course=course)
             if user_subscription.exists():
-                return Response({"message": "user is already subscribed to this course"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"message": "user is already subscribed to this course"},
+                                status=status.HTTP_400_BAD_REQUEST)
 
             Subscription.objects.create(user=user, course=course)
         except Course.DoesNotExist:
@@ -159,6 +160,7 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
         try:
             Subscription.objects.get(user=user, course=course_id).delete()
         except Subscription.DoesNotExist:
-            return Response({"message": "There is no such user course subscribtion"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "There is no such user course subscribtion"},
+                            status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)

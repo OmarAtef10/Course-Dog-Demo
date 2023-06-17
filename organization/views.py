@@ -8,7 +8,10 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import *
 from .models import *
 from authentication.serializers import UserSerializer
+from django.contrib.auth.models import Group
+from user_profile.models import Profile
 from user_profile.views import get_user_profile
+from authentication.permissions import IsOrganizationAdmin
 # Create your views here.
 # CourseAdmin - OrganizationAdmin - Student
 
@@ -58,7 +61,8 @@ class OrganizationAPIView(GenericAPIView):
 
 class OrganizationAdminsDataAPIView(GenericAPIView):
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOrganizationAdmin]
+    # Endpoint used to fetch all admins data of the organization and to add new admins to the organization
 
     def get(self, request):
         user_profile = get_user_profile(request.user)
@@ -70,14 +74,47 @@ class OrganizationAdminsDataAPIView(GenericAPIView):
         organization_admins = get_organization_admins(user_organization)
         users = [
             organization_admin.user for organization_admin in organization_admins]
-
+        print(users)
         serialized_users = self.get_serializer(users, many=True)
         return Response(serialized_users.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        user = request.user
+        user_profile = get_user_profile(user)
+        user_organization = user_profile.organization
+
+        if user_organization == None:
+            return Response({"message": "user is not a part of an organization"}, status=status.HTTP_404_NOT_FOUND)
+
+        user_email = request.data.get('email')
+        if user_email == None:
+            return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            new_user = User.objects.get(email=user_email)
+            UserOrganizationAdmin.objects.create(
+                user=new_user, organization=user_organization)
+            new_user.groups.add(Group.objects.get(name='OrganizationAdmin'))
+            new_user.groups.remove(Group.objects.get(name='Student'))
+            new_user_profile = Profile.objects.get(user=new_user)
+            new_user_profile.organization = user_organization
+            new_user_profile.save()
+            new_user.save()
+        except Exception as e:
+            return Response({"message": f'{e}'}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
 
 
 class GeneralOrganizationDataAPIView(GenericAPIView):
     serializer_class = OrganizationFullSerializer
-    permission_classes = [IsAuthenticated]
+    # Endpoint used to fetch all organization data by name and to add new subdomains to the organization
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method == 'POST':
+            permission_classes.append(IsOrganizationAdmin)
+        return [permission() for permission in permission_classes]
 
     def get(self, request, name):
         try:
@@ -91,3 +128,21 @@ class GeneralOrganizationDataAPIView(GenericAPIView):
 
         return Response({'organization_info': serialized_organization, 'subdomains': serialized_subdomains}, status=status.HTTP_200_OK)
 
+    def post(self, request, name):
+        user = request.user
+        user_profile = get_user_profile(user)
+        user_organization = user_profile.organization
+
+        if user_organization == None:
+            return Response({"message": "user is not a part of an organization"}, status=status.HTTP_404_NOT_FOUND)
+
+        subdomain = request.data.get('subdomain')
+        if subdomain == None:
+            return Response({"message": "subdomain is required"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            OrganizationSubdomain.objects.create(
+                organization=user_organization, subdomain=subdomain)
+        except:
+            return Response({"message": "subdomain already exists"}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response({"message": "subdomain added successfully"}, status=status.HTTP_200_OK)

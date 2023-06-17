@@ -12,6 +12,8 @@ from django.contrib.auth.models import Group
 from user_profile.models import Profile
 from user_profile.views import get_user_profile
 from authentication.permissions import IsOrganizationAdmin
+from course.models import Course, UserCourseAdmin
+from django.db import IntegrityError
 # Create your views here.
 # CourseAdmin - OrganizationAdmin - Student
 
@@ -87,7 +89,7 @@ class OrganizationAdminsDataAPIView(GenericAPIView):
             return Response({"message": "user is not a part of an organization"}, status=status.HTTP_404_NOT_FOUND)
 
         user_email = request.data.get('email')
-        if user_email == None:
+        if user_email == None or user_email == '':
             return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
@@ -146,3 +148,60 @@ class GeneralOrganizationDataAPIView(GenericAPIView):
             return Response({"message": "subdomain already exists"}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "subdomain added successfully"}, status=status.HTTP_200_OK)
+
+
+class ManageCourseAdminsAPIView(GenericAPIView):
+    serializer_class = UserSerializer
+    # Endpoint used to fetch all course admins data of a course and to add new course admins to the course and also remove course admins from the course
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method == 'POST':
+            permission_classes.append(IsOrganizationAdmin)
+        return [permission() for permission in permission_classes]
+
+    def get(self, request, course_id):
+        course = get_object_or_404(Course, id=course_id)
+        course_admins = UserCourseAdmin.objects.filter(course=course)
+        users = [course_admin.user for course_admin in course_admins]
+        serialized_users = self.get_serializer(users, many=True)
+        return Response(serialized_users.data, status=status.HTTP_200_OK)
+
+    def post(self, request, course_id):
+        course = get_object_or_404(Course, id=course_id)
+        user_email = request.data.get('email')
+        if user_email == None or user_email == '':
+            return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user = User.objects.get(email=user_email)
+            user_profile = get_user_profile(user)
+            if user_profile.organization != course.organization:
+                return Response({"message": "user is not a part of the organization"}, status=status.HTTP_400_BAD_REQUEST)
+            UserCourseAdmin.objects.create(user=user, course=course)
+            user.groups.add(Group.objects.get(name='CourseAdmin'))
+            user.groups.remove(Group.objects.get(name='Student'))
+            user.save()
+        except User.DoesNotExist:
+            return Response({"message": "user doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
+        except IntegrityError:
+            return Response({"message": "user is already an admin on this course"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
+
+    def delete(self, request, course_id):
+        course = get_object_or_404(Course, id=course_id)
+        user_email = request.data.get('email')
+        if user_email == None or user_email == '':
+            return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user = User.objects.get(email=user_email)
+            UserCourseAdmin.objects.get(user=user, course=course).delete()
+            is_still_admin = UserCourseAdmin.objects.filter(user=user).exists()
+            if not is_still_admin:
+                user.groups.remove(Group.objects.get(name='CourseAdmin'))
+                user.groups.add(Group.objects.get(name='Student'))
+            user.save()
+        except User.DoesNotExist:
+            return Response({"message": "user doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
+        except UserCourseAdmin.DoesNotExist:
+            return Response({"message": "user is not an admin on this course"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message": "user deleted successfully"}, status=status.HTTP_200_OK)

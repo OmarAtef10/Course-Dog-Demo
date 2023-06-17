@@ -10,7 +10,7 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-
+from authentication.permissions import IsCourseAdmin
 from .serializers import *
 from .models import *
 from django.http import JsonResponse
@@ -83,8 +83,13 @@ def add_announcement(request):
 
 
 class UploadCourseAnnouncementAPIView(GenericAPIView):
-    permission_classes = [IsAuthenticated]
     serializer_class = AnnouncementFullSerializer
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method != 'GET':
+            permission_classes.append(IsCourseAdmin)
+        return [permission() for permission in permission_classes]
 
     def get(self, request, course_id):
         user = request.user

@@ -8,6 +8,7 @@ from . import OAuth_helpers
 from organization.models import Organization, OrganizationSubdomain
 from django.contrib.auth.models import User, Group
 
+
 # Create your models here.
 
 
@@ -15,7 +16,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     organization = models.ForeignKey(
         Organization, on_delete=models.CASCADE, null=True, blank=True)
-    facebook_username = models.CharField(max_length=100, blank=True, null=True)
+    facebook_id = models.CharField(max_length=100, blank=True, null=True)
     whatsapp_number = models.CharField(max_length=100, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     oAuth_file = models.FileField(
@@ -25,8 +26,39 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 
+status_choices = (
+    ('pending', 'pending'),
+    ('accepted', 'accepted'),
+    ('rejected', 'rejected'),
+)
+
+
+class AdminRequests(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100, choices=status_choices, default='pending')
+
+    def __str__(self):
+        return f'{self.profile.user.username} Request'
+
+    class Meta:
+        verbose_name_plural = "Admin Requests"
+        verbose_name = "Admin Request"
+
+
+
+@receiver(post_save, sender=AdminRequests)
+def handle_post_save_logic(sender, instance, created, *args, **kwargs):
+    if instance.status == 'accepted':
+        instance.profile.is_admin = True
+        instance.profile.save()
+    elif instance.status == 'rejected':
+        instance.profile.is_admin = False
+        instance.profile.save()
+
+
 def get_domain(email):
     return email.split('@')[-1]
+
 
 # Creates a profile on user creation
 

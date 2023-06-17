@@ -148,6 +148,7 @@ class RetriveUserInfoAPIView(GenericAPIView):
     def get(self, request):
         user = request.user
         user_group = user.groups.all()[0].name
+
         user_profile = get_user_profile(user)
         user_info = {
             'username': user.username,

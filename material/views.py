@@ -17,6 +17,7 @@ from .tasks import download_materials
 import uuid
 from .utilities import calculate_file_hash
 from course.views import is_course_admin
+from authentication.permissions import IsCourseAdmin
 
 
 # Create your views here.
@@ -67,9 +68,14 @@ def add_materials_webhooks(request):
 
 
 class UploadCourseContentAPIView(GenericAPIView):
-    permission_classes = [IsAuthenticated]
     serializer_class = MaterialSerializer
     queryset = Material.objects.all()
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method != 'GET':
+            permission_classes.append(IsCourseAdmin)
+        return [permission() for permission in permission_classes]
 
     def get(self, request, course_id):
         user = request.user
@@ -113,7 +119,7 @@ class UploadCourseContentAPIView(GenericAPIView):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated, IsCourseAdmin])
 def delete_course_content(request, course_id, file_id):
     user = request.user
     user_organization = get_user_profile(user).organization

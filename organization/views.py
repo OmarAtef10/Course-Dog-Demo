@@ -13,9 +13,16 @@ from user_profile.models import Profile
 from user_profile.views import get_user_profile
 from authentication.permissions import IsOrganizationAdmin
 from course.models import Course, UserCourseAdmin
+from course.views import get_all_organization_courses
+from course.serializers import CourseSerializer, CreateCourseSerializer
 from django.db import IntegrityError
+import random
 # Create your views here.
 # CourseAdmin - OrganizationAdmin - Student
+
+
+def generate_course_id():
+    return random.randint(100000000, 999999999)
 
 
 def get_organization_subdomains(organization):
@@ -114,7 +121,7 @@ class GeneralOrganizationDataAPIView(GenericAPIView):
 
     def get_permissions(self):
         permission_classes = [IsAuthenticated]
-        if self.request.method == 'POST':
+        if self.request.method != 'GET':
             permission_classes.append(IsOrganizationAdmin)
         return [permission() for permission in permission_classes]
 
@@ -156,7 +163,7 @@ class ManageCourseAdminsAPIView(GenericAPIView):
 
     def get_permissions(self):
         permission_classes = [IsAuthenticated]
-        if self.request.method == 'POST':
+        if self.request.method != 'GET':
             permission_classes.append(IsOrganizationAdmin)
         return [permission() for permission in permission_classes]
 
@@ -205,3 +212,57 @@ class ManageCourseAdminsAPIView(GenericAPIView):
         except UserCourseAdmin.DoesNotExist:
             return Response({"message": "user is not an admin on this course"}, status=status.HTTP_400_BAD_REQUEST)
         return Response({"message": "user deleted successfully"}, status=status.HTTP_200_OK)
+
+
+class ManageOrganizationCoursesAPIView(GenericAPIView):
+    serializer_class = CourseSerializer
+    # Endpoint used to fetch all courses data of an organization and to add new courses to the organization and also remove courses from the organization
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method != 'GET':
+            permission_classes.append(IsOrganizationAdmin)
+        return [permission() for permission in permission_classes]
+
+    def get(self, request):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+
+        if user_organization == None:
+            return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
+        courses = get_all_organization_courses(user_organization)
+        serialized_courses = self.get_serializer(courses, many=True)
+        return Response(serialized_courses.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+        course_id = generate_course_id()
+        course_data = CreateCourseSerializer(data=request.data)
+        if course_data.is_valid():
+            try:
+                course = Course(
+                    id=course_id,
+                    name=course_data.validated_data['name'],
+                    description=course_data.validated_data['description'],
+                    organization=user_organization,
+                    code=course_data.validated_data['code']
+                )
+            except IntegrityError:
+                return Response({"message": "Integrity Error please resubmit the request"}, status=status.HTTP_400_BAD_REQUEST)
+            course.save()
+            return Response({"message": "course added successfully"}, status=status.HTTP_200_OK)
+        return Response({"message": "course data is invalid"}, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request):
+        user = request.user
+        user_organization = get_user_profile(user).organization
+        course_id = request.data.get('course_id')
+        if course_id == None or course_id == '':
+            return Response({"message": "course id is required"}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            Course.objects.get(
+                id=course_id, organization=user_organization).delete()
+        except Course.DoesNotExist:
+            return Response({"message": "course doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"message": "course deleted successfully"}, status=status.HTTP_200_OK)

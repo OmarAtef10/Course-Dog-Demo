@@ -8,6 +8,6 @@ urlpatterns = [
     path('list-courses/<int:phone_number>/', views.list_user_courses_by_phone_number,
          name='list-user-courses-by-phone-number'),
     path('manage-user-courses/<int:course_id>/',
-         views.UserCourseSubscribtionsAPIView.as_view()),
+         views.UserCourseSubscriptionsAPIView.as_view()),
     path('list-user-courses/', views.user_subscriptions),
 ]

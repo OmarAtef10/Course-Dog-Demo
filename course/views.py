@@ -124,7 +124,7 @@ def user_subscriptions(request):
     return Response(serialized_courses.data, status=status.HTTP_200_OK)
 
 
-class UserCourseSubscribtionsAPIView(GenericAPIView):
+class UserCourseSubscriptionsAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = CourseSerializer
 

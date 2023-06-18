@@ -10,4 +10,5 @@ urlpatterns = [
     path('manage-user-courses/<int:course_id>/',
          views.UserCourseSubscriptionsAPIView.as_view()),
     path('list-user-courses/', views.user_subscriptions),
+    path("load-drive/", views.DriveIntegration.as_view(), name="load-drive")
 ]

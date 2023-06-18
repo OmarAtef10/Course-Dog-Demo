@@ -164,3 +164,47 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)
+
+
+### adding course/materials from drive
+class DriveIntegration(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = CourseSerializer
+    queryset = Course.objects.all()
+
+    def post(self, request):
+
+        user = request.user
+        user_organization = get_user_profile(user).organization
+
+        if user_organization is None:
+            return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            creds = creds_refresher(user)
+        except SocialAccount.DoesNotExist:
+            return Response({"message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        course_id = request.data.get('course_id', "")
+        if course_id == "" or course_id is None:
+            return Response({"message": "course_id is required"}, status=status.HTTP_400_BAD_REQUEST)
+        course_name = request.data.get('course_name', "")
+        if course_name == "" or course_name is None:
+            return Response({"message": "course_name is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        course_code = request.data.get('course_code', "")
+        if course_code == "" or course_code is None:
+            return Response({"message": "course_code is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            course = Course.objects.get(
+                id=course_id, organization=user_organization)
+            return Response({"message": "course already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        except Course.DoesNotExist:
+            course = Course.objects.create(
+                id=course_id, name=course_name, description="Added by a student via drive integration",
+                organization=user_organization, code=course_code)
+            course.save()
+
+        return Response({"message": "success"}, status=status.HTTP_200_OK)

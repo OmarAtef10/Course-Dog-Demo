@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 
+
 # Register your models here.
 @admin.register(Course)
 class CourseSiteAdmin(admin.ModelAdmin):
@@ -13,17 +14,30 @@ class CourseSiteAdmin(admin.ModelAdmin):
 
 @admin.register(UserCourseAdmin)
 class UserCourseAdminSiteAdmin(admin.ModelAdmin):
-    list_display = ('id','user','course')
+    list_display = ('id', 'user', 'course')
     list_filter = ()
-    search_fields = ('user__username','user__email','course__code','course__name','course__id','course__organization__name')
-    fields = ('id','user','course')
+    search_fields = (
+        'user__username', 'user__email', 'course__code', 'course__name', 'course__id', 'course__organization__name')
+    fields = ('id', 'user', 'course')
     readonly_fields = ('id',)
 
 
 @admin.register(Subscription)
 class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('id','user','course')
+    list_display = ('id', 'user', 'course')
     list_filter = ()
-    search_fields = ('user__username','user__email','course__code','course__name','course__id','course__organization__name')
-    fields = ('id','user','course')
+    search_fields = (
+        'user__username', 'user__email', 'course__code', 'course__name', 'course__id', 'course__organization__name')
+    fields = ('id', 'user', 'course')
     readonly_fields = ('id',)
+
+
+class DriveFoldersAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'code', 'organization')
+    list_filter = ()
+    search_fields = ('name', 'code', 'organization__name')
+    fields = ('id', 'name', 'code', 'organization')
+    readonly_fields = ('id',)
+
+
+admin.site.register(DriveFolders, DriveFoldersAdmin)

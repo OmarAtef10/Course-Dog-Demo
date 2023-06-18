@@ -10,7 +10,7 @@ from rest_framework.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-
+from authentication.permissions import IsCourseAdmin
 from .serializers import *
 from .models import *
 from django.http import JsonResponse
@@ -25,9 +25,14 @@ from material.serializers import MaterialSerializer
 from course.models import *
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
+from .tasks import load_announcements
+from course.views import is_course_admin
 
 
 # Create your views here.
+
+def generate_announcement_id():
+    return random.randint(100000000, 999999999)
 
 
 @api_view(['GET'])
@@ -35,27 +40,19 @@ from user_profile import OAuth_helpers
 def load_course_announcements(request, course_id):
     token = creds_refresher(request.user)
     course = get_object_or_404(Course, id=course_id)
-    announcements = OAuth_helpers.get_announcements(auth_token=token.token, course_id=course_id)
-    for key, val in announcements.items():
-        for entry in val:
-            announcement = Announcement.objects.filter(id=entry['id'])
-            if not announcement:
-                announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
-                                            title=entry.get('title', 'New Announcement'),
-                                            creation_date=entry['creationTime'])
-                announcement.save()
+    announcements = OAuth_helpers.get_announcements(
+        auth_token=token.token, course_id=course_id)
+    load_announcements.delay(request.user.id, course_id, announcements)
+    # for key, val in announcements.items():
+    #     for entry in val:
+    #         announcement = Announcement.objects.filter(id=entry['id'])
+    #         if not announcement:
+    #             announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
+    #                                         title=entry.get('title', 'New Announcement'),
+    #                                         creation_date=entry['creationTime'])
+    #             announcement.save()
 
     return Response({"Message": "Announcements Loaded!!", "Announcements": announcements}, status=status.HTTP_200_OK)
-
-
-class AnnouncementViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all().order_by('id')
-    serializer_class = AnnouncementSerializer
-
-    def list(self, request, *args, **kwargs):
-        queryset = Announcement.objects.all()
-        serializer = AnnouncementSerializer(queryset, many=True)
-        return Response(serializer.data)
 
 
 @api_view(["POST"])
@@ -72,7 +69,7 @@ def add_announcement(request):
                 id = random.randint(100, 999999)
                 if not Announcement.objects.filter(id=id):
                     announcement = Announcement.objects.create(id=id, course=course, announcement=announcement,
-                                                               title="From Admin Student Via Webhooks!",
+                                                               title="By Admin Student Via Webhooks!",
                                                                creation_date=datetime.datetime.now())
                     announcement.save()
                     break
@@ -86,77 +83,90 @@ def add_announcement(request):
 
 
 class UploadCourseAnnouncementAPIView(GenericAPIView):
-    permission_classes = [IsAuthenticated]
     serializer_class = AnnouncementFullSerializer
+
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.request.method != 'GET':
+            permission_classes.append(IsCourseAdmin)
+        return [permission() for permission in permission_classes]
 
     def get(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
+        try:
+            course = get_object_or_404(
+                Course, id=course_id, organization=user_organization)
 
+            user_subscription = Subscription.objects.filter(
+                user=user, course=course)
+            if not user_subscription.exists():
+                return Response({"message": "user is not subscribed to this course"},
+                                status=status.HTTP_400_BAD_REQUEST)
+
+        except Course.DoesNotExist:
+            return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
         announcements = Announcement.objects.filter(course=course)
-        serialized_announcements = self.get_serializer(announcements, many=True)
+        serialized_announcements = self.get_serializer(
+            announcements, many=True)
         serialized_course = CourseSerializer(course)
-        return Response({"announcement": serialized_announcements.data, "course": serialized_course.data}, 200)
+        is_admin = is_course_admin(user, course)
+        return Response({"course": serialized_course.data, "is_course_admin": is_admin,
+                         "announcements": serialized_announcements.data}, 200)
 
     def post(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-
         try:
-            is_course_admin = UserCourseAdmin.objects.get(
+            course = Course.objects.get(
+                id=course_id, organization=user_organization)
+            is_course_admin = UserCourseAdmin.objects.filter(
                 course=course, user=user)
-        except UserCourseAdmin.DoesNotExist:
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+            if not is_course_admin.exists():
+                return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+        except Course.DoesNotExist:
+            return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        announcementData = self.get_serializer(data=request.data)
-        if announcementData.is_valid():
-            announcement = Announcement(course=course, announcement=announcementData.validated_data['announcement'])
-            announcement.save()
-        return Response({}, 200)
+        announcement_id = generate_announcement_id()
+        title = request.data.get("title", "New Announcement")
+        if title == "":
+            title = "New Announcement"
 
-    def put(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
+        announcement_details = request.data.get("announcement", "")
+        if announcement_details == "":
+            return Response({"message": "Announcement cannot be empty"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try:
-            is_course_admin = UserCourseAdmin.objects.get(
-                course=course, user=user)
-        except UserCourseAdmin.DoesNotExist:
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-
-        announcement_id = request.data['announcement_id']
-        announcement = get_object_or_404(Announcement, id=announcement_id)
-        announcement.announcement = request.data['announcement']
+        announcement = Announcement(
+            id=announcement_id,
+            course=course,
+            title=title,
+            announcement=announcement_details,
+        )
         announcement.save()
-        return Response({}, 200)
+        return Response({"message": "success"}, 200)
 
     def delete(self, request, course_id):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
 
         try:
-            is_course_admin = UserCourseAdmin.objects.get(
+            course = get_object_or_404(
+                Course, id=course_id, organization=user_organization)
+
+            is_course_admin = UserCourseAdmin.objects.filter(
                 course=course, user=user)
-        except UserCourseAdmin.DoesNotExist:
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+            if not is_course_admin.exists():
+                return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
+        except Course.DoesNotExist:
+            return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
         announcement_id = request.data['announcement_id']
         announcement = get_object_or_404(Announcement, id=announcement_id)
         announcement.delete()
-        return Response({}, 200)
+        return Response({"message": "success"}, 200)

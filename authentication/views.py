@@ -14,6 +14,9 @@ from django.core.mail import send_mail, send_mass_mail
 
 from .serializers import EmailSerializer, MassEmailSerializer, UidTokenSerializer
 from .permissions import IsSupportAdmin
+from user_profile.views import get_user_profile
+import string
+import secrets
 # Create your views here.
 
 
@@ -58,9 +61,10 @@ def send_mass_email(subject, body, to_email_list):
         return False
 
 
-"""
-API endpoint for sending email to a user
-"""
+def generate_new_password(length=28):
+    characters = string.ascii_letters + string.digits
+    password = ''.join(secrets.choice(characters) for _ in range(length))
+    return password
 
 
 @api_view(['POST'])
@@ -122,18 +126,39 @@ class ActivateUser(GenericAPIView):
 
 
 class ResetUserPassword(GenericAPIView):
-    serializer_class = UidTokenSerializer
+    def post(self, request):
+        user_email = request.POST.get('email')
+        if user_email == None:
+            return Response({'message': 'Email is required'}, 400)
+        try:
+            user = User.objects.get(email=user_email)
+        except User.DoesNotExist:
+            return Response({'message': 'There is no user with this email'}, 404)
+        new_password = generate_new_password()
+        user.set_password(new_password)
+        user.save()
+        send_email("Change Password Request",
+                   f"Your new password is {new_password}", user_email)
+        return Response({'message': 'Email was sent successfully'}, 200)
 
-    def get(self, request, uid, token, format=None):
-        return Response({'uid': uid, 'token': token}, 200)
 
-    def post(self, request, uid, token, format=None):
-        password = request.POST.get('new_password')
-        payload = {'uid': uid, 'token': token, 'new_password': password}
+class RetriveUserInfoAPIView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
 
-        url = get_base_url()+"auth/auth/users/reset_password_confirm/"
-        response = requests.post(url, data=payload)
-        if response.status_code == 204:
-            return Response({}, response.status_code)
-        else:
-            return Response(response.json())
+    def get(self, request):
+        user = request.user
+        user_group = user.groups.all()[0].name
+
+        user_profile = get_user_profile(user)
+        user_info = {
+            'username': user.username,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+            'is_staff': user.is_staff,
+            'is_superuser': user.is_superuser,
+            'is_active': user.is_active,
+            'group': user_group,
+            'organization': user_profile.organization.name,
+        }
+        return Response(user_info)

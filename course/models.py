@@ -19,7 +19,7 @@ class Course(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.code} - {self.organization.name}"
+        return f"{self.name} - {self.organization.name}"
 
 
 class UserCourseAdmin(models.Model):

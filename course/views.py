@@ -17,6 +17,8 @@ from user_profile.views import creds_refresher
 from user_profile.models import Profile
 from user_profile import OAuth_helpers
 from material.tasks import load_user_course_material
+from announcement.tasks import load_announcement_helper
+
 
 # Create your views here.
 
@@ -38,15 +40,17 @@ def load_courses_from_user(request):
             for entry in val:
                 try:
                     course = Course.objects.get(id=entry['id'])
+                    load_user_course_material.delay(user.id, course.id)
+                    load_announcement_helper.delay(user.id, course.id)
                 except Course.DoesNotExist:
                     course = None
 
-                if course == None:
+                if course is None:
                     course = Course(id=entry['id'], name=entry['name'], organization=organization,
                                     description=entry['descriptionHeading'])
                     course.save()
-
-                load_user_course_material.delay(user.id, course.id)
+                    load_user_course_material.delay(user.id, course.id)
+                    load_announcement_helper.delay(user.id, course.id)
         return Response({"Message": "Courses Loaded!!", "Courses": courses}, status=status.HTTP_200_OK)
     else:
         return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
@@ -83,9 +87,9 @@ def get_all_course_admins(course):
     return UserCourseAdmin.objects.filter(course=course)
 
 
-class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all().order_by('id')
-    serializer_class = CourseSerializer
+def is_course_admin(user, course):
+    is_admin = UserCourseAdmin.objects.filter(user=user, course=course)
+    return is_admin.exists()
 
 
 class UserOrganizationCoursesAPIView(GenericAPIView):
@@ -120,7 +124,7 @@ def user_subscriptions(request):
     return Response(serialized_courses.data, status=status.HTTP_200_OK)
 
 
-class UserCourseSubscribtionsAPIView(GenericAPIView):
+class UserCourseSubscriptionsAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = CourseSerializer
 
@@ -134,11 +138,17 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
         try:
             course = Course.objects.get(
                 id=course_id, organization=user_organization)
+            user_subscription = Subscription.objects.filter(
+                user=user, course=course)
+            if user_subscription.exists():
+                return Response({"message": "user is already subscribed to this course"},
+                                status=status.HTTP_400_BAD_REQUEST)
+
             Subscription.objects.create(user=user, course=course)
         except Course.DoesNotExist:
             return Response({"message": "course doesn't exist."}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response({}, status=status.HTTP_200_OK)
+        return Response({"message": "success"}, status=status.HTTP_200_OK)
 
     def delete(self, request, course_id):
         user = request.user
@@ -149,66 +159,8 @@ class UserCourseSubscribtionsAPIView(GenericAPIView):
 
         try:
             Subscription.objects.get(user=user, course=course_id).delete()
-        except Course.DoesNotExist:
-            return Response({"message": "user is not subscribed to such course"}, status=status.HTTP_400_BAD_REQUEST)
+        except Subscription.DoesNotExist:
+            return Response({"message": "There is no such user course subscribtion"},
+                            status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)
-
-
-class UploadCourseContentAPIView(GenericAPIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-
-        files = Material.objects.filter(parent_course=course)
-        serialized_files = MaterialSerializer(files, many=True)
-        return Response(serialized_files.data, 200)
-
-    def post(self, request, course_id):
-        user = request.user
-        user_organization = get_user_profile(user).organization
-        if user_organization == None:
-            return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-
-        try:
-            is_course_admin = UserCourseAdmin.objects.get(
-                course=course, user=user)
-        except UserCourseAdmin.DoesNotExist:
-            return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-
-        file = request.FILES.get('file')
-        file_name = request.POST.get('file_name')
-
-        material = Material(parent_course=course,
-                            file=file, file_name=file_name)
-        material.save()
-        return Response({}, 200)
-
-
-@api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
-def delete_course_content(request, course_id, file_id):
-    user = request.user
-    user_organization = get_user_profile(user).organization
-    if user_organization == None:
-        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-    course = get_object_or_404(
-        Course, id=course_id, organization=user_organization)
-
-    try:
-        is_course_admin = UserCourseAdmin.objects.get(course=course, user=user)
-    except UserCourseAdmin.DoesNotExist:
-        return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-
-    material = get_object_or_404(Material, id=file_id, parent_course=course)
-    material.delete()
-
-    return Response({}, 200)

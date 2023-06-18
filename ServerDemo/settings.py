@@ -44,6 +44,9 @@ DEFAULT_FROM_EMAIL = 'beatzcf2014@gmail.com'
 ADMINS = [('Omar Khaled', 'beatzcf2014@gmail.com')]
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://localhost:3000'

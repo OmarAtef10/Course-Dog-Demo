@@ -15,3 +15,7 @@ class CreateCourseSerializer(serializers.ModelSerializer):
         model = Course
         fields = ['code', 'description','name']
 
+class DriveFolderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DriveFolders
+        fields = "__all__"

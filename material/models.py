@@ -10,7 +10,7 @@ import requests
 from course.models import Course
 from django.core.files import File
 from .utilities import calculate_file_hash
-
+from organization.models import Organization
 # Create your models here.
 
 
@@ -30,6 +30,7 @@ class Material(models.Model):
 
     def __str__(self):
         return f"material for {self.parent_course}"
+
 
 
 @receiver(pre_save, sender=Material)

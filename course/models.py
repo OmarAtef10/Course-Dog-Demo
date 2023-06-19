@@ -36,3 +36,19 @@ class Subscription(models.Model):
 
     class Meta:
         unique_together = (('user', 'course'),)
+
+
+
+
+        
+
+class DriveFolders(models.Model):
+    id = models.CharField(max_length=256, primary_key=True, db_index=True, unique=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256)
+    code = models.CharField(max_length=100)
+
+    
+    class Meta:
+        verbose_name_plural = "Drive Folders"
+

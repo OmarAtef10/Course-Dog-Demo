@@ -20,3 +20,7 @@ Pipfile
 !**/migrations/__init__.py
 uploads/
 serverdemo_env/
+bin/
+include/
+Lib/
+Lib64/

@@ -17,13 +17,6 @@ class DriveFolders(models.Model):
         verbose_name_plural = "Drive Folders"
 
 
-type_choices = (
-
-    ('drive', 'drive'),
-    ("non-drive", "non-drive"),
-)
-
-
 class Course(models.Model):
     id = models.BigIntegerField(primary_key=True, db_index=True, unique=True)
     code = models.CharField(max_length=100, blank=True, null=True)

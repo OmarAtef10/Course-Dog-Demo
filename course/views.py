@@ -1,3 +1,5 @@
+import random
+from user_profile.OAuth_helpers import list_drive_materials
 import user_profile.models
 from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets
@@ -166,10 +168,46 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
         return Response({}, status=status.HTTP_200_OK)
 
 
-@api_view(["GET"])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def get_course_by_id(request, course_id):
-    coures = get_object_or_404(Course, id=course_id)
-    print(type(coures))
-    serializer = CourseSerializer(coures)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+def handle_drive_materials(request):
+    creds = creds_refresher(request.user)
+    folder_id = request.data.get('folder_id', "")
+    if folder_id == "" or folder_id == None:
+        return Response({"message": "No folder_id Provided"}, status=400)
+
+    Organization = get_user_profile(request.user).organization
+    if Organization == None:
+        return Response({"message": "User is not a part of any organization"}, status=400)
+
+    name = request.data.get('name', "")
+    if name == "" or name == None:
+        return Response({"message": "No name Provided"}, status=400)
+
+    code = request.data.get('code', "")
+    if code == "" or code == None:
+        return Response({"message": "No code Provided"}, status=400)
+    try:
+        ctx = list_drive_materials(creds, folder_id)
+
+        dirve_folders = DriveFolders.objects.filter(id=folder_id)
+        if dirve_folders.exists():
+            # download_files
+            pass
+        else:
+            drive_folder = DriveFolders.objects.create(
+                id=folder_id, name=name, code=code, organization=Organization)
+            drive_folder.save()
+
+            while True:
+                id = random.randint(100, 999999)
+                if not Course.objects.filter(id=id):
+                    linked_course = Course(id=id, code=code, name=name, organization=Organization,
+                                           description="Via Import Drive Method!", linked_drive_folder=drive_folder)
+                    linked_course.save()
+                    break
+
+        return Response(ctx, status=200)
+    except Exception as e:
+        print(e)
+        return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)

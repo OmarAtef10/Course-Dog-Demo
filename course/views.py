@@ -20,6 +20,7 @@ from user_profile.models import Profile
 from user_profile import OAuth_helpers
 from material.tasks import load_user_course_material
 from announcement.tasks import load_announcement_helper
+from .tasks import download_drive_material
 
 
 # Create your views here.
@@ -189,11 +190,15 @@ def handle_drive_materials(request):
         return Response({"message": "No code Provided"}, status=400)
     try:
         ctx = list_drive_materials(creds, folder_id)
+        # print(ctx)
 
         dirve_folders = DriveFolders.objects.filter(id=folder_id)
         if dirve_folders.exists():
             # download_files
-            pass
+            linked_course = Course.objects.get(
+                linked_drive_folder=dirve_folders[0])
+            download_drive_material.delay(
+                materials=ctx, token=creds.token, course_id=linked_course.id, user=request.user.id)
         else:
             drive_folder = DriveFolders.objects.create(
                 id=folder_id, name=name, code=code, organization=Organization)
@@ -205,9 +210,12 @@ def handle_drive_materials(request):
                     linked_course = Course(id=id, code=code, name=name, organization=Organization,
                                            description="Via Import Drive Method!", linked_drive_folder=drive_folder)
                     linked_course.save()
+                    download_drive_material.delay(
+                        materials=ctx, token=creds.token, course_id=linked_course.id, user=request.user.id)
                     break
 
-        return Response(ctx, status=200)
+        return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
+
     except Exception as e:
         print(e)
         return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)

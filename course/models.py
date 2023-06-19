@@ -24,9 +24,8 @@ class Course(models.Model):
         Organization, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    # type -> drive ->
     linked_drive_folder = models.ForeignKey(
-        DriveFolders, on_delete=models.SET_NULL, null=True, blank=True)
+        DriveFolders, on_delete=models.SET_NULL, null=True, blank=True, unique=True)
 
 
     class Meta:

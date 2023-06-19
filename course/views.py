@@ -164,3 +164,12 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
         return Response({}, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_course_by_id(request, course_id):
+    coures = get_object_or_404(Course, id=course_id)
+    print(type(coures))
+    serializer = CourseSerializer(coures)
+    return Response(serializer.data, status=status.HTTP_200_OK)

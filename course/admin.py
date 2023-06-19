@@ -10,7 +10,7 @@ class CourseSiteAdmin(admin.ModelAdmin):
     list_filter = ()
     search_fields = ('code', 'name', 'organization__name',
                      'organization__organization_name')
-    readonly_fields = ('id',)
+#    readonly_fields = ('id',)
 
 
 @admin.register(UserCourseAdmin)
@@ -38,7 +38,7 @@ class DriveFolderAdmin(admin.ModelAdmin):
     list_filter = ()
     search_fields = ('organization__name', 'name', 'code')
     fields = ('id', 'organization', 'name', 'code')
-    readonly_fields = ('id',)
+#    readonly_fields = ('id',)
 
 
 admin.site.register(DriveFolders,DriveFolderAdmin)

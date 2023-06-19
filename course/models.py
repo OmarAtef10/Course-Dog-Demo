@@ -6,12 +6,35 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class DriveFolders(models.Model):
+    id = models.CharField(max_length=256, primary_key=True,
+                          db_index=True, unique=True)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256)
+    code = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Drive Folders"
+
+
+type_choices = (
+
+    ('drive', 'drive'),
+    ("non-drive", "non-drive"),
+)
+
+
 class Course(models.Model):
     id = models.BigIntegerField(primary_key=True, db_index=True, unique=True)
     code = models.CharField(max_length=100, blank=True, null=True)
-    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True)
+    organization = models.ForeignKey(
+        Organization, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=256, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    # type -> drive ->
+    linked_drive_folder = models.ForeignKey(
+        DriveFolders, on_delete=models.SET_NULL, null=True, blank=True)
+
 
     class Meta:
         indexes = [
@@ -36,19 +59,3 @@ class Subscription(models.Model):
 
     class Meta:
         unique_together = (('user', 'course'),)
-
-
-
-
-        
-
-class DriveFolders(models.Model):
-    id = models.CharField(max_length=256, primary_key=True, db_index=True, unique=True)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    name = models.CharField(max_length=256)
-    code = models.CharField(max_length=100)
-
-    
-    class Meta:
-        verbose_name_plural = "Drive Folders"
-

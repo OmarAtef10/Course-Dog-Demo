@@ -9,11 +9,14 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ('organization', 'name', 'id')
 
+
 class CreateCourseSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=256, required=True)
+
     class Meta:
         model = Course
-        fields = ['code', 'description','name']
+        fields = ['code', 'description', 'name']
+
 
 class DriveFolderSerializer(serializers.ModelSerializer):
     class Meta:

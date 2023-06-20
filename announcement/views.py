@@ -23,6 +23,7 @@ from organization.models import *
 from material.models import Material
 from material.serializers import MaterialSerializer
 from course.models import *
+from course.serializers import *
 from user_profile.views import creds_refresher
 from user_profile import OAuth_helpers
 from .tasks import load_announcements
@@ -91,14 +92,14 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             permission_classes.append(IsCourseAdmin)
         return [permission() for permission in permission_classes]
 
-    def get(self, request, course_id):
+    def get(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
             course = get_object_or_404(
-                Course, id=course_id, organization=user_organization)
+                MainCourse, organization=user_organization,code=course_code)
 
             user_subscription = Subscription.objects.filter(
                 user=user, course=course)
@@ -106,29 +107,29 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
                 return Response({"message": "user is not subscribed to this course"},
                                 status=status.HTTP_400_BAD_REQUEST)
 
-        except Course.DoesNotExist:
+        except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
         announcements = Announcement.objects.filter(course=course)
         serialized_announcements = self.get_serializer(
             announcements, many=True)
-        serialized_course = CourseSerializer(course)
+        serialized_course = MainCourseSerializer(course)
         is_admin = is_course_admin(user, course)
         return Response({"course": serialized_course.data, "is_course_admin": is_admin,
                          "announcements": serialized_announcements.data}, 200)
 
-    def post(self, request, course_id):
+    def post(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
-            course = Course.objects.get(
-                id=course_id, organization=user_organization)
+            course = MainCourse.objects.get(
+                code = course_code, organization=user_organization)
             is_course_admin = UserCourseAdmin.objects.filter(
                 course=course, user=user)
             if not is_course_admin.exists():
                 return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-        except Course.DoesNotExist:
+        except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
         announcement_id = generate_announcement_id()
@@ -149,7 +150,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement.save()
         return Response({"message": "success"}, 200)
 
-    def delete(self, request, course_id):
+    def delete(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
@@ -157,13 +158,13 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
 
         try:
             course = get_object_or_404(
-                Course, id=course_id, organization=user_organization)
+                MainCourse, code=course_code, organization=user_organization)
 
             is_course_admin = UserCourseAdmin.objects.filter(
                 course=course, user=user)
             if not is_course_admin.exists():
                 return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
-        except Course.DoesNotExist:
+        except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
         announcement_id = request.data['announcement_id']

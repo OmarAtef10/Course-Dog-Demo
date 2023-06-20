@@ -18,6 +18,22 @@ class CreateCourseSerializer(serializers.ModelSerializer):
         fields = ['code', 'description', 'name']
 
 
+class MainCourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MainCourse
+        fields = ['id', 'code', 'name', 'organization']
+        depth = 1
+
+
+class CreateMainCourseSerializer(serializers.ModelSerializer):
+    code = serializers.CharField(max_length=50, required=True)
+    name = serializers.CharField(max_length=256, required=True)
+
+    class Meta:
+        model = MainCourse
+        fields = ['code', 'name']
+
+
 class DriveFolderSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriveFolders

@@ -12,9 +12,9 @@ from django.contrib.auth.models import Group
 from user_profile.models import Profile
 from user_profile.views import get_user_profile
 from authentication.permissions import IsOrganizationAdmin
-from course.models import Course, UserCourseAdmin
+from course.models import Course, UserCourseAdmin, MainCourse
 from course.views import get_all_organization_courses
-from course.serializers import CourseSerializer, CreateCourseSerializer
+from course.serializers import CourseSerializer, CreateCourseSerializer, MainCourseSerializer, CreateMainCourseSerializer
 from django.db import IntegrityError
 import random
 # Create your views here.
@@ -215,7 +215,7 @@ class ManageCourseAdminsAPIView(GenericAPIView):
 
 
 class ManageOrganizationCoursesAPIView(GenericAPIView):
-    serializer_class = CourseSerializer
+    serializer_class = MainCourseSerializer
     # Endpoint used to fetch all courses data of an organization and to add new courses to the organization and also remove courses from the organization
 
     def get_permissions(self):
@@ -241,12 +241,24 @@ class ManageOrganizationCoursesAPIView(GenericAPIView):
         course_data = CreateCourseSerializer(data=request.data)
         if course_data.is_valid():
             try:
+                course_code = course_data.validated_data['code']
+
+                main_course = MainCourse.objects.filter(
+                    code=course_code, organization=user_organization)
+                if not main_course.exists():
+                    main_course = MainCourse(
+                        code=course_code, organization=user_organization, name=course_data.validated_data['name'])
+                    main_course.save()
+                else:
+                    main_course = main_course[0]
+
                 course = Course(
                     id=course_id,
                     name=course_data.validated_data['name'],
                     description=course_data.validated_data['description'],
                     organization=user_organization,
-                    code=course_data.validated_data['code']
+                    code=course_data.validated_data['code'],
+                    main_course=main_course
                 )
             except IntegrityError:
                 return Response({"message": "Integrity Error please resubmit the request"}, status=status.HTTP_400_BAD_REQUEST)
@@ -257,12 +269,12 @@ class ManageOrganizationCoursesAPIView(GenericAPIView):
     def delete(self, request):
         user = request.user
         user_organization = get_user_profile(user).organization
-        course_id = request.data.get('course_id')
-        if course_id == None or course_id == '':
+        course_code = request.data.get('course_code')
+        if course_code == None or course_code == '':
             return Response({"message": "course id is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            Course.objects.get(
-                id=course_id, organization=user_organization).delete()
-        except Course.DoesNotExist:
+            MainCourse.objects.get(
+                code=course_code, organization=user_organization).delete()
+        except MainCourse.DoesNotExist:
             return Response({"message": "course doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"message": "course deleted successfully"}, status=status.HTTP_200_OK)

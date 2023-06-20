@@ -67,15 +67,15 @@ def list_user_courses_by_phone_number(request, phone_number):
     try:
         organization = user_profile.models.Profile.objects.get(
             whatsapp_number=phone_number).organization
-        courses = Course.objects.filter(organization=organization)
-        serializer = CourseSerializer(courses, many=True)
+        courses = MainCourse.objects.filter(organization=organization)
+        serializer = MainCourseSerializer(courses, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except:
         return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 def get_all_organization_courses(organization):
-    return Course.objects.filter(organization=organization)
+    return MainCourse.objects.filter(organization=organization)
 
 
 def get_all_user_subscriptions(user):
@@ -99,8 +99,8 @@ def is_course_admin(user, course):
 
 class UserOrganizationCoursesAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = CourseSerializer
-    queryset = Course.objects.all()
+    serializer_class = MainCourseSerializer
+    queryset = MainCourse.objects.all()
 
     def get(self, request):
         user = request.user
@@ -125,15 +125,15 @@ def user_subscriptions(request):
 
     user_courses = get_all_user_courses(user)
 
-    serialized_courses = CourseSerializer(user_courses, many=True)
+    serialized_courses = MainCourseSerializer(user_courses, many=True)
     return Response(serialized_courses.data, status=status.HTTP_200_OK)
 
 
 class UserCourseSubscriptionsAPIView(GenericAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = CourseSerializer
+    serializer_class = MainCourseSerializer
 
-    def post(self, request, course_id):
+    def post(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
 
@@ -141,8 +141,8 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
             return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
 
         try:
-            course = Course.objects.get(
-                id=course_id, organization=user_organization)
+            course = MainCourse.objects.get(
+                code=course_code, organization=user_organization)
             user_subscription = Subscription.objects.filter(
                 user=user, course=course)
             if user_subscription.exists():
@@ -155,15 +155,18 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
 
         return Response({"message": "success"}, status=status.HTTP_200_OK)
 
-    def delete(self, request, course_id):
+    def delete(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
 
         if user_organization == None:
             return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
-
+        course = MainCourse.objects.filter(
+            course_code=course_code, organization=user_organization)
+        if not course.exists():
+            return Response({"message": "course doesn't exist."}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            Subscription.objects.get(user=user, course=course_id).delete()
+            Subscription.objects.get(user=user, course=course).delete()
         except Subscription.DoesNotExist:
             return Response({"message": "There is no such user course subscribtion"},
                             status=status.HTTP_400_BAD_REQUEST)

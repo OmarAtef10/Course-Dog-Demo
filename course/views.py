@@ -162,9 +162,11 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
         if user_organization == None:
             return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
         course = MainCourse.objects.filter(
-            course_code=course_code, organization=user_organization)
+            code=course_code, organization=user_organization)
         if not course.exists():
             return Response({"message": "course doesn't exist."}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            course = course.first()
         try:
             Subscription.objects.get(user=user, course=course).delete()
         except Subscription.DoesNotExist:

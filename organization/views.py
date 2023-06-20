@@ -167,24 +167,28 @@ class ManageCourseAdminsAPIView(GenericAPIView):
             permission_classes.append(IsOrganizationAdmin)
         return [permission() for permission in permission_classes]
 
-    def get(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
-        course_admins = UserCourseAdmin.objects.filter(course=course)
+    def get(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
+        course_admins = UserCourseAdmin.objects.filter(course=main_course)
         users = [course_admin.user for course_admin in course_admins]
         serialized_users = self.get_serializer(users, many=True)
         return Response(serialized_users.data, status=status.HTTP_200_OK)
 
-    def post(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
+    def post(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
         user_email = request.data.get('email')
         if user_email == None or user_email == '':
             return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
             user = User.objects.get(email=user_email)
             user_profile = get_user_profile(user)
-            if user_profile.organization != course.organization:
+            if user_profile.organization != main_course.organization:
                 return Response({"message": "user is not a part of the organization"}, status=status.HTTP_400_BAD_REQUEST)
-            UserCourseAdmin.objects.create(user=user, course=course)
+            UserCourseAdmin.objects.create(user=user, course=main_course)
             user.groups.add(Group.objects.get(name='CourseAdmin'))
             user.groups.remove(Group.objects.get(name='Student'))
             user.save()
@@ -194,14 +198,16 @@ class ManageCourseAdminsAPIView(GenericAPIView):
             return Response({"message": "user is already an admin on this course"}, status=status.HTTP_400_BAD_REQUEST)
         return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
 
-    def delete(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
+    def delete(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
         user_email = request.data.get('email')
         if user_email == None or user_email == '':
             return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
             user = User.objects.get(email=user_email)
-            UserCourseAdmin.objects.get(user=user, course=course).delete()
+            UserCourseAdmin.objects.get(user=user, course=main_course).delete()
             is_still_admin = UserCourseAdmin.objects.filter(user=user).exists()
             if not is_still_admin:
                 user.groups.remove(Group.objects.get(name='CourseAdmin'))

@@ -33,7 +33,10 @@ from course.views import is_course_admin
 # Create your views here.
 
 def generate_announcement_id():
-    return random.randint(100000000, 999999999)
+    return random.randint(1000, 999999)
+
+def get_main_course_sub_courses(main_course):
+    return Course.objects.filter(main_course=main_course)
 
 
 @api_view(['GET'])
@@ -98,22 +101,30 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
-            course = get_object_or_404(
+            main_course = get_object_or_404(
                 MainCourse, organization=user_organization,code=course_code)
 
             user_subscription = Subscription.objects.filter(
-                user=user, course=course)
+                user=user, course=main_course)
             if not user_subscription.exists():
                 return Response({"message": "user is not subscribed to this course"},
                                 status=status.HTTP_400_BAD_REQUEST)
-
         except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
-        announcements = Announcement.objects.filter(course=course)
+        
+        courses_list = get_main_course_sub_courses(main_course)
+        announcements = []
+        for course_ in courses_list:
+            course_announcements = Announcement.objects.filter(course=course_)
+            for announcement in course_announcements:
+                announcements.append(announcement)
+
+
+
         serialized_announcements = self.get_serializer(
             announcements, many=True)
-        serialized_course = MainCourseSerializer(course)
-        is_admin = is_course_admin(user, course)
+        serialized_course = MainCourseSerializer(main_course)
+        is_admin = is_course_admin(user, main_course)
         return Response({"course": serialized_course.data, "is_course_admin": is_admin,
                          "announcements": serialized_announcements.data}, 200)
 
@@ -123,16 +134,16 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
-            course = MainCourse.objects.get(
+            main_course = MainCourse.objects.get(
                 code = course_code, organization=user_organization)
             is_course_admin = UserCourseAdmin.objects.filter(
-                course=course, user=user)
+                course=main_course, user=user)
             if not is_course_admin.exists():
                 return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
         except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        announcement_id = generate_announcement_id()
+        
         title = request.data.get("title", "New Announcement")
         if title == "":
             title = "New Announcement"
@@ -140,14 +151,15 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement_details = request.data.get("announcement", "")
         if announcement_details == "":
             return Response({"message": "Announcement cannot be empty"}, status=status.HTTP_400_BAD_REQUEST)
-
-        announcement = Announcement(
-            id=announcement_id,
-            course=course,
-            title=title,
-            announcement=announcement_details,
-        )
-        announcement.save()
+        courses = get_main_course_sub_courses(main_course)
+        for course in courses:
+            announcement = Announcement(
+                id=generate_announcement_id(),
+                course=course,
+                title=title,
+                announcement=announcement_details,
+            )
+            announcement.save()
         return Response({"message": "success"}, 200)
 
     def delete(self, request, course_code):

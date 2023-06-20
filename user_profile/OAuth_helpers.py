@@ -20,8 +20,17 @@ def get_courses(auth_token):
         return (res.json())
 
 
+def get_single_course(auth_token, course_id):
+    url = f'https://classroom.googleapis.com/v1/courses/{str(course_id)}/'
+    headers = {
+        'Authorization': 'Bearer ' + auth_token}
+    res = requests.get(url, headers=headers)
+    return res
+
+
 def get_announcements(course_id, auth_token):
-    url = 'https://classroom.googleapis.com/v1/courses/' + str(course_id) + '/announcements'
+    url = 'https://classroom.googleapis.com/v1/courses/' + \
+        str(course_id) + '/announcements'
     headers = {
         'Authorization': 'Bearer ' + auth_token
     }
@@ -35,7 +44,8 @@ def get_announcements(course_id, auth_token):
 
 
 def get_coursework(course_id, auth_token):
-    url = 'https://classroom.googleapis.com/v1/courses/' +str(course_id) + '/courseWorkMaterials'
+    url = 'https://classroom.googleapis.com/v1/courses/' + \
+        str(course_id) + '/courseWorkMaterials'
     headers = {
         'Authorization': 'Bearer ' + auth_token
     }
@@ -63,7 +73,7 @@ def download_drive_file(creds, file_name, file_id):
     shutil.move(f"./{file_name}", f"./uploads/course_material/{file_name}")
 
 
-def list_drive_materials(creds,folder_id):
+def list_drive_materials(creds, folder_id):
     service = build("drive", "v3", credentials=creds)
     query = f"parents= '{folder_id}'"
     response = service.files().list(

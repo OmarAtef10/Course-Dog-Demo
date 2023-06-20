@@ -17,6 +17,14 @@ class DriveFolders(models.Model):
         verbose_name_plural = "Drive Folders"
 
 
+class MainCourse(models.Model):
+    code = models.CharField(max_length=50)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256)
+    class Meta:
+        unique_together = (('code', 'organization'),)
+
+
 class Course(models.Model):
     id = models.BigIntegerField(primary_key=True, db_index=True, unique=True)
     code = models.CharField(max_length=100, blank=True, null=True)
@@ -26,7 +34,8 @@ class Course(models.Model):
     description = models.TextField(blank=True, null=True)
     linked_drive_folder = models.ForeignKey(
         DriveFolders, on_delete=models.SET_NULL, null=True, blank=True, unique=True)
-
+    main_course = models.ForeignKey(
+        MainCourse, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         indexes = [

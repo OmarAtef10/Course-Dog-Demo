@@ -11,4 +11,5 @@ urlpatterns = [
          views.UserCourseSubscriptionsAPIView.as_view()),
     path('list-user-courses/', views.user_subscriptions),
     path("load-drive/", views.handle_drive_materials, name="load-drive"),
+    path("load-classroom/", views.handle_classroom_loading, name="load-classroom"),
 ]

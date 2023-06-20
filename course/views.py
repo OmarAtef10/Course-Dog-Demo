@@ -194,13 +194,25 @@ def handle_drive_materials(request):
         ctx = list_drive_materials(creds, folder_id)
         # print(ctx)
 
-        dirve_folders = DriveFolders.objects.filter(id=folder_id)
+        dirve_folders = DriveFolders.objects.filter(id=folder_id, code=code)
+        organization = get_user_profile(request.user).organization
+
+        main_course = MainCourse.objects.filter(
+            code=code, organization=organization)
+
+        if not main_course.exists():
+            main_course = MainCourse.objects.create(
+                name=name, code=code, organization=organization)
+        else:
+            main_course = main_course[0]
+
         if dirve_folders.exists():
             # download_files
             linked_course = Course.objects.get(
                 linked_drive_folder=dirve_folders[0])
             download_drive_material.delay(
                 materials=ctx, token=creds.token, course_id=linked_course.id, user=request.user.id)
+
         else:
             drive_folder = DriveFolders.objects.create(
                 id=folder_id, name=name, code=code, organization=Organization)
@@ -216,6 +228,8 @@ def handle_drive_materials(request):
                         materials=ctx, token=creds.token, course_id=linked_course.id, user=request.user.id)
                     break
 
+        linked_course.main_course = main_course
+        linked_course.save()
         return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
 
     except Exception as e:
@@ -246,7 +260,7 @@ def handle_classroom_loading(request):
     try:
         ctx = OAuth_helpers.get_single_course(creds.token, classroom_id)
         if ctx.status_code != 200:
-            return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)
+            return Response({"message": "Bummer, You Dont Have Access for This ClassRoom"}, status=400)
 
         main_course = MainCourse.objects.filter(
             code=code, organization=organization)
@@ -273,7 +287,7 @@ def handle_classroom_loading(request):
             auth_token=creds.token, course_id=classroom_id)
         load_announcements.delay(request.user.id, classroom_id, announcements)
 
-        return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
+        return Response({"message": "Rogger Rogger Importing ClassRoom Materials!!"}, status=200)
     except Exception as e:
         print(e)
         return Response({"message": str(e)}, status=400)

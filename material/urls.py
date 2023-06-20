@@ -7,8 +7,8 @@ urlpatterns = [
     path('load-materials/<str:course_id>',
          views.load_course_materials, name='load_materials'),
     path('create/', views.add_materials_webhooks, name='material-create'),
-    path('upload-material/<int:course_id>/',
+    path('upload-material/<str:course_code>/',
          views.UploadCourseContentAPIView.as_view()),
-    path('delete-material/<int:course_id>/<str:file_id>/',
+    path('delete-material/<str:course_code>/<str:file_id>/',
          views.delete_course_content),
 ]

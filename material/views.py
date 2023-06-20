@@ -18,7 +18,8 @@ import uuid
 from .utilities import calculate_file_hash
 from course.views import is_course_admin
 from authentication.permissions import IsCourseAdmin
-
+from course.models import MainCourse
+from course.serializers import MainCourseSerializer
 
 # Create your views here.
 
@@ -77,29 +78,37 @@ class UploadCourseContentAPIView(GenericAPIView):
             permission_classes.append(IsCourseAdmin)
         return [permission() for permission in permission_classes]
 
-    def get(self, request, course_id):
+    def get(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
-        serialized_course = CourseSerializer(course).data
 
-        files = Material.objects.filter(parent_course=course)
-        serialized_files = MaterialSerializer(files, many=True).data
-        is_admin = is_course_admin(user, course)
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
+
+        serialized_course = MainCourseSerializer(main_course).data
+
+        courses = Course.objects.filter(main_course=main_course)
+        courses_files = []
+        for course in courses:
+            files = Material.objects.filter(parent_course=course)
+            for file in files:
+                courses_files.append(file)
+
+        serialized_files = MaterialSerializer(courses_files, many=True).data
+        is_admin = is_course_admin(user, main_course)
         return Response({"course": serialized_course, "is_course_admin": is_admin, "materials": serialized_files}, 200)
 
-    def post(self, request, course_id):
+    def post(self, request, course_code):
         user = request.user
         user_organization = get_user_profile(user).organization
         if user_organization == None:
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-        course = get_object_or_404(
-            Course, id=course_id, organization=user_organization)
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
         try:
-            UserCourseAdmin.objects.get(course=course, user=user)
+            UserCourseAdmin.objects.get(course=main_course, user=user)
         except UserCourseAdmin.DoesNotExist:
             return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -112,7 +121,9 @@ class UploadCourseContentAPIView(GenericAPIView):
         file_hash = calculate_file_hash(file)
         id = uuid.uuid4()
         id = str(id)
-        material = Material(id=id, parent_course=course,
+
+        course = Course.objects.filter(main_course=main_course)
+        material = Material(id=id, parent_course=course[0],
                             file=file, file_name=file_name, hash_code=file_hash)
         material.save()
         return Response({}, 200)
@@ -120,20 +131,20 @@ class UploadCourseContentAPIView(GenericAPIView):
 
 @api_view(["DELETE"])
 @permission_classes([IsAuthenticated, IsCourseAdmin])
-def delete_course_content(request, course_id, file_id):
+def delete_course_content(request, course_code, file_id):
     user = request.user
     user_organization = get_user_profile(user).organization
     if user_organization == None:
         return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
-    course = get_object_or_404(
-        Course, id=course_id, organization=user_organization)
-
+    main_course = get_object_or_404(
+        MainCourse, code=course_code, organization=user_organization)
     try:
-        is_course_admin = UserCourseAdmin.objects.get(course=course, user=user)
+        is_course_admin = UserCourseAdmin.objects.get(
+            course=main_course, user=user)
     except UserCourseAdmin.DoesNotExist:
         return Response({"message": "User is not an admin on this course"}, status=status.HTTP_401_UNAUTHORIZED)
 
-    material = get_object_or_404(Material, id=file_id, parent_course=course)
+    material = get_object_or_404(Material, id=file_id)
     material.delete()
 
     return Response({}, 200)

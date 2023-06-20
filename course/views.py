@@ -21,7 +21,8 @@ from user_profile import OAuth_helpers
 from material.tasks import load_user_course_material
 from announcement.tasks import load_announcement_helper
 from .tasks import download_drive_material
-
+from material.tasks import download_materials
+from announcement.tasks import load_announcements
 
 # Create your views here.
 
@@ -37,23 +38,24 @@ def load_courses_from_user(request):
             profile = Profile.objects.get(user=user)
         except:
             return Response({'error': 'User profile not found'}, status=status.HTTP_404_NOT_FOUND)
-        organization = profile.organization
+        # organization = profile.organization
         courses = OAuth_helpers.get_courses(creds.token)
-        for key, val in courses.items():
-            for entry in val:
-                try:
-                    course = Course.objects.get(id=entry['id'])
-                    load_user_course_material.delay(user.id, course.id)
-                    load_announcement_helper.delay(user.id, course.id)
-                except Course.DoesNotExist:
-                    course = None
 
-                if course is None:
-                    course = Course(id=entry['id'], name=entry['name'], organization=organization,
-                                    description=entry['descriptionHeading'])
-                    course.save()
-                    load_user_course_material.delay(user.id, course.id)
-                    load_announcement_helper.delay(user.id, course.id)
+        # for key, val in courses.items():
+        #     for entry in val:
+        #         try:
+        #             course = Course.objects.get(id=entry['id'])
+        #             # load_user_course_material.delay(user.id, course.id)
+        #             # load_announcement_helper.delay(user.id, course.id)
+        #         except Course.DoesNotExist:
+        #             course = None
+
+        #         # if course is None:
+        #         #     course = Course(id=entry['id'], name=entry['name'], organization=organization,
+        #         #                     description=entry['descriptionHeading'])
+        #         #     course.save()
+        #         #     # load_user_course_material.delay(user.id, course.id)
+        #         #     # load_announcement_helper.delay(user.id, course.id)
         return Response({"Message": "Courses Loaded!!", "Courses": courses}, status=status.HTTP_200_OK)
     else:
         return Response({"Message": "No Credentials Found maybe u didnt login with google or sth is wrong"},
@@ -219,3 +221,59 @@ def handle_drive_materials(request):
     except Exception as e:
         print(e)
         return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def handle_classroom_loading(request):
+    creds = creds_refresher(request.user)
+    classroom_id = request.data.get('classroom_id', "")
+    if classroom_id == "" or classroom_id == None:
+        return Response({"message": "No classroom_id Provided"}, status=400)
+
+    organization = get_user_profile(request.user).organization
+    if organization == None:
+        return Response({"message": "User is not a part of any organization"}, status=400)
+
+    name = request.data.get('name', "")
+    if name == "" or name == None:
+        return Response({"message": "No name Provided"}, status=400)
+
+    code = request.data.get('code', "")
+    if code == "" or code == None:
+        return Response({"message": "No code Provided"}, status=400)
+
+    try:
+        ctx = OAuth_helpers.get_single_course(creds.token, classroom_id)
+        if ctx.status_code != 200:
+            return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)
+
+        main_course = MainCourse.objects.filter(
+            code=code, organization=organization)
+        course = Course.objects.filter(
+            organization=organization, id=classroom_id)
+
+        if not main_course.exists():
+            main_course = MainCourse.objects.create(
+                organization=organization, code=code, name=name)
+        else:
+            main_course = main_course[0]
+
+        if not course.exists():
+            course = Course.objects.create(
+                organization=organization, id=classroom_id, code=code, name=name, main_course=main_course)
+        else:
+            course = course[0]
+
+        materials = OAuth_helpers.get_coursework(
+            auth_token=creds.token, course_id=classroom_id)
+        download_materials.delay(
+            materials, creds.token, course.id, request.user.id)
+        announcements = OAuth_helpers.get_announcements(
+            auth_token=creds.token, course_id=classroom_id)
+        load_announcements.delay(request.user.id, classroom_id, announcements)
+
+        return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
+    except Exception as e:
+        print(e)
+        return Response({"message": str(e)}, status=400)

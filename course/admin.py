@@ -13,6 +13,13 @@ class CourseSiteAdmin(admin.ModelAdmin):
 #    readonly_fields = ('id',)
 
 
+@admin.register(MainCourse)
+class MainCourseSiteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'code', 'organization', 'name')
+    list_filter = ()
+    search_fields = ('id', 'code', 'name', 'organization__organization_name',)
+
+
 @admin.register(UserCourseAdmin)
 class UserCourseAdminSiteAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'course')
@@ -41,4 +48,4 @@ class DriveFolderAdmin(admin.ModelAdmin):
 #    readonly_fields = ('id',)
 
 
-admin.site.register(DriveFolders,DriveFolderAdmin)
+admin.site.register(DriveFolders, DriveFolderAdmin)

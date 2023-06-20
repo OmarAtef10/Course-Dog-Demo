@@ -21,6 +21,7 @@ class MainCourse(models.Model):
     code = models.CharField(max_length=50)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
+
     class Meta:
         unique_together = (('code', 'organization'),)
 
@@ -48,7 +49,7 @@ class Course(models.Model):
 
 class UserCourseAdmin(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(MainCourse, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = (('user', 'course'),)
@@ -56,7 +57,7 @@ class UserCourseAdmin(models.Model):
 
 class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(MainCourse, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = (('user', 'course'),)

@@ -22,6 +22,9 @@ class MainCourse(models.Model):
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
 
+    def __str__(self):
+        return f'{self.name} - {self.organization.name}'
+
     class Meta:
         unique_together = (('code', 'organization'),)
 

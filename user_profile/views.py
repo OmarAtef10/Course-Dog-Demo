@@ -1,3 +1,6 @@
+import shutil
+from google.oauth2.credentials import Credentials
+import io
 import json
 import allauth.account.signals
 from django.http import JsonResponse
@@ -42,12 +45,6 @@ def get_user_by_phone_number(request, phone_number):
     return JsonResponse(serializer.data, safe=False)
 
 
-import io
-
-from google.oauth2.credentials import Credentials
-
-import shutil
-
 SCOPES = ["https://www.googleapis.com/auth/drive",
           "https://www.googleapis.com/auth/classroom.courses",
           "https://www.googleapis.com/auth/classroom.announcements.readonly",
@@ -91,7 +88,7 @@ def check_user(request):
         return redirect("/accounts/password/set/")
     else:
         print(request.user.password)
-        return Response({"message": "User is logged in"}, status=200)
+        return Response({"message": "User is logged in Please Return to Course Dog "}, status=200)
 
 
 @api_view(['GET'])

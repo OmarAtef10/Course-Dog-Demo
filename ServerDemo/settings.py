@@ -107,6 +107,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_celery_results',
+    'django_cron'
+]
+
+CRON_CLASSES = [
+    'ServerDemo.crons.MyCronJob'
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6379'

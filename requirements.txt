@@ -23,6 +23,7 @@ Django==4.2.1
 django-allauth==0.54.0
 django-celery-results==2.5.1
 django-cors-headers==3.14.0
+django-cron==0.6.0
 django-extensions==3.2.1
 django-filter==22.1
 django-templated-mail==1.1.1

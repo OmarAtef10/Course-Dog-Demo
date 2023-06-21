@@ -20,3 +20,16 @@
 
 --install rabbitmq
     sudo apt-get install rabbitmq-server
+
+
+--Running cron jobs
+   -linux
+      1. run `crontab -e`
+      2. add `* * * * * /absloute/path/to/venv/bin/python3 /absloute/path/to/manage.py runcrons`
+      3. ensure cron job is added by using `crontab -l`
+      4. ensure cron job is running by using `tail /var/log/syslog`
+   
+   -windows
+      use task Scheduler (https://www.youtube.com/watch?v=74LrUOja3iw)
+      1. In program/script field, put the path to your venv python3.exe
+      2. in Add arguments field, put `absloute/path/to/manage.py runcrons`

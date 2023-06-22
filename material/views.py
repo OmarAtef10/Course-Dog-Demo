@@ -92,7 +92,7 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses = Course.objects.filter(main_course=main_course)
         courses_files = []
         for course in courses:
-            files = Material.objects.filter(parent_course=course)
+            files = Material.objects.filter(parent_course=course, similar_to = None)
             for file in files:
                 courses_files.append(file)
 

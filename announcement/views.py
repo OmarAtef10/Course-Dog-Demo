@@ -116,7 +116,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         courses_list = get_main_course_sub_courses(main_course)
         announcements = []
         for course_ in courses_list:
-            course_announcements = Announcement.objects.filter(course=course_)
+            course_announcements = Announcement.objects.filter(course=course_, similar_to = None)
             for announcement in course_announcements:
                 announcements.append(announcement)
 

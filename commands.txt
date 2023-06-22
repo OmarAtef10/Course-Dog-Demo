@@ -21,6 +21,10 @@
 --install rabbitmq
     sudo apt-get install rabbitmq-server
 
+--Neural Network
+   - https://drive.google.com/drive/folders/1sy2PTlrqVzuG5aDzEZ12XGUNij6MNO3n?usp=sharing
+   - put the files in project_root/BSAM
+   - enusre that the BSAM folder directly contains .pb files and doesn't contain any intermediate folders
 
 --Running cron jobs
    -linux

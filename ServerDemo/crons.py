@@ -34,12 +34,12 @@ class MyCronJob(CronJobBase):
             {
                 'id': 4,
                 'content': "I have a final tomorrow",
-                'sourceId': 1
+                'sourceId': 2
             },
             {
                 'id': 5,
                 'content': "my quiz is tomorrow",
-                'sourceId': 3
+                'sourceId': 1
             },
             {
                 'id': 6,
@@ -48,7 +48,7 @@ class MyCronJob(CronJobBase):
             },
             {
                 'id': 7,
-                'content': "I've posted the section video on google drive",
+                'content': "the section video is posted on gdrive",
                 'sourceId': 2
             },
         ]

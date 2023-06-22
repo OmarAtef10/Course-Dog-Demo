@@ -89,7 +89,7 @@ class UKMeansClusterer:
         }
 
     def extract_output(self, clusters):
-        return [cluster.ids for cluster in clusters]
+        return [cluster.ids for _, cluster in clusters.items()]
 
 
     def cluster(self, documents):

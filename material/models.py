@@ -20,17 +20,18 @@ class Material(models.Model):
     parent_course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=250, default="New Material")
     file_name = models.CharField(max_length=100, null=True, blank=True)
-    url = models.URLField(max_length=5000, default="")
+    url = models.URLField(max_length=5000, default="", blank=True, null=True)
     file_path = models.FilePathField(
         max_length=500, path="uploads/course_material", blank=True, null=True)
     file = models.FileField(default='', blank=True,
                             null=True, upload_to='course_material/')
     creation_date = models.DateTimeField(auto_now=True)
     hash_code = models.CharField(max_length=512, null=True, blank=True)
+    similar_to = models.ForeignKey(
+        "self", on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return f"material for {self.parent_course}"
-
 
 
 @receiver(pre_save, sender=Material)

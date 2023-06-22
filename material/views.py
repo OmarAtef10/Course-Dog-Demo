@@ -92,7 +92,7 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses = Course.objects.filter(main_course=main_course)
         courses_files = []
         for course in courses:
-            files = Material.objects.filter(parent_course=course)
+            files = Material.objects.filter(parent_course=course, similar_to = None)
             for file in files:
                 courses_files.append(file)
 
@@ -148,3 +148,19 @@ def delete_course_content(request, course_code, file_id):
     material.delete()
 
     return Response({}, 200)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_similar_to_materials(request, material_id):
+    try:
+        material = Material.objects.get(id=material_id)
+    except Material.DoesNotExist:
+        return Response({"message": "Material does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    similar_materials = Material.objects.filter(similar_to=material)
+    serialized_materials = MaterialSerializer(
+        similar_materials, many=True).data
+    ctx = {"original_material": MaterialSerializer(
+        material).data, "similar_materials": serialized_materials}
+    return Response(ctx, 200)

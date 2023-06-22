@@ -1,8 +1,8 @@
 from django.db import models
 from organization.models import Organization
 from django.contrib.auth.models import User
-
-
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 # Create your models here.
 
 
@@ -64,3 +64,11 @@ class Subscription(models.Model):
 
     class Meta:
         unique_together = (('user', 'course'),)
+
+
+
+@receiver(pre_delete, sender=Course)
+def delete_linked_drive_folder(sender, instance, **kwargs):
+    if instance.linked_drive_folder:
+        instance.linked_drive_folder.delete()
+        

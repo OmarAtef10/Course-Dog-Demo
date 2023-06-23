@@ -113,6 +113,32 @@ class OrganizationAdminsDataAPIView(GenericAPIView):
             return Response({"message": f'{e}'}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
+    
+    def delete(self,request):
+        user = request.user
+        user_profile = get_user_profile(user)
+        user_organization = user_profile.organization
+
+        if user_organization == None:
+            return Response({"message": "user is not a part of an organization"}, status=status.HTTP_404_NOT_FOUND)
+
+        user_email = request.data.get('email')
+        if user_email == None or user_email == '':
+            return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            new_user = User.objects.get(email=user_email)
+            org_admin = UserOrganizationAdmin.objects.get(user=new_user, organization=user_organization)
+            org_admin.delete()
+            new_user.groups.add(Group.objects.get(name='Student'))
+            new_user.groups.remove(Group.objects.get(name='OrganizationAdmin'))
+            new_user.save()
+        except Exception as e:
+            return Response({"message": f'{e}'}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"message": "user removed successfully"}, status=status.HTTP_200_OK)
+
+
 
 
 class GeneralOrganizationDataAPIView(GenericAPIView):

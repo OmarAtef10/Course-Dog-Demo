@@ -35,6 +35,7 @@ from course.views import is_course_admin
 def generate_announcement_id():
     return random.randint(1000, 999999)
 
+
 def get_main_course_sub_courses(main_course):
     return Course.objects.filter(main_course=main_course)
 
@@ -66,13 +67,15 @@ def add_announcement(request):
         organization = get_object_or_404(Organization, name=org_name)
         course_code = request.data['course_code']
         announcement = request.data['announcement']
-        course = Course.objects.get(code=course_code)
-        if course.organization == organization:
+        main_course = MainCourse.objects.get(code=course_code)
+        if main_course.organization == organization:
+            course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
+                                           id=generate_announcement_id(), name="Via Webhooks")
 
             while True:
                 id = random.randint(100, 999999)
                 if not Announcement.objects.filter(id=id):
-                    announcement = Announcement.objects.create(id=id, course=course, announcement=announcement,
+                    announcement = Announcement.objects.create(id=id, course=course, content=announcement,
                                                                title="By Admin Student Via Webhooks!",
                                                                creation_date=datetime.datetime.now())
                     announcement.save()
@@ -102,7 +105,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
             main_course = get_object_or_404(
-                MainCourse, organization=user_organization,code=course_code)
+                MainCourse, organization=user_organization, code=course_code)
 
             user_subscription = Subscription.objects.filter(
                 user=user, course=main_course)
@@ -111,15 +114,13 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
                                 status=status.HTTP_400_BAD_REQUEST)
         except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
-        
+
         courses_list = get_main_course_sub_courses(main_course)
         announcements = []
         for course_ in courses_list:
-            course_announcements = Announcement.objects.filter(course=course_)
+            course_announcements = Announcement.objects.filter(course=course_, similar_to=None)
             for announcement in course_announcements:
                 announcements.append(announcement)
-
-
 
         serialized_announcements = self.get_serializer(
             announcements, many=True)
@@ -135,7 +136,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
         try:
             main_course = MainCourse.objects.get(
-                code = course_code, organization=user_organization)
+                code=course_code, organization=user_organization)
             is_course_admin = UserCourseAdmin.objects.filter(
                 course=main_course, user=user)
             if not is_course_admin.exists():
@@ -143,7 +144,6 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         except MainCourse.DoesNotExist:
             return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-        
         title = request.data.get("title", "New Announcement")
         if title == "":
             title = "New Announcement"
@@ -157,7 +157,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
                 id=generate_announcement_id(),
                 course=course,
                 title=title,
-                announcement=announcement_details,
+                content=announcement_details,
             )
             announcement.save()
         return Response({"message": "success"}, 200)
@@ -183,3 +183,19 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement = get_object_or_404(Announcement, id=announcement_id)
         announcement.delete()
         return Response({"message": "success"}, 200)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_similar_announcements(request, announcement_id):
+    try:
+        announcement = Announcement.objects.get(id=announcement_id)
+    except Announcement.DoesNotExist:
+        return Response({"message": "Announcement does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    similar_announcements = Announcement.objects.filter(
+        similar_to=announcement)
+    serialized_announcements = AnnouncementSerializer(
+        similar_announcements, many=True).data
+    ctx = {"orgininal_announcement": AnnouncementSerializer(
+        announcement).data, "similar_announcements": serialized_announcements}
+    return Response(ctx, 200)

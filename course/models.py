@@ -1,8 +1,8 @@
 from django.db import models
 from organization.models import Organization
 from django.contrib.auth.models import User
-
-
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 # Create your models here.
 
 
@@ -21,6 +21,9 @@ class MainCourse(models.Model):
     code = models.CharField(max_length=50)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
+
+    def __str__(self):
+        return f'{self.name} - {self.organization.name}'
 
     class Meta:
         unique_together = (('code', 'organization'),)
@@ -61,3 +64,11 @@ class Subscription(models.Model):
 
     class Meta:
         unique_together = (('user', 'course'),)
+
+
+
+@receiver(pre_delete, sender=Course)
+def delete_linked_drive_folder(sender, instance, **kwargs):
+    if instance.linked_drive_folder:
+        instance.linked_drive_folder.delete()
+        

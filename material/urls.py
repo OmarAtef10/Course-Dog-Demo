@@ -11,4 +11,6 @@ urlpatterns = [
          views.UploadCourseContentAPIView.as_view()),
     path('delete-material/<str:course_code>/<str:file_id>/',
          views.delete_course_content),
+    path('similar-materials/<str:material_id>/',
+         views.get_similar_to_materials, name='similar_materials'),
 ]

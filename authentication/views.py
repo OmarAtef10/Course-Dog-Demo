@@ -147,10 +147,14 @@ class RetriveUserInfoAPIView(GenericAPIView):
 
     def get(self, request):
         user = request.user
-        user_group = user.groups.all()[0].name
         user_groups = user.groups.all()
         user_groups_names = [group.name for group in user_groups]
         user_profile = get_user_profile(user)
+        user_organization = user_profile.organization
+        if user_organization == None:
+            user_organization = ''
+        else:
+            user_organization = user_organization.name
         user_info = {
             'username': user.username,
             'first_name': user.first_name,
@@ -160,6 +164,6 @@ class RetriveUserInfoAPIView(GenericAPIView):
             'is_superuser': user.is_superuser,
             'is_active': user.is_active,
             'groups': user_groups_names,
-            'organization': user_profile.organization.name,
+            'organization': user_organization,
         }
         return Response(user_info,200)

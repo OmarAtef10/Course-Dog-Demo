@@ -25,3 +25,5 @@ bin/
 include/
 Lib/
 Lib64/
+env
+BSAM

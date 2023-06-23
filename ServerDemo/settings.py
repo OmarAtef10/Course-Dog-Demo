@@ -111,7 +111,8 @@ INSTALLED_APPS = [
 ]
 
 CRON_CLASSES = [
-    'ServerDemo.crons.MyCronJob'
+    'ServerDemo.crons.MaterialsClusteringJob',
+    'ServerDemo.crons.AnnouncementClusteringJob',
 ]
 
 CELERY_BROKER_URL = 'redis://localhost:6379'

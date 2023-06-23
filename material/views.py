@@ -1,4 +1,6 @@
 from django.shortcuts import get_object_or_404
+
+from announcement.views import generate_announcement_id
 from organization.models import Organization
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
@@ -20,6 +22,7 @@ from course.views import is_course_admin
 from authentication.permissions import IsCourseAdmin
 from course.models import MainCourse
 from course.serializers import MainCourseSerializer
+
 
 # Create your views here.
 
@@ -48,8 +51,10 @@ def add_materials_webhooks(request):
         file_name = request.data.get('file_name', 'default.pdf')
         print(course_code)
         try:
-            course = get_object_or_404(Course, code=course_code)
-            if course.organization == organization:
+            main_course = get_object_or_404(MainCourse, code=course_code)
+            if main_course.organization == organization:
+                course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
+                                               id=generate_announcement_id(), name="Via Webhooks")
                 id = uuid.uuid4()
                 id = str(id)
                 material = Material.objects.create(id=id, parent_course=course, file_name=file_name, url=url,
@@ -92,7 +97,7 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses = Course.objects.filter(main_course=main_course)
         courses_files = []
         for course in courses:
-            files = Material.objects.filter(parent_course=course, similar_to = None)
+            files = Material.objects.filter(parent_course=course, similar_to=None)
             for file in files:
                 courses_files.append(file)
 

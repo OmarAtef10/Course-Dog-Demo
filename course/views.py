@@ -24,6 +24,7 @@ from .tasks import download_drive_material
 from material.tasks import download_materials
 from announcement.tasks import load_announcements
 
+
 # Create your views here.
 
 
@@ -150,7 +151,7 @@ class UserCourseSubscriptionsAPIView(GenericAPIView):
                                 status=status.HTTP_400_BAD_REQUEST)
 
             Subscription.objects.create(user=user, course=course)
-        except Course.DoesNotExist:
+        except MainCourse.DoesNotExist:
             return Response({"message": "course doesn't exist."}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "success"}, status=status.HTTP_200_OK)

@@ -140,6 +140,7 @@ SOCIALACCOUNT_PROVIDERS = {
         "AUTH_PARAMS": {
             "access_type": "offline",
         },
+        "METHOD": "oauth2", # 'oauth2' or 'oauth'
         'OAUTH_PKCE_ENABLED': True,
     },
 }

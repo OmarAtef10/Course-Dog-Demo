@@ -60,6 +60,8 @@ def add_materials_webhooks(request):
                 material = Material.objects.create(id=id, parent_course=course, file_name=file_name, url=url,
                                                    title="By Admin Student Via Webhooks!")
                 material.save()
+                main_course.materials_clusterd = False
+                main_course.save()
                 return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
             else:
                 return Response({'message': f'Course not found for {org_name} organization'},
@@ -131,6 +133,8 @@ class UploadCourseContentAPIView(GenericAPIView):
         material = Material(id=id, parent_course=course[0],
                             file=file, file_name=file_name, hash_code=file_hash)
         material.save()
+        main_course.materials_clusterd = False
+        main_course.save()
         return Response({}, 200)
 
 

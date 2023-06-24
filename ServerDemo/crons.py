@@ -6,6 +6,7 @@ from PDFReader import PdfReader
 from machine_learning.Preprocessor import Preprocessor
 from machine_learning.Text import TextModel
 from announcement.models import Announcement
+from machine_learning.MaterialClustering import UKMeansClusterer
 
 ID = 'id'
 PATH = 'path'
@@ -20,6 +21,7 @@ class MaterialsClusteringJob(CronJobBase):
 
     def __init__(self):
         self.preprocessor = Preprocessor()
+        self.model = UKMeansClusterer()
     
     def get_all_materials_from_main_course(self, main_course: MainCourse):
         materials = {}
@@ -27,22 +29,40 @@ class MaterialsClusteringJob(CronJobBase):
         for linked_course in linked_courses:
             linked_course_materials = Material.objects.filter(parent_course=linked_course)
             for material in linked_course_materials:
-                materials[material.id] = {
-                    ID : material.id,
-                    PATH : material.file_path,
-                    SOURCE_ID : material.parent_course.id,
-                    CREATED: material.creation_date
-                }
-        
+                materials[material.id] = material
+
         return materials
     
+    def seperate_cluster(self, cluster, materials) -> Material:
+        most_recent = materials[cluster[0]]
+        others = []
+        for id in cluster:
+            if most_recent.creation_date > materials[id].creation_date:
+                most_recent = materials[id]
+        for id in cluster:
+            if id == most_recent.id: continue
+            others.append(materials[id])
+        return most_recent, others
+    
+
+    def handle_results(self, results, course_materials):
+        for cluster in results:
+            if len(cluster) == 1: continue # skip single clusters
+
+            original, similar = self.seperate_cluster(cluster, course_materials)
+
+            for material in similar:
+                material.similar_to = original
+                material.save()
+
+
     def handle_unclustered_course(self, main_course):
         course_materials = self.get_all_materials_from_main_course(main_course)
         material_objects = []
         for _, material in course_materials.items():
-            fullpath = PROJECT_ROOT_PATH + material[PATH]
-            id = material[ID]
-            source_id = material[SOURCE_ID]
+            fullpath = PROJECT_ROOT_PATH + material.file_path
+            id = material.id
+            source_id = material.parent_course
             content = PdfReader.read(fullpath)
             content = self.preprocessor.preprocess_text(content)
             material_objects.append(
@@ -52,7 +72,10 @@ class MaterialsClusteringJob(CronJobBase):
                     source_id
                 )
             )
-        # TODO: call ML model and use the results
+        
+        results = self.model.cluster(material_objects)
+        self.handle_results(results, course_materials)
+
 
 
 

@@ -7,6 +7,8 @@ from machine_learning.Preprocessor import Preprocessor
 from machine_learning.Text import TextModel
 from announcement.models import Announcement
 from machine_learning.MaterialClustering import UKMeansClusterer
+from machine_learning.AnnouncementClustering import AnnouncementClustering
+import tensorflow as tf
 
 ID = 'id'
 PATH = 'path'
@@ -60,7 +62,7 @@ class MaterialsClusteringJob(CronJobBase):
         course_materials = self.get_all_materials_from_main_course(main_course)
         material_objects = []
         for _, material in course_materials.items():
-            fullpath = PROJECT_ROOT_PATH + material.file_path
+            fullpath = material.file_path
             id = material.id
             source_id = material.parent_course
             content = PdfReader.read(fullpath)
@@ -97,6 +99,8 @@ class AnnouncementClusteringJob(CronJobBase):
 
     def __init__(self):
         self.preprocessor = Preprocessor()
+        self.nn = tf.keras.saving.load_model('./BSAM')
+        self.model = AnnouncementClustering(self.nn)
     
     def get_all_announcements_from_main_course(self, main_course: MainCourse):
         announcements = {}
@@ -105,22 +109,40 @@ class AnnouncementClusteringJob(CronJobBase):
             linked_course_announcements = Announcement.objects.filter(course=linked_course)
             
             for announcement in linked_course_announcements:
-                announcements[announcement.id] = {
-                    ID : announcement.id,
-                    SOURCE_ID : announcement.course.id,
-                    CONTENT: announcement.content,
-                    CREATED: announcement.creation_date
-                }
+                announcements[announcement.id] = announcement
         
         return announcements
+    
+    def separate_cluster(self, cluster, announcements):
+        most_recent = announcements[cluster[0]]
+        others = []
+        for id in cluster:
+            if most_recent.creation_date > announcements[id].creation_date:
+                most_recent = announcements[id]
+
+        for id in cluster:
+            if id == most_recent.id: continue
+
+            others.append(announcements[id])
+
+        return most_recent, others
+
+    def handle_reusults(self, results, announements):
+        for cluster in results:
+            if len(cluster) == 1: continue
+
+            original, similar = self.separate_cluster(cluster, announements)
+
+            for announcement in similar:
+                announcement.similar_to = original
+                announcement.save()
     
     def handle_unclustered_course(self, main_course):
         course_announcements = self.get_all_announcements_from_main_course(main_course)
         announcements_objects = []
-        for _, announcement in course_announcements.items():
-            id = announcement[ID]
-            source_id = announcement[SOURCE_ID]
-            content = announcement[CONTENT]
+        for id, announcement in course_announcements.items():
+            source_id = announcement.course
+            content = announcement.content
             content = self.preprocessor.preprocess_text(content, remove_numbers=False)
 
             announcements_objects.append(
@@ -130,7 +152,8 @@ class AnnouncementClusteringJob(CronJobBase):
                     source_id
                 )
             )
-        # TODO: call ML model and use the results
+        results = self.model.cluster(announcements_objects)
+        self.handle_reusults(results, course_announcements)
 
 
 

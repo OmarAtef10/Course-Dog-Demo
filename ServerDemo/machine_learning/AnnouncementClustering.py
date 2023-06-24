@@ -6,8 +6,8 @@ import numpy as np
 
 class AnnouncementClustering:
 
-    def __init__(self) -> None:
-        self.model = tf.keras.saving.load_model('./BSAM')
+    def __init__(self, model) -> None:
+        self.model = model
 
 
     def canAppendCluster(self, cluster: Cluster, announcemnt, sim_matrix):

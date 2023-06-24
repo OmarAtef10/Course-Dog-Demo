@@ -27,13 +27,14 @@ class MaterialsClusteringJob(CronJobBase):
 
     def __init__(self):
         self.preprocessor = Preprocessor()
+        self.model = UKMeansClusterer()
         self.PROJECT_ROOT_PATH = os.getenv('PROJECT_ROOT_PATH') + '/'
     
     def get_all_materials_from_main_course(self, main_course: MainCourse, logger: Logger):
         materials = {}
         logger.info("getting all materials from courses")
         linked_courses = Course.objects.filter(main_course=main_course)
-        logger.info(f"found {len(linked_course)} subcourses")
+        logger.info(f"found {len(linked_courses)} subcourses")
         for linked_course in linked_courses:
             linked_course_materials = Material.objects.filter(parent_course=linked_course)
             for material in linked_course_materials:
@@ -66,7 +67,6 @@ class MaterialsClusteringJob(CronJobBase):
 
     def handle_unclustered_course(self, main_course):
         logger = Logger(f'{self.PROJECT_ROOT_PATH}/cluster_logs/material/{main_course.id}.txt')
-        model = UKMeansClusterer()
         course_materials = self.get_all_materials_from_main_course(main_course, logger)
         material_objects = []
         for id, material in course_materials.items():
@@ -91,15 +91,15 @@ class MaterialsClusteringJob(CronJobBase):
             )
         logger.info(f"starting clustering on {len(material_objects)} materials")
         try:
-            results = model.cluster(material_objects)
+            results = self.model.cluster(material_objects)
         except Exception as e:
-            logger.fatal(f"failed to cluster course {main_course.id}")
+            logger.fatal(f"failed to cluster course {main_course.id} because {e}")
             logger.close()
             return False
         
         logger.info(f"finisehd clustering, saving results")
         self.handle_results(results, course_materials)
-
+        logger.info(f"successfully clustered materials")
         logger.close()
         return True
 
@@ -114,7 +114,7 @@ class MaterialsClusteringJob(CronJobBase):
                 main_course.materials_clusterd = success
                 main_course.save()
         except Exception as e:
-            print(f'Error: {e}') 
+            print(f'Error in material: {e}') 
 
 
 class AnnouncementClusteringJob(CronJobBase):
@@ -128,15 +128,17 @@ class AnnouncementClusteringJob(CronJobBase):
         self.nn = tf.keras.saving.load_model(f'{self.PROJECT_ROOT_PATH}/BSAM')
         self.model = AnnouncementClustering(self.nn)
     
-    def get_all_announcements_from_main_course(self, main_course: MainCourse):
+    def get_all_announcements_from_main_course(self, main_course: MainCourse, logger):
         announcements = {}
+        logger.info("getting all announcements from courses")
         linked_courses = Course.objects.filter(main_course=main_course)
+        logger.info(f"found {len(linked_courses)} courses")
         for linked_course in linked_courses:
             linked_course_announcements = Announcement.objects.filter(course=linked_course)
             
             for announcement in linked_course_announcements:
                 announcements[announcement.id] = announcement
-        
+        logger.info(f"found {len(announcements)} unclustered annoucement")
         return announcements
     
     def separate_cluster(self, cluster, announcements):
@@ -164,12 +166,18 @@ class AnnouncementClusteringJob(CronJobBase):
                 announcement.save()
     
     def handle_unclustered_course(self, main_course):
-        course_announcements = self.get_all_announcements_from_main_course(main_course)
+        logger = Logger(f'{self.PROJECT_ROOT_PATH}/cluster_logs/announcement/{main_course.id}.txt')
+        course_announcements = self.get_all_announcements_from_main_course(main_course, logger)
         announcements_objects = []
         for id, announcement in course_announcements.items():
             source_id = announcement.course
             content = announcement.content
-            content = self.preprocessor.preprocess_text(content, remove_numbers=False, remove_punctuation=False)
+            try:
+                logger.info(f"starting preprocessing on announcement {id}")
+                content = self.preprocessor.preprocess_text(content, remove_numbers=False, remove_punctuation=False)
+            except Exception as e:
+                logger.warn(f"failed to preproccess announcement {id}. Skipping...")
+                continue
 
             announcements_objects.append(
                 TextModel(
@@ -178,17 +186,29 @@ class AnnouncementClusteringJob(CronJobBase):
                     source_id
                 )
             )
-        results = self.model.cluster(announcements_objects)
+        logger.info(f"starting clustering on {len(announcements_objects)} announcements")
+        try:
+            results = self.model.cluster(announcements_objects)
+        except Exception as e:
+            logger.fatal(f"Failed to cluster announcements of course {main_course.id} because {e}")
+            logger.close()
+            return False
         self.handle_reusults(results, course_announcements)
+        logger.info(f"successfully clustered announcements")
+        logger.close()
+        return True
 
 
 
     def do(self):
-        unclustered_courses = MainCourse.objects.filter(announcements_clusterd=False)
-        for main_course in unclustered_courses:
-            self.handle_unclustered_course(main_course)
-            main_course.announcements_clusterd = True
-            main_course.save()
+        try:
+            unclustered_courses = MainCourse.objects.filter(announcements_clusterd=False)
+            for main_course in unclustered_courses:
+                success = self.handle_unclustered_course(main_course)
+                main_course.announcements_clusterd = success
+                main_course.save()
+        except Exception as e:
+            print(f"ERROR in announcement: {e}")
 
 class DB_FILL(CronJobBase):
     RUN_EVERY_MINS = 1

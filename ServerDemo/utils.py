@@ -20,19 +20,19 @@ class PdfReader:
 class Logger:
     def __init__(self, file_path) -> None:
         self.file = open(file_path, '+a')
-        self.file.write('---------------------------------------------------')
+        self.file.write('---------------------------------------------------\n')
 
     def info(self, msg):
         dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        self.file.write(f"INFO @ {inspect.stack()[1][3]} - {dt_string}: {msg}")
+        self.file.write(f"INFO @ {inspect.stack()[1][3]} - {dt_string}: {msg}\n")
 
     def warn(self, msg):
         dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        self.file.write(f"WARN @ {inspect.stack()[1][3]} - {dt_string}: {msg}")
+        self.file.write(f"WARN @ {inspect.stack()[1][3]} - {dt_string}: {msg}\n")
 
     def fatal(self, msg):
         dt_string = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        self.file.write(f"FATAL @ {inspect.stack()[1][3]} - {dt_string}: {msg}")
+        self.file.write(f"FATAL @ {inspect.stack()[1][3]} - {dt_string}: {msg}\n")
 
     def close(self):
         self.file.close()

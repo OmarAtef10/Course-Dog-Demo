@@ -1,7 +1,7 @@
 from django_cron import CronJobBase, Schedule
 from course.models import MainCourse, Course
 from material.models import Material
-from ServerDemo.PDFReader import PdfReader
+from ServerDemo.utils import PdfReader, Logger
 from ServerDemo.machine_learning.Preprocessor import Preprocessor
 from ServerDemo.machine_learning.Text import TextModel
 from announcement.models import Announcement
@@ -27,17 +27,18 @@ class MaterialsClusteringJob(CronJobBase):
 
     def __init__(self):
         self.preprocessor = Preprocessor()
-        self.model = UKMeansClusterer()
         self.PROJECT_ROOT_PATH = os.getenv('PROJECT_ROOT_PATH') + '/'
     
-    def get_all_materials_from_main_course(self, main_course: MainCourse):
+    def get_all_materials_from_main_course(self, main_course: MainCourse, logger: Logger):
         materials = {}
+        logger.info("getting all materials from courses")
         linked_courses = Course.objects.filter(main_course=main_course)
+        logger.info(f"found {len(linked_course)} subcourses")
         for linked_course in linked_courses:
             linked_course_materials = Material.objects.filter(parent_course=linked_course)
             for material in linked_course_materials:
                 materials[material.id] = material
-
+        logger.info(f"found {len(materials)} materials files")
         return materials
     
     def seperate_cluster(self, cluster, materials) -> Material:
@@ -64,13 +65,23 @@ class MaterialsClusteringJob(CronJobBase):
 
 
     def handle_unclustered_course(self, main_course):
-        course_materials = self.get_all_materials_from_main_course(main_course)
+        logger = Logger(f'{self.PROJECT_ROOT_PATH}/cluster_logs/material/{main_course.id}.txt')
+        model = UKMeansClusterer()
+        course_materials = self.get_all_materials_from_main_course(main_course, logger)
         material_objects = []
         for id, material in course_materials.items():
             fullpath = material.file.path
             source_id = material.parent_course
-            content = PdfReader.read(fullpath)
-            content = self.preprocessor.preprocess_text(content)
+            try:
+                logger.info(f"reading {fullpath}")
+                content = PdfReader.read(fullpath)
+                logger.info(f"preprocessing {fullpath}")
+                content = self.preprocessor.preprocess_text(content)
+            except Exception as e:
+                logger.warn(f"failed to read or preprocess {fullpath}. Skipping...")
+                continue
+
+            logger.info(f"successfully read {fullpath}")
             material_objects.append(
                 TextModel(
                     id,
@@ -78,21 +89,29 @@ class MaterialsClusteringJob(CronJobBase):
                     source_id
                 )
             )
+        logger.info(f"starting clustering on {len(material_objects)} materials")
+        try:
+            results = model.cluster(material_objects)
+        except Exception as e:
+            logger.fatal(f"failed to cluster course {main_course.id}")
+            logger.close()
+            return False
         
-        results = self.model.cluster(material_objects)
+        logger.info(f"finisehd clustering, saving results")
         self.handle_results(results, course_materials)
 
+        logger.close()
+        return True
 
 
 
 
     def do(self):
-        print("--------------------------------------------------")
         try:
             unclustered_courses = MainCourse.objects.filter(materials_clusterd=False)
             for main_course in unclustered_courses:
-                self.handle_unclustered_course(main_course)
-                main_course.materials_clusterd = True
+                success = self.handle_unclustered_course(main_course)
+                main_course.materials_clusterd = success
                 main_course.save()
         except Exception as e:
             print(f'Error: {e}') 

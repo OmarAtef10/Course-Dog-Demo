@@ -83,7 +83,3 @@ class Preprocessor:
         self.stem_words = stem_words
 
         return self.__preprocess(text)
-
-
-x = Preprocessor()
-print(x.preprocess(["Hello girly whassup", "This is mcdonald's bro"]))

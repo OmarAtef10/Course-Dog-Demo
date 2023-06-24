@@ -6,11 +6,11 @@ class PdfReader:
     def read(path):
         data = ''
         pdfFile = open(path, 'rb') 
-        pdfReader = PyPDF2.PdfFileReader(pdfFile)
-        pages = pdfReader.numPages
+        pdfReader = PyPDF2.PdfReader(pdfFile)
+        pages = len(pdfReader.pages)
 
         for page in range(pages):
-            pageOBJ = pdfReader.getPage(page)
-            data += pageOBJ.extractText()
+            pageOBJ = pdfReader.pages[page]
+            data += pageOBJ.extract_text()
         pdfFile.close()
         return data

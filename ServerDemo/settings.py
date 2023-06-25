@@ -107,7 +107,15 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_celery_results',
+    'django_cron'
 ]
+
+CRON_CLASSES = [
+    'ServerDemo.crons.MaterialsClusteringJob',
+    'ServerDemo.crons.AnnouncementClusteringJob',
+    # 'ServerDemo.crons.DB_FILL',
+]
+
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'django-db'

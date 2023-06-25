@@ -80,6 +80,8 @@ def add_announcement(request):
                                                                creation_date=datetime.datetime.now())
                     announcement.save()
                     break
+                main_course.announcements_clusterd = False
+                main_course.save()
 
             return Response({'message': 'Announcement created successfully'}, status=HTTP_201_CREATED)
         else:
@@ -160,6 +162,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
                 content=announcement_details,
             )
             announcement.save()
+        main_course.announcements_clusterd = False
+        main_course.save()
         return Response({"message": "success"}, 200)
 
     def delete(self, request, course_code):

@@ -21,6 +21,8 @@ class MainCourse(models.Model):
     code = models.CharField(max_length=50)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
+    materials_clusterd = models.BooleanField(default=False)
+    announcements_clusterd = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name} - {self.organization.name}'

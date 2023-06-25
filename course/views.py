@@ -233,9 +233,10 @@ def handle_drive_materials(request):
                     download_drive_material.delay(
                         materials=ctx, token=creds.token, course_id=linked_course.id, user=request.user.id)
                     break
-
         linked_course.main_course = main_course
         linked_course.save()
+        main_course.materials_clusterd = False
+        main_course.save()
         return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
 
     except Exception as e:
@@ -292,7 +293,8 @@ def handle_classroom_loading(request):
         announcements = OAuth_helpers.get_announcements(
             auth_token=creds.token, course_id=classroom_id)
         load_announcements.delay(request.user.id, classroom_id, announcements)
-
+        main_course.materials_clusterd = False
+        main_course.save()
         return Response({"message": "Rogger Rogger Importing ClassRoom Materials!!"}, status=200)
     except Exception as e:
         print(e)

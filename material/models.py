@@ -46,6 +46,10 @@ def pre_save_material(sender, instance, *args, **kwargs):
         filename += ".pdf"
         print(filename)
         path = os.path.join('uploads/course_material', filename)
+        print("CWD!:- ", os.getcwd())
+        print("PATH!:- ", path)
+        final_path = os.path.join(os.getcwd(), path)
+        print("FINAL PATH!:- ", final_path)
         # 2. download the data behind the URL
         print("Downloading from ", URL)
         try:
@@ -61,7 +65,9 @@ def pre_save_material(sender, instance, *args, **kwargs):
             print("setting file")
             path = path.split('/')[-1]
             print(path)
-            instance.file = path
+            final_path = final_path.split("/")[-2:]
+            print(final_path)
+            instance.file = "/".join(final_path)
             instance.hash_code = calculate_file_hash(instance.file)
             print("file set")
 

@@ -15,3 +15,9 @@ INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting preprocessing o
 INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting preprocessing on announcement 2
 INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting clustering on 3 announcements
 INFO @ handle_unclustered_course - 24/06/2023 18:29:07: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:53: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 4 courses
+INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 0 unclustered annoucement
+INFO @ handle_unclustered_course - 25/06/2023 16:30:54: starting clustering on 0 announcements
+INFO @ handle_unclustered_course - 25/06/2023 16:30:54: successfully clustered announcements

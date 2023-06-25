@@ -51,7 +51,7 @@ def pre_save_material(sender, instance, *args, **kwargs):
         try:
             print("setting headers")
             headers = {
-                'Authorization': 'Bearer EAAQMJrRQMU0BAHoSY92hN0V1Ez3VGjogyui2uTv6o9voHBwZBZAOVEMrh6pp80t5cVyayhwvOmTNmW8KYZAHzZBIvJaCESGCUgdsfxkzAfB5uNELvYhIOwmjThpWL6WfFIft9m00c7iQZBycy8LBvxurHFGdGdu75jKsz1EYv5AXayNZBUhjdoTReh4ZBe254oBRyB0StFyKkFlduXzLYblC2YnC9voRksZD'
+                'Authorization': 'Bearer EAAQMJrRQMU0BAB3YQsfIzBGtPlCZCOtZCZAmEF9MZCgMAZCqb2ElX4kHgoLYi2y2BZBQD3yoPxYX4fnWMTPdAwcAZAL6tG2yQ0KfqpLqzEg8zkGedPChz1SPuQZCabXIJI4yz1rTChRdRjDFvvvouH0gE1Qk8fqdVQztjhibjEseZCCizukrLtvJR1oqDcAXgnzvqzq0NUnc6kXN7WwMXl00cdt2d3PFkpLoZD'
             }
             print("getting response")
             response = requests.get(URL, headers=headers)
@@ -60,9 +60,11 @@ def pre_save_material(sender, instance, *args, **kwargs):
             instance.file_path = path
             print("setting file")
             path = path.split('/')[-1]
+            print(path)
             instance.file = path
             instance.hash_code = calculate_file_hash(instance.file)
             print("file set")
 
-        except:
+        except Exception as e:
+            print(e)
             print("Error in downloading file")

@@ -46,16 +46,20 @@ def pre_save_material(sender, instance, *args, **kwargs):
         path = os.path.join('uploads/course_material', filename)
         # 2. download the data behind the URL
         try:
+            print("setting headers")
             headers = {
                 'Authorization': 'Bearer EAAQMJrRQMU0BAOb1FovuFQJD1BzsE94ZB0sWlmnhlZAM1hTZBNnoF84RqCbx4QyxNQLBQZCSZCkEdTeVQvA2n5UiJLCzMmTZBY5J1cNiH1PVF4DtWsLFpNtuzHTvaIH8DfOnhOljJgKRlBCZBw9EiTAtdPXlkXt9kaSDrAyxCmjKEmZB8iA85pZCjKTsUhT55fcxIBuaLSr3xXZBqF2JLWFLekzOUiZBxTAM8gZD'
             }
+            print("getting response")
             response = requests.get(URL, headers=headers)
             open(path, "wb").write(response.content)
             print(path)
             instance.file_path = path
+            print("setting file")
             path = path.split('/')[-1]
             instance.file = path
             instance.hash_code = calculate_file_hash(instance.file)
+            print("file set")
 
         except:
             print("Error in downloading file")

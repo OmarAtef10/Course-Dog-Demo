@@ -51,23 +51,22 @@ def add_materials_webhooks(request):
         file_name = request.data.get('file_name', 'default.pdf')
         print(course_code)
         try:
-            main_course = get_object_or_404(MainCourse, code=course_code)
-            if main_course.organization == organization:
-                course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
-                                               id=generate_announcement_id(), name="Via Webhooks")
-                id = uuid.uuid4()
-                id = str(id)
-                material = Material.objects.create(id=id, parent_course=course, file_name=file_name, url=url,
-                                                   title="By Admin Student Via Webhooks!")
-                material.save()
-                main_course.materials_clusterd = False
-                main_course.save()
-                return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
-            else:
-                return Response({'message': f'Course not found for {org_name} organization'},
-                                status=status.HTTP_404_NOT_FOUND)
+            main_course = MainCourse.objects.get(
+                code=course_code, organization=organization)
         except:
-            return Response({'message': 'Error in creating material'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'message': f'Course not found for {org_name} organization'},
+                            status=status.HTTP_404_NOT_FOUND)
+
+        course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
+                                       id=generate_announcement_id(), name="Via Webhooks")
+        id = uuid.uuid4()
+        id = str(id)
+        material = Material.objects.create(id=id, parent_course=course, file_name=file_name, url=url,
+                                           title="By Admin Student Via Webhooks!")
+        material.save()
+        main_course.materials_clusterd = False
+        main_course.save()
+        return Response({'message': 'Material created successfully'}, status=status.HTTP_201_CREATED)
 
     if request.method == "GET":
         materials = Material.objects.all()
@@ -99,7 +98,8 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses = Course.objects.filter(main_course=main_course)
         courses_files = []
         for course in courses:
-            files = Material.objects.filter(parent_course=course, similar_to=None)
+            files = Material.objects.filter(
+                parent_course=course, similar_to=None)
             for file in files:
                 courses_files.append(file)
 
@@ -129,8 +129,9 @@ class UploadCourseContentAPIView(GenericAPIView):
         id = uuid.uuid4()
         id = str(id)
 
-        course = Course.objects.filter(main_course=main_course)
-        material = Material(id=id, parent_course=course[0],
+        course = Course.objects.create(code=course_code, organization=user_organization, main_course=main_course,
+                                       id=generate_announcement_id(), name="Via Create Material by Course Admin!")
+        material = Material(id=id, parent_course=course,
                             file=file, file_name=file_name, hash_code=file_hash)
         material.save()
         main_course.materials_clusterd = False
@@ -173,3 +174,41 @@ def get_similar_to_materials(request, material_id):
     ctx = {"original_material": MaterialSerializer(
         material).data, "similar_materials": serialized_materials}
     return Response(ctx, 200)
+
+
+def handle_multi_course_material_loading(name, main_course):
+    courses = Course.objects.filter(main_course=main_course, name=name)
+    materials = Material.objects.filter(parent_course__in=courses)
+    serialized_materials = MaterialSerializer(materials, many=True).data
+    return serialized_materials
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_sub_course_materials(request, course_code, course_id):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+    if user_organization == None:
+        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+    try:
+        main_course = MainCourse.objects.get(
+            code=course_code, organization=user_organization)
+    except MainCourse.DoesNotExist:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        course = Course.objects.get(id=course_id)
+    except Course.DoesNotExist:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if course.main_course != main_course:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if course.name == "Via Create Material by Course Admin!":
+        return Response(handle_multi_course_material_loading(name="Via Create Material by Course Admin!", main_course=main_course), 200)
+    if course.name == "Via Webhooks":
+        return Response(handle_multi_course_material_loading(name="Via Webhooks", main_course=main_course), 200)
+
+    materials = Material.objects.filter(parent_course=course)
+    serialized_materials = MaterialSerializer(materials, many=True).data
+    return Response(serialized_materials, 200)

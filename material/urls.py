@@ -13,4 +13,6 @@ urlpatterns = [
          views.delete_course_content),
     path('similar-materials/<str:material_id>/',
          views.get_similar_to_materials, name='similar_materials'),
+    path('sub-courses/<str:course_code>/<str:course_id>/',
+         views.get_sub_course_materials, name='get-sub-courses-materials'),
 ]

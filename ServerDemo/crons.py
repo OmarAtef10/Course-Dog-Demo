@@ -9,6 +9,7 @@ from ServerDemo.machine_learning.MaterialClustering import UKMeansClusterer
 from ServerDemo.machine_learning.AnnouncementClustering import AnnouncementClustering
 import tensorflow as tf
 import os
+import nltk
 
 from organization.models import Organization
 from course.models import Course, MainCourse
@@ -25,7 +26,9 @@ class MaterialsClusteringJob(CronJobBase):
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'ServerDemo.Materials_Clustering'
 
+
     def __init__(self):
+        nltk.download('punkt')
         self.preprocessor = Preprocessor()
         self.model = UKMeansClusterer()
         self.PROJECT_ROOT_PATH = os.getenv('PROJECT_ROOT_PATH') + '/'
@@ -78,7 +81,7 @@ class MaterialsClusteringJob(CronJobBase):
                 logger.info(f"preprocessing {fullpath}")
                 content = self.preprocessor.preprocess_text(content)
             except Exception as e:
-                logger.warn(f"failed to read or preprocess {fullpath}. Skipping...")
+                logger.warn(f"failed to read or preprocess {fullpath}. Skipping...{e}")
                 continue
 
             logger.info(f"successfully read {fullpath}")
@@ -176,7 +179,7 @@ class AnnouncementClusteringJob(CronJobBase):
                 logger.info(f"starting preprocessing on announcement {id}")
                 content = self.preprocessor.preprocess_text(content, remove_numbers=False, remove_punctuation=False)
             except Exception as e:
-                logger.warn(f"failed to preproccess announcement {id}. Skipping...")
+                logger.warn(f"failed to preproccess announcement {id}. Skipping...{e}")
                 continue
 
             announcements_objects.append(

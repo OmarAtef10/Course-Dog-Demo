@@ -99,7 +99,8 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses = Course.objects.filter(main_course=main_course)
         courses_files = []
         for course in courses:
-            files = Material.objects.filter(parent_course=course, similar_to=None)
+            files = Material.objects.filter(
+                parent_course=course, similar_to=None)
             for file in files:
                 courses_files.append(file)
 
@@ -129,8 +130,9 @@ class UploadCourseContentAPIView(GenericAPIView):
         id = uuid.uuid4()
         id = str(id)
 
-        course = Course.objects.filter(main_course=main_course)
-        material = Material(id=id, parent_course=course[0],
+        course = Course.objects.create(code=course_code, organization=user_organization, main_course=main_course,
+                                       id=generate_announcement_id(), name="Via Create Material by Course Admin!")
+        material = Material(id=id, parent_course=course,
                             file=file, file_name=file_name, hash_code=file_hash)
         material.save()
         main_course.materials_clusterd = False

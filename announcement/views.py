@@ -120,7 +120,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         courses_list = get_main_course_sub_courses(main_course)
         announcements = []
         for course_ in courses_list:
-            course_announcements = Announcement.objects.filter(course=course_, similar_to=None)
+            course_announcements = Announcement.objects.filter(
+                course=course_, similar_to=None)
             for announcement in course_announcements:
                 announcements.append(announcement)
 
@@ -153,15 +154,19 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement_details = request.data.get("announcement", "")
         if announcement_details == "":
             return Response({"message": "Announcement cannot be empty"}, status=status.HTTP_400_BAD_REQUEST)
-        courses = get_main_course_sub_courses(main_course)
-        for course in courses:
-            announcement = Announcement(
-                id=generate_announcement_id(),
-                course=course,
-                title=title,
-                content=announcement_details,
-            )
-            announcement.save()
+
+        course = Course.objects.create(
+            code=main_course.code, organization=main_course.organization, main_course=main_course,
+            name="Via Create Announcement by Course Admin", id=generate_announcement_id())
+
+        announcement = Announcement(
+            id=generate_announcement_id(),
+            course=course,
+            title=title,
+            content=announcement_details,
+        )
+
+        announcement.save()
         main_course.announcements_clusterd = False
         main_course.save()
         return Response({"message": "success"}, 200)

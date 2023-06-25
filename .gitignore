@@ -25,3 +25,6 @@ bin/
 include/
 Lib/
 Lib64/
+env/
+docker-compose.yml
+BSAM

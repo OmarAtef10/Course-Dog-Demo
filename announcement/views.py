@@ -67,8 +67,10 @@ def add_announcement(request):
         organization = get_object_or_404(Organization, name=org_name)
         course_code = request.data['course_code']
         announcement = request.data['announcement']
-        course = Course.objects.get(code=course_code)
-        if course.organization == organization:
+        main_course = MainCourse.objects.get(code=course_code)
+        if main_course.organization == organization:
+            course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
+                                           id=generate_announcement_id(), name="Via Webhooks")
 
             while True:
                 id = random.randint(100, 999999)
@@ -78,6 +80,8 @@ def add_announcement(request):
                                                                creation_date=datetime.datetime.now())
                     announcement.save()
                     break
+                main_course.announcements_clusterd = False
+                main_course.save()
 
             return Response({'message': 'Announcement created successfully'}, status=HTTP_201_CREATED)
         else:
@@ -116,7 +120,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         courses_list = get_main_course_sub_courses(main_course)
         announcements = []
         for course_ in courses_list:
-            course_announcements = Announcement.objects.filter(course=course_, similar_to = None)
+            course_announcements = Announcement.objects.filter(course=course_, similar_to=None)
             for announcement in course_announcements:
                 announcements.append(announcement)
 
@@ -158,6 +162,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
                 content=announcement_details,
             )
             announcement.save()
+        main_course.announcements_clusterd = False
+        main_course.save()
         return Response({"message": "success"}, 200)
 
     def delete(self, request, course_code):

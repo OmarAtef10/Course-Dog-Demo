@@ -1,0 +1,31 @@
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:23:22: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:23:24: found 2 subcourses
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:23:24: found 3 materials files
+INFO @ handle_unclustered_course - 24/06/2023 18:23:24: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:25: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:25: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:25: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:26: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:26: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:26: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:27: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:27: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:23:27: starting clustering on 3 materials
+INFO @ handle_unclustered_course - 24/06/2023 18:23:27: finisehd clustering, saving results
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:28:46: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:28:47: found 2 subcourses
+INFO @ get_all_materials_from_main_course - 24/06/2023 18:28:47: found 3 materials files
+INFO @ handle_unclustered_course - 24/06/2023 18:28:47: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:48: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:48: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_1.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:48: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:49: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:49: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:49: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:50: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:50: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/material1_2.pdf
+INFO @ handle_unclustered_course - 24/06/2023 18:28:50: starting clustering on 3 materials
+INFO @ handle_unclustered_course - 24/06/2023 18:28:50: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 24/06/2023 18:28:50: successfully clustered materials

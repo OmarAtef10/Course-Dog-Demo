@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    command: sh -c '/app/wait-for db:5432 -- /app/env/bin/python3 manage.py runserver 0.0.0.0:8000'
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+
+  db:
+    container_name: db
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 1010abab
+      POSTGRES_USER: course-dog
+      POSTGRES_DB: course-dog-db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata: {}

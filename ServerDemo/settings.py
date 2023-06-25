@@ -224,7 +224,7 @@ DATABASES = {
         'NAME': 'course-dog-db',
         'USER': 'course-dog',
         'PASSWORD': '1010abab',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

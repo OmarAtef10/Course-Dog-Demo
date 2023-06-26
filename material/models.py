@@ -27,13 +27,13 @@ class Material(models.Model):
         max_length=500, path="uploads/course_material", blank=True, null=True)
     file = models.FileField(default='', blank=True,
                             null=True, upload_to='course_material/')
-    creation_date = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
     hash_code = models.CharField(max_length=512, null=True, blank=True)
     similar_to = models.ForeignKey(
         "self", on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return f"material for {self.parent_course}"
+        return f"material {self.file_name} for {self.parent_course.main_course}"
 
 
 @receiver(pre_save, sender=Material)
@@ -44,6 +44,7 @@ def pre_save_material(sender, instance, *args, **kwargs):
             return
         filename = instance.file_name
         filename += ".pdf"
+        instance.file_name = filename
         print(filename)
         path = os.path.join('uploads/course_material', filename)
         print("CWD!:- ", os.getcwd())
@@ -55,7 +56,7 @@ def pre_save_material(sender, instance, *args, **kwargs):
         try:
             print("setting headers")
             headers = {
-                'Authorization': 'Bearer EAAQMJrRQMU0BAB3YQsfIzBGtPlCZCOtZCZAmEF9MZCgMAZCqb2ElX4kHgoLYi2y2BZBQD3yoPxYX4fnWMTPdAwcAZAL6tG2yQ0KfqpLqzEg8zkGedPChz1SPuQZCabXIJI4yz1rTChRdRjDFvvvouH0gE1Qk8fqdVQztjhibjEseZCCizukrLtvJR1oqDcAXgnzvqzq0NUnc6kXN7WwMXl00cdt2d3PFkpLoZD'
+                'Authorization': 'Bearer EAAQMJrRQMU0BALBMX70SS8xI7BdDNr9tZBnWVoJ9G1VmTAcHLj0zlgVDKgYSZAvJzIOZBwwZAgYEq1yUG23ped0PLchnszgZC9PZAYpzawosOPWuDX69jrEfOdVIqwEkMJffEkfAFGEo2TUJR5XodC3BEccjjNKgBPLgS2woEZBgMQtghb6tugT9yu8P1cNw0nvouQixhaFctrGx0j9qJIZAGG0cYQ9mR6EZD'
             }
             print("getting response")
             response = requests.get(URL, headers=headers)

@@ -94,3 +94,336 @@ INFO @ handle_unclustered_course - 25/06/2023 15:54:49: successfully read /home/
 INFO @ handle_unclustered_course - 25/06/2023 15:54:49: starting clustering on 23 materials
 INFO @ handle_unclustered_course - 25/06/2023 15:54:49: finisehd clustering, saving results
 INFO @ handle_unclustered_course - 25/06/2023 15:54:49: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:12:42: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:12:43: found 13 subcourses
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:12:43: found 36 materials files
+INFO @ handle_unclustered_course - 26/06/2023 10:12:43: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1
+WARN @ handle_unclustered_course - 26/06/2023 10:12:43: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:12:43: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:12:44: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png
+WARN @ handle_unclustered_course - 26/06/2023 10:12:44: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:44: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:45: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:45: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:45: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:45: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:45: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:47: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:48: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:48: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:49: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:50: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:50: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:50: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:52: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:53: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:53: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:54: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:54: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:54: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:55: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:57: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:57: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:12:57: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:13:02: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:13:02: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:13:02: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:13:02: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:13:02: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf
+WARN @ handle_unclustered_course - 26/06/2023 10:13:03: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf. Skipping...PyCryptodome is required for AES algorithm
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png
+WARN @ handle_unclustered_course - 26/06/2023 10:13:03: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png
+WARN @ handle_unclustered_course - 26/06/2023 10:13:03: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:13:03: starting clustering on 25 materials
+INFO @ handle_unclustered_course - 26/06/2023 10:13:04: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 26/06/2023 10:13:04: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:21:18: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:21:19: found 15 subcourses
+INFO @ get_all_materials_from_main_course - 26/06/2023 10:21:19: found 38 materials files
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1
+WARN @ handle_unclustered_course - 26/06/2023 10:21:19: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:20: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png
+WARN @ handle_unclustered_course - 26/06/2023 10:21:20: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:21: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:26: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:27: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:27: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:29: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:30: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:30: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:30: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:35: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:35: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:35: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:35: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 10:21:35: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:35: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf
+WARN @ handle_unclustered_course - 26/06/2023 10:21:36: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf. Skipping...PyCryptodome is required for AES algorithm
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png
+WARN @ handle_unclustered_course - 26/06/2023 10:21:36: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png
+WARN @ handle_unclustered_course - 26/06/2023 10:21:36: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 10:21:36: starting clustering on 27 materials
+INFO @ handle_unclustered_course - 26/06/2023 10:21:38: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 26/06/2023 10:21:38: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 26/06/2023 11:05:06: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 26/06/2023 11:05:06: found 19 subcourses
+INFO @ get_all_materials_from_main_course - 26/06/2023 11:05:06: found 41 materials files
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1
+WARN @ handle_unclustered_course - 26/06/2023 11:05:06: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Untitled_Document_1. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_IJ9JcBa.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_pIuEOmn.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:06: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_rWoXGPy.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final_Yii5RTJ.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Godz.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:07: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab3.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png
+WARN @ handle_unclustered_course - 26/06/2023 11:05:07: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-37.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:07: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-3-Intro-rule-based-systems.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-ontology-develop-examples.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:08: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week11-sparql.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-Intro-to-SW-lect1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:09: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-scheme-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week2-lect1-other-KR.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1 -Apache Jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:10: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week10-owl.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week3-lect2-RBReasoning-Conflict.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week1-lect2-Intro-to-KE.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:14: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:15: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ESBook.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:15: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week4-lect1-RBReasoning-pattern-final`.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-Intro-to-SW-technology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:16: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week5-lect1-uncertainty-RBS.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week6-lect1-Intro-to-ontology.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:17: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:18: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:18: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week8-ontology-develop.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:18: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ug.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:23: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab1.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:23: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab2.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:23: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab4.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab5.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:23: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab1-protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx
+WARN @ handle_unclustered_course - 26/06/2023 11:05:23: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/lab 2  protege.docx. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:23: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab 2 Apache jena.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf
+WARN @ handle_unclustered_course - 26/06/2023 11:05:24: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Exam-2012.pdf. Skipping...PyCryptodome is required for AES algorithm
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Mid-15.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png
+WARN @ handle_unclustered_course - 26/06/2023 11:05:24: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png
+WARN @ handle_unclustered_course - 26/06/2023 11:05:24: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Screenshot_from_2023-06-22_15-17-17_Vu6oWhW.png. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST1.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/TEST2.pdf
+INFO @ handle_unclustered_course - 26/06/2023 11:05:24: starting clustering on 30 materials
+INFO @ handle_unclustered_course - 26/06/2023 11:05:26: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 26/06/2023 11:05:26: successfully clustered materials

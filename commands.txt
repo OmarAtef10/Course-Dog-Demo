@@ -11,7 +11,7 @@
 
 ---Run celery
     celery -A ServerDemo worker -l info
-    --for Windows!!
+    --for Windows!!..EOF marker n
         -install eventlet
            celery -A ServerDemo worker -l info -P gevent
 

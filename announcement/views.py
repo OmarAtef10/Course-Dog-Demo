@@ -67,7 +67,8 @@ def add_announcement(request):
         organization = get_object_or_404(Organization, name=org_name)
         course_code = request.data['course_code']
         announcement = request.data['announcement']
-        main_course = MainCourse.objects.get(code=course_code)
+        main_course = MainCourse.objects.get(
+            code=course_code, organization=organization)
         if main_course.organization == organization:
             course = Course.objects.create(code=course_code, organization=organization, main_course=main_course,
                                            id=generate_announcement_id(), name="Via Webhooks")
@@ -120,7 +121,8 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         courses_list = get_main_course_sub_courses(main_course)
         announcements = []
         for course_ in courses_list:
-            course_announcements = Announcement.objects.filter(course=course_, similar_to=None)
+            course_announcements = Announcement.objects.filter(
+                course=course_, similar_to=None)
             for announcement in course_announcements:
                 announcements.append(announcement)
 
@@ -153,15 +155,19 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcement_details = request.data.get("announcement", "")
         if announcement_details == "":
             return Response({"message": "Announcement cannot be empty"}, status=status.HTTP_400_BAD_REQUEST)
-        courses = get_main_course_sub_courses(main_course)
-        for course in courses:
-            announcement = Announcement(
-                id=generate_announcement_id(),
-                course=course,
-                title=title,
-                content=announcement_details,
-            )
-            announcement.save()
+
+        course = Course.objects.create(
+            code=main_course.code, organization=main_course.organization, main_course=main_course,
+            name="Via Create Announcement by Course Admin", id=generate_announcement_id())
+
+        announcement = Announcement(
+            id=generate_announcement_id(),
+            course=course,
+            title=title,
+            content=announcement_details,
+        )
+
+        announcement.save()
         main_course.announcements_clusterd = False
         main_course.save()
         return Response({"message": "success"}, 200)
@@ -203,3 +209,48 @@ def get_similar_announcements(request, announcement_id):
     ctx = {"orgininal_announcement": AnnouncementSerializer(
         announcement).data, "similar_announcements": serialized_announcements}
     return Response(ctx, 200)
+
+
+def handle_multi_announcement_loading(name, main_course):
+    courses = Course.objects.filter(
+        main_course=main_course, name=name)
+    announcements = Announcement.objects.filter(course__in=courses)
+    serialized_announcements = AnnouncementSerializer(
+        announcements, many=True).data
+    return serialized_announcements
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_sub_course_announcements(request, course_code, course_id):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+    if user_organization == None:
+        return Response({"message": "User is not a member of an organization"}, status=status.HTTP_404_NOT_FOUND)
+    try:
+        main_course = MainCourse.objects.get(
+            code=course_code, organization=user_organization)
+    except MainCourse.DoesNotExist:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        course = Course.objects.get(id=course_id)
+    except Course.DoesNotExist:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if course.main_course != main_course:
+        return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if course.name == "Via Create Announcement by Course Admin":
+
+        return Response(handle_multi_announcement_loading(name="Via Create Announcement by Course Admin",
+                                                          main_course=main_course), 200)
+
+    if course.name == "Via Webhooks":
+
+        return Response(handle_multi_announcement_loading(name="Via Webhooks", main_course=main_course), 200)
+
+    announcements = Announcement.objects.filter(course=course)
+    serialized_announcements = AnnouncementSerializer(
+        announcements, many=True).data
+    return Response(serialized_announcements, 200)

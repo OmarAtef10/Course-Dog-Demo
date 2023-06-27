@@ -127,11 +127,9 @@ def course_admins_view(request, course_code):
     course = get_object_or_404(
         MainCourse, code=course_code, organization=user_organization)
     admins = get_all_course_admins(course)
-    print(admins)
     res = []
     for admin in admins:
         res.append(admin.user.username)
-    print(res)
 
     ctx = {"course_admins": res}
 

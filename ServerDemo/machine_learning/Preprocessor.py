@@ -48,38 +48,42 @@ class Preprocessor:
         stems = [stemmer.stem(word) for word in word_tokens]
         return ' '.join(stems)  
     
-    def __preprocess(self, text):
-        if self.remove_whitespace: text = self.remove_whitespace_fun(text)
-        if self.remove_punctuation: text = self.remove_punctuation_fun(text)
-        if self.remove_numbers:  text = self.remove_numbers_fun(text)
-        if self.lower_case: text = self.lower_case_fun(text)
-        if self.remove_stopwords: text = self.remove_stopwords_fun(text)
-        if self.stem_words: text = self.stem_words_fun(text)
+    def __preprocess(self, text, remove_whitespace=True, remove_punctuation=True, remove_numbers=True, lower_case=True, remove_stopwords=True, stem_words=True):
+        if remove_whitespace: text = self.remove_whitespace_fun(text)
+        if remove_punctuation: text = self.remove_punctuation_fun(text)
+        if remove_numbers:  text = self.remove_numbers_fun(text)
+        if lower_case: text = self.lower_case_fun(text)
+        if remove_stopwords: text = self.remove_stopwords_fun(text)
+        if stem_words: text = self.stem_words_fun(text)
         
         return text
     
     def preprocess_list(self, texts, remove_whitespace=True, remove_punctuation=True, remove_numbers=True, lower_case=True, remove_stopwords=True, stem_words=True):
         out = []
-        self.remove_whitespace = remove_whitespace
-        self.remove_punctuation = remove_punctuation
-        self.remove_numbers = remove_numbers
-        self.lower_case = lower_case
-        self.remove_stopwords = remove_stopwords
-        self.stem_words = stem_words
 
         for text in texts:
             out.append(
-                self.__preprocess(text)
+                self.__preprocess(
+                    text,
+                    remove_whitespace,
+                    remove_punctuation,
+                    remove_numbers,
+                    lower_case,
+                    remove_stopwords,
+                    stem_words
+                )
             )
         
         return out
     
     def preprocess_text(self, text, remove_whitespace=True, remove_punctuation=True, remove_numbers=True, lower_case=True, remove_stopwords=True, stem_words=True):
-        self.remove_whitespace = remove_whitespace
-        self.remove_punctuation = remove_punctuation
-        self.remove_numbers = remove_numbers
-        self.lower_case = lower_case
-        self.remove_stopwords = remove_stopwords
-        self.stem_words = stem_words
 
-        return self.__preprocess(text)
+        return self.__preprocess(
+            text,
+            remove_whitespace,
+            remove_punctuation,
+            remove_numbers,
+            lower_case,
+            remove_stopwords,
+            stem_words
+        )

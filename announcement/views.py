@@ -242,15 +242,24 @@ def get_sub_course_announcements(request, course_code, course_id):
         return Response({"message": "Course does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
     if course.name == "Via Create Announcement by Course Admin":
-
-        return Response(handle_multi_announcement_loading(name="Via Create Announcement by Course Admin",
-                                                          main_course=main_course), 200)
+        ctx = {
+            "course": CourseSerializer(course).data,
+            "materials": handle_multi_announcement_loading(name="Via Create Announcement by Course Admin", main_course=main_course)
+        }
+        return Response(ctx, 200)
 
     if course.name == "Via Webhooks":
-
-        return Response(handle_multi_announcement_loading(name="Via Webhooks", main_course=main_course), 200)
+        ctx = {
+            "course": CourseSerializer(course).data,
+            "materials": handle_multi_announcement_loading(name="Via Webhooks", main_course=main_course)
+        }
+        return Response(ctx, 200)
 
     announcements = Announcement.objects.filter(course=course)
     serialized_announcements = AnnouncementSerializer(
         announcements, many=True).data
-    return Response(serialized_announcements, 200)
+    ctx = {
+        "course": CourseSerializer(course).data,
+        "announcements": serialized_announcements
+    }
+    return Response(ctx, 200)

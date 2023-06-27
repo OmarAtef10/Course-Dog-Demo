@@ -116,6 +116,7 @@ class UserOrganizationCoursesAPIView(GenericAPIView):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def course_admins_view(request, course_code):
     user = request.user
     user_organization = get_user_profile(user).organization
@@ -126,8 +127,15 @@ def course_admins_view(request, course_code):
     course = get_object_or_404(
         MainCourse, code=course_code, organization=user_organization)
     admins = get_all_course_admins(course)
+    print(admins)
+    res = []
+    for admin in admins:
+        res.append(admin.user.username)
+    print(res)
 
-    return Response(UserSerializer(admins, many=True).data, status=status.HTTP_200_OK)
+    ctx = {"course_admins": res}
+
+    return Response(ctx, status=status.HTTP_200_OK)
 
 
 @api_view(["GET"])

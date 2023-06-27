@@ -122,7 +122,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
         announcements = []
         for course_ in courses_list:
             course_announcements = Announcement.objects.filter(
-                course=course_, similar_to=None)
+                course=course_, similar_to=None).order_by('-creation_date')
             for announcement in course_announcements:
                 announcements.append(announcement)
 
@@ -203,7 +203,7 @@ def get_similar_announcements(request, announcement_id):
     except Announcement.DoesNotExist:
         return Response({"message": "Announcement does not exist"}, status=status.HTTP_404_NOT_FOUND)
     similar_announcements = Announcement.objects.filter(
-        similar_to=announcement)
+        similar_to=announcement).order_by('-creation_date')
     serialized_announcements = AnnouncementSerializer(
         similar_announcements, many=True).data
     ctx = {"orgininal_announcement": AnnouncementSerializer(
@@ -214,7 +214,8 @@ def get_similar_announcements(request, announcement_id):
 def handle_multi_announcement_loading(name, main_course):
     courses = Course.objects.filter(
         main_course=main_course, name=name)
-    announcements = Announcement.objects.filter(course__in=courses)
+    announcements = Announcement.objects.filter(
+        course__in=courses).order_by('-creation_date')
     serialized_announcements = AnnouncementSerializer(
         announcements, many=True).data
     return serialized_announcements
@@ -244,18 +245,19 @@ def get_sub_course_announcements(request, course_code, course_id):
     if course.name == "Via Create Announcement by Course Admin":
         ctx = {
             "course": CourseSerializer(course).data,
-            "materials": handle_multi_announcement_loading(name="Via Create Announcement by Course Admin", main_course=main_course)
+            "announcements": handle_multi_announcement_loading(name="Via Create Announcement by Course Admin", main_course=main_course)
         }
         return Response(ctx, 200)
 
     if course.name == "Via Webhooks":
         ctx = {
             "course": CourseSerializer(course).data,
-            "materials": handle_multi_announcement_loading(name="Via Webhooks", main_course=main_course)
+            "announcements": handle_multi_announcement_loading(name="Via Webhooks", main_course=main_course)
         }
         return Response(ctx, 200)
 
-    announcements = Announcement.objects.filter(course=course)
+    announcements = Announcement.objects.filter(
+        course=course).order_by('-creation_date')
     serialized_announcements = AnnouncementSerializer(
         announcements, many=True).data
     ctx = {

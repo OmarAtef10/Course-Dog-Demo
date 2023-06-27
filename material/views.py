@@ -99,7 +99,7 @@ class UploadCourseContentAPIView(GenericAPIView):
         courses_files = []
         for course in courses:
             files = Material.objects.filter(
-                parent_course=course, similar_to=None)
+                parent_course=course, similar_to=None).order_by('-created_at')
             for file in files:
                 courses_files.append(file)
 
@@ -168,7 +168,7 @@ def get_similar_to_materials(request, material_id):
     except Material.DoesNotExist:
         return Response({"message": "Material does not exist"}, status=status.HTTP_404_NOT_FOUND)
 
-    similar_materials = Material.objects.filter(similar_to=material)
+    similar_materials = Material.objects.filter(similar_to=material).order_by('-created_at')
     serialized_materials = MaterialSerializer(
         similar_materials, many=True).data
     ctx = {"original_material": MaterialSerializer(
@@ -178,7 +178,7 @@ def get_similar_to_materials(request, material_id):
 
 def handle_multi_course_material_loading(name, main_course):
     courses = Course.objects.filter(main_course=main_course, name=name)
-    materials = Material.objects.filter(parent_course__in=courses)
+    materials = Material.objects.filter(parent_course__in=courses).order_by('-created_at')
     serialized_materials = MaterialSerializer(materials, many=True).data
     return serialized_materials
 
@@ -217,7 +217,7 @@ def get_sub_course_materials(request, course_code, course_id):
         }
         return Response(ctx, 200)
 
-    materials = Material.objects.filter(parent_course=course)
+    materials = Material.objects.filter(parent_course=course).order_by('-created_at')
     serialized_materials = MaterialSerializer(materials, many=True).data
     ctx = {
         "course": CourseSerializer(course).data,

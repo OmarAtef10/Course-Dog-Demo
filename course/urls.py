@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('load-courses/', views.load_courses_from_user, name='load-courses'),
-
+    path('course-admins/<str:course_code>/',views.course_admins_view),
     path('list-courses/', views.UserOrganizationCoursesAPIView.as_view()),
     path('list-courses/<int:phone_number>/', views.list_user_courses_by_phone_number,
          name='list-user-courses-by-phone-number'),

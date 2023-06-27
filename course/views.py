@@ -23,7 +23,7 @@ from announcement.tasks import load_announcement_helper
 from .tasks import download_drive_material
 from material.tasks import download_materials
 from announcement.tasks import load_announcements
-
+from authentication.serializers import UserSerializer
 
 # Create your views here.
 
@@ -113,6 +113,21 @@ class UserOrganizationCoursesAPIView(GenericAPIView):
         courses = get_all_organization_courses(user_organization)
         serialized_courses = self.get_serializer(courses, many=True)
         return Response(serialized_courses.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+def course_admins_view(request, course_code):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+
+    if user_organization == None:
+        return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
+
+    course = get_object_or_404(
+        MainCourse, code=course_code, organization=user_organization)
+    admins = get_all_course_admins(course)
+
+    return Response(UserSerializer(admins, many=True).data, status=status.HTTP_200_OK)
 
 
 @api_view(["GET"])
@@ -265,7 +280,7 @@ def handle_classroom_loading(request):
     code = request.data.get('code', "")
     if code == "" or code == None:
         return Response({"message": "No code Provided"}, status=400)
-    
+
     try:
         ctx = OAuth_helpers.get_single_course(creds.token, classroom_id)
         if ctx.status_code != 200:

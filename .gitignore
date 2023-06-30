@@ -23,7 +23,7 @@ uploads/
 serverdemo_env/
 bin/
 include/
-Lib/
-Lib64/
+lib/
+lib64/
 env/
 BSAM

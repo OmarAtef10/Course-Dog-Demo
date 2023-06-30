@@ -27,13 +27,13 @@ class Material(models.Model):
         max_length=500, path="uploads/course_material", blank=True, null=True)
     file = models.FileField(default='', blank=True,
                             null=True, upload_to='course_material/')
-    creation_date = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
     hash_code = models.CharField(max_length=512, null=True, blank=True)
     similar_to = models.ForeignKey(
         "self", on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return f"material for {self.parent_course}"
+        return f"material {self.file_name} for {self.parent_course.main_course}"
 
 
 @receiver(pre_save, sender=Material)
@@ -44,14 +44,19 @@ def pre_save_material(sender, instance, *args, **kwargs):
             return
         filename = instance.file_name
         filename += ".pdf"
+        instance.file_name = filename
         print(filename)
         path = os.path.join('uploads/course_material', filename)
+        print("CWD!:- ", os.getcwd())
+        print("PATH!:- ", path)
+        final_path = os.path.join(os.getcwd(), path)
+        print("FINAL PATH!:- ", final_path)
         # 2. download the data behind the URL
         print("Downloading from ", URL)
         try:
             print("setting headers")
             headers = {
-                'Authorization': 'Bearer EAAQMJrRQMU0BAHoSY92hN0V1Ez3VGjogyui2uTv6o9voHBwZBZAOVEMrh6pp80t5cVyayhwvOmTNmW8KYZAHzZBIvJaCESGCUgdsfxkzAfB5uNELvYhIOwmjThpWL6WfFIft9m00c7iQZBycy8LBvxurHFGdGdu75jKsz1EYv5AXayNZBUhjdoTReh4ZBe254oBRyB0StFyKkFlduXzLYblC2YnC9voRksZD'
+                'Authorization': 'Bearer EAAQMJrRQMU0BALBMX70SS8xI7BdDNr9tZBnWVoJ9G1VmTAcHLj0zlgVDKgYSZAvJzIOZBwwZAgYEq1yUG23ped0PLchnszgZC9PZAYpzawosOPWuDX69jrEfOdVIqwEkMJffEkfAFGEo2TUJR5XodC3BEccjjNKgBPLgS2woEZBgMQtghb6tugT9yu8P1cNw0nvouQixhaFctrGx0j9qJIZAGG0cYQ9mR6EZD'
             }
             print("getting response")
             response = requests.get(URL, headers=headers)
@@ -60,9 +65,13 @@ def pre_save_material(sender, instance, *args, **kwargs):
             instance.file_path = path
             print("setting file")
             path = path.split('/')[-1]
-            instance.file = path
+            print(path)
+            final_path = final_path.split("/")[-2:]
+            print(final_path)
+            instance.file = "/".join(final_path)
             instance.hash_code = calculate_file_hash(instance.file)
             print("file set")
 
-        except:
+        except Exception as e:
+            print(e)
             print("Error in downloading file")

@@ -23,7 +23,7 @@ from announcement.tasks import load_announcement_helper
 from .tasks import download_drive_material
 from material.tasks import download_materials
 from announcement.tasks import load_announcements
-
+from authentication.serializers import UserSerializer
 
 # Create your views here.
 
@@ -42,14 +42,14 @@ def load_courses_from_user(request):
         # organization = profile.organization
         courses = OAuth_helpers.get_courses(creds.token)
 
-        # for key, val in courses.items():
-        #     for entry in val:
-        #         try:
-        #             course = Course.objects.get(id=entry['id'])
-        #             # load_user_course_material.delay(user.id, course.id)
-        #             # load_announcement_helper.delay(user.id, course.id)
-        #         except Course.DoesNotExist:
-        #             course = None
+        for key, val in courses.items():
+            for entry in val:
+                try:
+                    course = Course.objects.get(id=entry['id'])
+                    load_user_course_material.delay(user.id, course.id)
+                    load_announcement_helper.delay(user.id, course.id)
+                except Course.DoesNotExist:
+                    pass
 
         #         # if course is None:
         #         #     course = Course(id=entry['id'], name=entry['name'], organization=organization,
@@ -113,6 +113,27 @@ class UserOrganizationCoursesAPIView(GenericAPIView):
         courses = get_all_organization_courses(user_organization)
         serialized_courses = self.get_serializer(courses, many=True)
         return Response(serialized_courses.data, status=status.HTTP_200_OK)
+
+
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def course_admins_view(request, course_code):
+    user = request.user
+    user_organization = get_user_profile(user).organization
+
+    if user_organization == None:
+        return Response({"message": "user is not a part of any organization."}, status=status.HTTP_404_NOT_FOUND)
+
+    course = get_object_or_404(
+        MainCourse, code=course_code, organization=user_organization)
+    admins = get_all_course_admins(course)
+    res = []
+    for admin in admins:
+        res.append(admin.user.username)
+
+    ctx = {"course_admins": res}
+
+    return Response(ctx, status=status.HTTP_200_OK)
 
 
 @api_view(["GET"])
@@ -241,7 +262,9 @@ def handle_drive_materials(request):
 
     except Exception as e:
         print(e)
-        return Response({"message": "Bummer, You Dont Have Access for This Folder"}, status=400)
+        if str(e).startswith("<"):
+            return Response({"message": "Bummer, You Dont Have Access for This Drive Folder"}, status=400)
+        return Response({"message": "Drive Already Linked To Something Else Please Contact Admin If You Think This Is A Mistake"}, status=400)
 
 
 @api_view(['POST'])
@@ -299,3 +322,21 @@ def handle_classroom_loading(request):
     except Exception as e:
         print(e)
         return Response({"message": str(e)}, status=400)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_sub_courses(request, course_code):
+    user = request.user
+    organization = get_user_profile(user).organization
+    if organization == None:
+        return Response({"message": "User is not a part of any organization"}, status=400)
+    main_course = MainCourse.objects.filter(
+        code=course_code, organization=organization)
+    if not main_course.exists():
+        return Response({"message": "No Such Course"}, status=400)
+    main_course = main_course[0]
+    courses = Course.objects.filter(
+        main_course=main_course).distinct("name")
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data, status=200)

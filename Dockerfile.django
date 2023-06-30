@@ -6,8 +6,14 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-COPY . /app/
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY coursedog_env /app/coursedog_env
 
-RUN python manage.py collectstatic --no-input
+ENV PATH="/app/coursedog_env/bin:$PATH"
+ENV PYTHONPATH="/app/coursedog_env/lib/python3.10/site-packages"
+
+COPY . .
+
+RUN chmod +x coursedog_env/bin/activate
+
+RUN /bin/bash -c "source /app/coursedog_env/bin/activate && \
+    python manage.py collectstatic --no-input"

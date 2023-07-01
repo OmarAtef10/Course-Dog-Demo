@@ -1,0 +1,7 @@
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:15: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:16: found 1 subcourses
+INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:16: found 0 materials files
+INFO @ handle_unclustered_course - 01/07/2023 17:40:16: starting clustering on 0 materials
+INFO @ handle_unclustered_course - 01/07/2023 17:40:16: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 01/07/2023 17:40:16: successfully clustered materials

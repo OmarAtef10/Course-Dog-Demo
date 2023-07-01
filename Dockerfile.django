@@ -6,13 +6,18 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y cron
 RUN python -m ensurepip --upgrade
 RUN python -m pip install --no-cache-dir --upgrade pip
 
+ENV PROJECT_ROOT_PATH=/app
+
+COPY crontab /etc/cron.d/my-cronjob
+RUN chmod 0644 /etc/cron.d/my-cronjob
+RUN crontab /etc/cron.d/my-cronjob
+
 # Copy the start.sh script
 COPY start.sh /app/start.sh
-
-# Update permissions to allow execution
 RUN chmod +x /app/start.sh
 
 COPY . .

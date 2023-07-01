@@ -21,3 +21,9 @@ INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 4 cou
 INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 0 unclustered annoucement
 INFO @ handle_unclustered_course - 25/06/2023 16:30:54: starting clustering on 0 announcements
 INFO @ handle_unclustered_course - 25/06/2023 16:30:54: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 01/07/2023 17:40:30: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 01/07/2023 17:40:30: found 1 courses
+INFO @ get_all_announcements_from_main_course - 01/07/2023 17:40:30: found 0 unclustered annoucement
+INFO @ handle_unclustered_course - 01/07/2023 17:40:30: starting clustering on 0 announcements
+INFO @ handle_unclustered_course - 01/07/2023 17:40:30: successfully clustered announcements

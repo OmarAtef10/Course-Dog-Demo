@@ -8,7 +8,7 @@ services:
     restart: on-failure
     entrypoint: ["/bin/bash", "-c"]
     command: >
-      "chmod +x /app/start.sh && source /app/coursedog_env/bin/activate && /app/start.sh"
+      "chmod +x /app/start.sh && /app/start.sh"
     ports:
       - "8000:8000"
     depends_on:

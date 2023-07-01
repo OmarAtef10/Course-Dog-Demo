@@ -6,10 +6,8 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-COPY coursedog_env /app/coursedog_env
-
-ENV PATH="/app/coursedog_env/bin:$PATH"
-ENV PYTHONPATH="/app/coursedog_env/lib/python3.10/site-packages"
+RUN python -m ensurepip --upgrade
+RUN python -m pip install --no-cache-dir --upgrade pip
 
 # Copy the start.sh script
 COPY start.sh /app/start.sh
@@ -19,10 +17,7 @@ RUN chmod +x /app/start.sh
 
 COPY . .
 
-RUN chmod +x coursedog_env/bin/activate
+# Install project dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN /bin/bash -c "source /app/coursedog_env/bin/activate && \
-    python manage.py collectstatic --no-input"
-
-# RUN /bin/bash 'source /app/coursedog_env/bin/activate && \
-#     watchmedo auto-restart --directory=. --pattern="*.py" --recursive -- celery -A ServerDemo worker -l info'
+RUN python manage.py collectstatic --no-input

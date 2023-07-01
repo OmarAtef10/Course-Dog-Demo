@@ -11,9 +11,18 @@ COPY coursedog_env /app/coursedog_env
 ENV PATH="/app/coursedog_env/bin:$PATH"
 ENV PYTHONPATH="/app/coursedog_env/lib/python3.10/site-packages"
 
+# Copy the start.sh script
+COPY start.sh /app/start.sh
+
+# Update permissions to allow execution
+RUN chmod +x /app/start.sh
+
 COPY . .
 
 RUN chmod +x coursedog_env/bin/activate
 
 RUN /bin/bash -c "source /app/coursedog_env/bin/activate && \
     python manage.py collectstatic --no-input"
+
+# RUN /bin/bash 'source /app/coursedog_env/bin/activate && \
+#     watchmedo auto-restart --directory=. --pattern="*.py" --recursive -- celery -A ServerDemo worker -l info'

@@ -6,12 +6,18 @@ services:
       context: .
       dockerfile: Dockerfile.django
     restart: on-failure
-    command: sh -c 'python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000'
+    entrypoint: ["/bin/bash", "-c"]
+    command: >
+      "chmod +x /app/start.sh && source /app/coursedog_env/bin/activate && /app/start.sh"
     ports:
       - "8000:8000"
     depends_on:
       - db
-
+      - redis
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
   db:
     container_name: db
     image: postgres:12

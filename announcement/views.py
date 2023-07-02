@@ -126,6 +126,7 @@ class UploadCourseAnnouncementAPIView(GenericAPIView):
             for announcement in course_announcements:
                 announcements.append(announcement)
 
+        announcements = sorted(announcements, key=lambda x: x.creation_date)
         serialized_announcements = self.get_serializer(
             announcements, many=True)
         serialized_course = MainCourseSerializer(main_course)

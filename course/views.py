@@ -258,7 +258,7 @@ def handle_drive_materials(request):
         linked_course.save()
         main_course.materials_clusterd = False
         main_course.save()
-        return Response({"message": "Rogger Rogger Importing Drive Folder!!"}, status=200)
+        return Response({"message": "Rogger Rogger Importing Drive Folder!!, pelase wait up to 2 minutes in order to all materials to load but you can close this page now"}, status=200)
 
     except Exception as e:
         print(e)
@@ -318,7 +318,7 @@ def handle_classroom_loading(request):
         load_announcements.delay(request.user.id, classroom_id, announcements)
         main_course.materials_clusterd = False
         main_course.save()
-        return Response({"message": "Rogger Rogger Importing ClassRoom Materials!!"}, status=200)
+        return Response({"message": "Rogger Rogger Importing ClassRoom Materials!!, pelase wait up to 2 minutes in order to all materials to load but you can close this page now"}, status=200)
     except Exception as e:
         print(e)
         return Response({"message": str(e)}, status=400)

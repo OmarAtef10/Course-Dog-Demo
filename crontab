@@ -1,1 +1,1 @@
-* * * * * cd $PROJECT_ROOT_PATH && coursedog_env/bin/python manage.py runcrons
+* * * * * cd $PROJECT_ROOT_PATH && python manage.py runcrons

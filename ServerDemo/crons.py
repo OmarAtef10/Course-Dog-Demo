@@ -10,6 +10,7 @@ from ServerDemo.machine_learning.AnnouncementClustering import AnnouncementClust
 import tensorflow as tf
 import os
 import nltk
+import tensorflow_hub as hub
 
 from organization.models import Organization
 from course.models import Course, MainCourse
@@ -128,7 +129,7 @@ class AnnouncementClusteringJob(CronJobBase):
     def __init__(self):
         self.preprocessor = Preprocessor()
         self.PROJECT_ROOT_PATH = os.getenv('PROJECT_ROOT_PATH')
-        self.use = tf.keras.saving.load_model(f'{self.PROJECT_ROOT_PATH}/USE')
+        self.use = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
         self.model = AnnouncementClustering(self.use)
     
     def get_all_announcements_from_main_course(self, main_course: MainCourse, logger):

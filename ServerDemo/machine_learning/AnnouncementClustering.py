@@ -1,19 +1,15 @@
-import tensorflow as tf
-from .Cluster import Cluster
-from .DataGenerator import DataGenerator
-from .Text import TextModel
-import numpy as np
+from ServerDemo.machine_learning.Cluster import Cluster
+from sklearn.metrics.pairwise import cosine_similarity
 
 class AnnouncementClustering:
-
-    def __init__(self, model) -> None:
-        self.model = model
+    def __init__(self, use) -> None:
+        self.use = use
 
 
     def canAppendCluster(self, cluster: Cluster, announcemnt, sim_matrix):
         # check members
         for a in cluster.ids:
-            if not sim_matrix[a][announcemnt.id]: return False
+            if not sim_matrix[a][announcemnt.id] >= 0.9: return False
 
         if announcemnt.sourceId in cluster.sources: return False
 
@@ -21,15 +17,15 @@ class AnnouncementClustering:
         return True
     
     def check_similarity(self, s1, s2):
-        pair = np.array([[str(s1), str(s2)]])
-        test = DataGenerator(
-            pair, labels=None, batch_size=1, shuffle=False, include_targets=False
-        )
+        pair = [s1, s2]
+        vectors = self.use(pair)
+        cosine_sim = cosine_similarity([vectors[0]], [vectors[1]])[0][0]
+        return cosine_sim
 
-        prob = self.model.predict(test[0], verbose=0)[0]
-        label_idx = np.argmax(prob)
-
-        return label_idx
+    def print_sim_matrix(self, sim_matrix):
+        for a1, row in sim_matrix.items():
+            for a2, val in sim_matrix[a1].items():
+                if val >= 0.5: print(a1, a2, val)
 
     def init_sim_matrix(self, announcements):
         n = len(announcements)
@@ -50,7 +46,6 @@ class AnnouncementClustering:
 
                 sim_matrix[a1_id][a2_id] = is_sim
                 sim_matrix[a2_id][a1_id] = is_sim
-
         return sim_matrix
     
     def extract_output(self, clusters):

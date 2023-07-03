@@ -62,7 +62,7 @@ class MaterialsClusteringJob(CronJobBase):
             if len(cluster) <= 1: continue # skip single clusters
 
             original, similar = self.seperate_cluster(cluster, course_materials)
-
+            original.similar_to = None
             for material in similar:
                 material.similar_to = original
                 material.save()
@@ -128,8 +128,8 @@ class AnnouncementClusteringJob(CronJobBase):
     def __init__(self):
         self.preprocessor = Preprocessor()
         self.PROJECT_ROOT_PATH = os.getenv('PROJECT_ROOT_PATH')
-        self.nn = tf.keras.saving.load_model(f'{self.PROJECT_ROOT_PATH}/BSAM')
-        self.model = AnnouncementClustering(self.nn)
+        self.use = tf.keras.saving.load_model(f'{self.PROJECT_ROOT_PATH}/USE')
+        self.model = AnnouncementClustering(self.use)
     
     def get_all_announcements_from_main_course(self, main_course: MainCourse, logger):
         announcements = {}
@@ -163,7 +163,7 @@ class AnnouncementClusteringJob(CronJobBase):
             if len(cluster) == 1: continue
 
             original, similar = self.separate_cluster(cluster, announements)
-
+            original.similar_to = None
             for announcement in similar:
                 announcement.similar_to = original
                 announcement.save()
@@ -196,6 +196,7 @@ class AnnouncementClusteringJob(CronJobBase):
             logger.fatal(f"Failed to cluster announcements of course {main_course.id} because {e}")
             logger.close()
             return False
+        for c in results: print(c)
         self.handle_reusults(results, course_announcements)
         logger.info(f"successfully clustered announcements")
         logger.close()
@@ -213,88 +214,22 @@ class AnnouncementClusteringJob(CronJobBase):
         except Exception as e:
             print(f"ERROR in announcement: {e}")
 
-class DB_FILL(CronJobBase):
+
+class Clear_Similar(CronJobBase):
     RUN_EVERY_MINS = 1
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-    code = 'ServerDemo.DB_FILL'
+    code = 'ServerDemo.Clear_Similar'
 
     def do(self):
-        try:
-            org = Organization(
-                faculty_name="fcai",
-                organization_name="cu",
-                name="fcai"
-            )
-            org.save()
-            
-            main_course = MainCourse(
-                code = "CS123",
-                organization=org,
-                name="Mr jack"
-            )
-            main_course.save()
+        for announcement in Announcement.objects.all():
+            announcement.similar_to = None
+            announcement.save()
+        
+        for material in Material.objects.all():
+            material.similar_to = None
+            material.save()
 
-            course1 = Course(
-                id="12",
-                code="CS123",
-                organization=org,
-                name="Mr Jack 1",
-                main_course = main_course
-            )
-            course2 = Course(
-                id="21",
-                code="CS123",
-                organization=org,
-                name="Mr Jack 2",
-                main_course = main_course
-            )
-            course1.save(), course2.save()
-
-
-            m1_1 = Material(
-                id="m1",
-                parent_course=course1,
-                file="course_material/material1_1.pdf"
-            )
-            m1_2 = Material(
-                id="m1_1",
-                parent_course=course2,
-                file="course_material/material1_2.pdf"
-            )
-            m2 = Material(
-                id="m2",
-                parent_course=course1,
-                file="course_material/material2.pdf"
-            )
-            m1_1.save()
-            m1_2.save()
-            m2.save()
-
-            a1 = Announcement(
-                id=1,
-                content='There\'s a squirll in your pants',
-                course=course1,
-            )
-
-            a2 = Announcement(
-                id=2,
-                content='a squirell is in your pants',
-                course=course2,
-            )
-
-
-            a3 = Announcement(
-                id=3,
-                content='tez omar kbera',
-                course=course1,
-            )
-
-            a1.save()
-            a2.save()
-            a3.save()
-
-
-
-
-        except Exception as e: 
-            print(e)
+        for course in MainCourse.objects.all():
+            course.announcements_clusterd = False
+            course.materials_clusterd = False
+            course.save()

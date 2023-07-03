@@ -1,23 +1,494 @@
 ---------------------------------------------------
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:23:42: getting all announcements from courses
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:23:42: found 2 courses
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:23:42: found 3 unclustered annoucement
-INFO @ handle_unclustered_course - 24/06/2023 18:23:42: starting preprocessing on announcement 1
-INFO @ handle_unclustered_course - 24/06/2023 18:23:42: starting preprocessing on announcement 3
-INFO @ handle_unclustered_course - 24/06/2023 18:23:42: starting preprocessing on announcement 2
-INFO @ handle_unclustered_course - 24/06/2023 18:23:42: starting clustering on 3 announcements
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:05:45: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:05:47: found 8 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:05:47: found 22 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting preprocessing on announcement 74562
+INFO @ handle_unclustered_course - 02/07/2023 21:05:47: starting clustering on 22 announcements
+INFO @ handle_unclustered_course - 02/07/2023 21:05:49: successfully clustered announcements
 ---------------------------------------------------
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:29:04: getting all announcements from courses
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:29:04: found 2 courses
-INFO @ get_all_announcements_from_main_course - 24/06/2023 18:29:04: found 3 unclustered annoucement
-INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting preprocessing on announcement 1
-INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting preprocessing on announcement 3
-INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting preprocessing on announcement 2
-INFO @ handle_unclustered_course - 24/06/2023 18:29:04: starting clustering on 3 announcements
-INFO @ handle_unclustered_course - 24/06/2023 18:29:07: successfully clustered announcements
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:07:19: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:07:21: found 8 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:07:21: found 22 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting preprocessing on announcement 74562
+INFO @ handle_unclustered_course - 02/07/2023 21:07:21: starting clustering on 22 announcements
+INFO @ handle_unclustered_course - 02/07/2023 21:07:23: successfully clustered announcements
 ---------------------------------------------------
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:53: getting all announcements from courses
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 4 courses
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:30:54: found 0 unclustered annoucement
-INFO @ handle_unclustered_course - 25/06/2023 16:30:54: starting clustering on 0 announcements
-INFO @ handle_unclustered_course - 25/06/2023 16:30:54: successfully clustered announcements
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:33:27: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:33:29: found 8 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 21:33:29: found 22 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting preprocessing on announcement 74562
+INFO @ handle_unclustered_course - 02/07/2023 21:33:29: starting clustering on 22 announcements
+INFO @ handle_unclustered_course - 02/07/2023 21:33:31: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:12:08: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:12:10: found 10 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:12:10: found 23 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 02/07/2023 22:12:10: starting clustering on 23 announcements
+INFO @ handle_unclustered_course - 02/07/2023 22:12:13: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:46:05: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:46:06: found 10 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:46:06: found 2 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 22:46:06: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 02/07/2023 22:46:06: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 02/07/2023 22:46:06: starting clustering on 2 announcements
+INFO @ handle_unclustered_course - 02/07/2023 22:46:07: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:47:03: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:47:04: found 10 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:47:04: found 2 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 22:47:04: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 02/07/2023 22:47:04: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 02/07/2023 22:47:04: starting clustering on 2 announcements
+INFO @ handle_unclustered_course - 02/07/2023 22:47:05: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:49:01: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:49:03: found 10 courses
+INFO @ get_all_announcements_from_main_course - 02/07/2023 22:49:03: found 2 unclustered annoucement
+INFO @ handle_unclustered_course - 02/07/2023 22:49:03: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 02/07/2023 22:49:03: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 02/07/2023 22:49:03: starting clustering on 2 announcements
+INFO @ handle_unclustered_course - 02/07/2023 22:49:04: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:35:40: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:35:42: found 11 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:35:42: found 25 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 07:35:42: starting clustering on 25 announcements
+INFO @ handle_unclustered_course - 03/07/2023 07:35:45: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:39:11: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:39:12: found 11 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:39:12: found 25 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 07:39:12: starting clustering on 25 announcements
+INFO @ handle_unclustered_course - 03/07/2023 07:39:13: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:43:29: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:43:31: found 11 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 07:43:31: found 25 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: starting clustering on 25 announcements
+INFO @ handle_unclustered_course - 03/07/2023 07:43:31: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:29:16: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:29:18: found 11 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:29:18: found 25 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 08:29:18: starting clustering on 25 announcements
+INFO @ handle_unclustered_course - 03/07/2023 08:29:19: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:31:49: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:31:51: found 12 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:31:51: found 26 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 08:31:51: starting clustering on 26 announcements
+INFO @ handle_unclustered_course - 03/07/2023 08:31:52: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:37:22: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:37:24: found 13 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:37:24: found 27 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 08:37:24: starting clustering on 27 announcements
+INFO @ handle_unclustered_course - 03/07/2023 08:37:26: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:44:23: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:44:25: found 13 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 08:44:25: found 27 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 08:44:25: starting clustering on 27 announcements
+INFO @ handle_unclustered_course - 03/07/2023 08:44:26: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:14:21: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:14:23: found 13 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:14:23: found 27 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 09:14:23: starting clustering on 27 announcements
+INFO @ handle_unclustered_course - 03/07/2023 09:14:24: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:20:14: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:20:16: found 14 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:20:16: found 28 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting preprocessing on announcement 53244
+INFO @ handle_unclustered_course - 03/07/2023 09:20:16: starting clustering on 28 announcements
+INFO @ handle_unclustered_course - 03/07/2023 09:20:17: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:37:24: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:37:26: found 14 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 09:37:26: found 28 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting preprocessing on announcement 53244
+INFO @ handle_unclustered_course - 03/07/2023 09:37:26: starting clustering on 28 announcements
+INFO @ handle_unclustered_course - 03/07/2023 09:37:27: successfully clustered announcements
+---------------------------------------------------
+INFO @ get_all_announcements_from_main_course - 03/07/2023 10:35:12: getting all announcements from courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 10:35:14: found 14 courses
+INFO @ get_all_announcements_from_main_course - 03/07/2023 10:35:14: found 28 unclustered annoucement
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 579767974888
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 576352052257
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 562085182188
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 573578507580
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 573425774872
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 573425848364
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 573233938690
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 570749133819
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 570038987026
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 570035736622
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 570035711197
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 568291795408
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 580925611542
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 580887420949
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 580660344248
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 540964137694
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 579923226663
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 578294833047
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 579759739573
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 579807241502
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 540500325866
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 540723162815
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 883391
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 19707
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 283973
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 105963
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 496473
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting preprocessing on announcement 53244
+INFO @ handle_unclustered_course - 03/07/2023 10:35:14: starting clustering on 28 announcements
+INFO @ handle_unclustered_course - 03/07/2023 10:35:15: successfully clustered announcements

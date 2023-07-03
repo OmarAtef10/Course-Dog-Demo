@@ -36,8 +36,7 @@ class UKMeansClusterer:
         n = len(clusters)
         for cluster1_id, cluster1 in clusters.items():
             for cluster2_id, cluster2 in clusters.items():
-
-
+                if sim_matrix[cluster1_id][cluster2_id] != -1: continue
                 if(cluster1_id == cluster2_id): continue #dont self merge
                 if(not cluster1.isdisjoint(cluster2)): continue #don't merge clusters from same source
 
@@ -63,7 +62,7 @@ class UKMeansClusterer:
     def init_sim_matrix(self, clusters):
         return {
             cluster1: {
-                cluster2: 0.0 for cluster2 in list(clusters.keys())
+                cluster2: -1 for cluster2 in list(clusters.keys())
             } for cluster1 in list(clusters.keys())
         }
     

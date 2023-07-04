@@ -8,7 +8,7 @@ class Announcement(models.Model):
     title = models.CharField(max_length=1000, default="New Announcement")
     content = models.TextField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    creation_date = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
     similar_to = models.ForeignKey(
         "self", on_delete=models.SET_NULL, blank=True, null=True)
 

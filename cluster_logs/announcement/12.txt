@@ -1,6 +1,0 @@
----------------------------------------------------
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:31:04: getting all announcements from courses
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:31:04: found 2 courses
-INFO @ get_all_announcements_from_main_course - 25/06/2023 16:31:04: found 0 unclustered annoucement
-INFO @ handle_unclustered_course - 25/06/2023 16:31:04: starting clustering on 0 announcements
-INFO @ handle_unclustered_course - 25/06/2023 16:31:04: successfully clustered announcements

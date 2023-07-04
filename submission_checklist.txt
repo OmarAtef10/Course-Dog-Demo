@@ -1,0 +1,12 @@
+Verify Each Point before making final submission
+
+Backend
+    1. Backend code
+    2. Docker files
+    3. Run Pip freeze
+    4. DB Initilization cron job created
+
+Machine Learning
+    1. BSAM folder included
+    2. Path ENV var included
+    3. Both tested

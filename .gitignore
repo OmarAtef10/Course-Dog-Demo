@@ -29,3 +29,5 @@ lib64/
 env/
 docker-compose.yml
 BSAM
+test.py
+USE

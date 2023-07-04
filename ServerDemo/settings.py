@@ -113,7 +113,7 @@ INSTALLED_APPS = [
 CRON_CLASSES = [
     'ServerDemo.crons.MaterialsClusteringJob',
     'ServerDemo.crons.AnnouncementClusteringJob',
-    # 'ServerDemo.crons.DB_FILL',
+    # 'ServerDemo.crons.Clear_Similar'
 ]
 
 

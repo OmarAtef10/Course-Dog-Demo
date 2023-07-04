@@ -1,7 +1,202 @@
 ---------------------------------------------------
-INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:15: getting all materials from courses
-INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:16: found 1 subcourses
-INFO @ get_all_materials_from_main_course - 01/07/2023 17:40:16: found 0 materials files
-INFO @ handle_unclustered_course - 01/07/2023 17:40:16: starting clustering on 0 materials
-INFO @ handle_unclustered_course - 01/07/2023 17:40:16: finisehd clustering, saving results
-INFO @ handle_unclustered_course - 01/07/2023 17:40:16: successfully clustered materials
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:40:12: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:40:14: found 15 subcourses
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:40:14: found 32 materials files
+INFO @ handle_unclustered_course - 03/07/2023 10:40:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #2 - PM - Model Answer.rar
+WARN @ handle_unclustered_course - 03/07/2023 10:40:15: failed to read or preprocess /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #2 - PM - Model Answer.rar. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/NOTES - AFTER STUDYING.txt
+WARN @ handle_unclustered_course - 03/07/2023 10:40:16: failed to read or preprocess /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/NOTES - AFTER STUDYING.txt. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:19: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:19: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:19: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:37: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:40:43: starting clustering on 30 materials
+INFO @ handle_unclustered_course - 03/07/2023 10:40:45: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 03/07/2023 10:40:45: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:42:12: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:42:13: found 15 subcourses
+INFO @ get_all_materials_from_main_course - 03/07/2023 10:42:13: found 32 materials files
+INFO @ handle_unclustered_course - 03/07/2023 10:42:13: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/03_Project Selection and Portfolio Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile Project Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #2 - PM - Model Answer.rar
+WARN @ handle_unclustered_course - 03/07/2023 10:42:14: failed to read or preprocess /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #2 - PM - Model Answer.rar. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #3 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #1 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Assignment #1 Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/NOTES - AFTER STUDYING.txt
+WARN @ handle_unclustered_course - 03/07/2023 10:42:14: failed to read or preprocess /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/NOTES - AFTER STUDYING.txt. Skipping...EOF marker not found
+INFO @ handle_unclustered_course - 03/07/2023 10:42:14: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Risk Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #5 - Resources Management.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Evaluation and Control.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Scheduling Resources and Costs.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples - Crashing.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Solved Examples .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:15: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Lagging, Crashing and Activity Networks.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #4.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #3.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Learning Curves - Table .pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section #1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling_Part2.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:16: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Scheduling Networks_ Duration estimation_ and Critical Path_part1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/08_Costs estimation.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/02_Project_Strategy.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/01_Introduction (1).pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:17: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:18: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:18: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Quiz #4 - PM - Model Answer - General.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:18: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:36: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Project Management Achieving Competitive Advantage.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Section_1.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: reading /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: preprocessing /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: successfully read /home/peter/VeryBigBoi/MyProjects/GP/Course-Dog-Demo/uploads/course_material/Agile_PM_OfK5bA6.pdf
+INFO @ handle_unclustered_course - 03/07/2023 10:42:42: starting clustering on 30 materials
+INFO @ handle_unclustered_course - 03/07/2023 10:42:44: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 03/07/2023 10:42:44: successfully clustered materials

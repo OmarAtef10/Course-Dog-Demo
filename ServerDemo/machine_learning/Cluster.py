@@ -24,7 +24,7 @@ class Cluster:
     
     @property 
     def clusterId(self):
-        return '-'.join(self.file_names)
+        return '+'.join(self.ids)
 
     @property
     def size(self):

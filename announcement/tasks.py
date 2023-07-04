@@ -29,7 +29,7 @@ def load_announcements(user_id, course_id, announcements):
         for entry in val:
             announcement = Announcement.objects.filter(id=entry['id'])
             if not announcement:
-                announcement = Announcement(id=entry['id'], course=course, announcement=entry['text'],
+                announcement = Announcement(id=entry['id'], course=course, content=entry['text'],
                                             title=entry.get('title', 'New Announcement'),
                                             creation_date=entry['creationTime'])
                 announcement.save()

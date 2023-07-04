@@ -12,9 +12,9 @@ from django.contrib.auth.models import Group
 from user_profile.models import Profile
 from user_profile.views import get_user_profile
 from authentication.permissions import IsOrganizationAdmin
-from course.models import Course, UserCourseAdmin
+from course.models import Course, UserCourseAdmin, MainCourse
 from course.views import get_all_organization_courses
-from course.serializers import CourseSerializer, CreateCourseSerializer
+from course.serializers import CourseSerializer, CreateCourseSerializer, MainCourseSerializer, CreateMainCourseSerializer
 from django.db import IntegrityError
 import random
 # Create your views here.
@@ -113,6 +113,32 @@ class OrganizationAdminsDataAPIView(GenericAPIView):
             return Response({"message": f'{e}'}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
+    
+    def delete(self,request):
+        user = request.user
+        user_profile = get_user_profile(user)
+        user_organization = user_profile.organization
+
+        if user_organization == None:
+            return Response({"message": "user is not a part of an organization"}, status=status.HTTP_404_NOT_FOUND)
+
+        user_email = request.data.get('email')
+        if user_email == None or user_email == '':
+            return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            new_user = User.objects.get(email=user_email)
+            org_admin = UserOrganizationAdmin.objects.get(user=new_user, organization=user_organization)
+            org_admin.delete()
+            new_user.groups.add(Group.objects.get(name='Student'))
+            new_user.groups.remove(Group.objects.get(name='OrganizationAdmin'))
+            new_user.save()
+        except Exception as e:
+            return Response({"message": f'{e}'}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({"message": "user removed successfully"}, status=status.HTTP_200_OK)
+
+
 
 
 class GeneralOrganizationDataAPIView(GenericAPIView):
@@ -167,24 +193,28 @@ class ManageCourseAdminsAPIView(GenericAPIView):
             permission_classes.append(IsOrganizationAdmin)
         return [permission() for permission in permission_classes]
 
-    def get(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
-        course_admins = UserCourseAdmin.objects.filter(course=course)
+    def get(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
+        course_admins = UserCourseAdmin.objects.filter(course=main_course)
         users = [course_admin.user for course_admin in course_admins]
         serialized_users = self.get_serializer(users, many=True)
         return Response(serialized_users.data, status=status.HTTP_200_OK)
 
-    def post(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
+    def post(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
         user_email = request.data.get('email')
         if user_email == None or user_email == '':
             return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
             user = User.objects.get(email=user_email)
             user_profile = get_user_profile(user)
-            if user_profile.organization != course.organization:
+            if user_profile.organization != main_course.organization:
                 return Response({"message": "user is not a part of the organization"}, status=status.HTTP_400_BAD_REQUEST)
-            UserCourseAdmin.objects.create(user=user, course=course)
+            UserCourseAdmin.objects.create(user=user, course=main_course)
             user.groups.add(Group.objects.get(name='CourseAdmin'))
             user.groups.remove(Group.objects.get(name='Student'))
             user.save()
@@ -194,14 +224,16 @@ class ManageCourseAdminsAPIView(GenericAPIView):
             return Response({"message": "user is already an admin on this course"}, status=status.HTTP_400_BAD_REQUEST)
         return Response({"message": "user added successfully"}, status=status.HTTP_200_OK)
 
-    def delete(self, request, course_id):
-        course = get_object_or_404(Course, id=course_id)
+    def delete(self, request, course_code):
+        user_organization = get_user_profile(request.user).organization
+        main_course = get_object_or_404(
+            MainCourse, code=course_code, organization=user_organization)
         user_email = request.data.get('email')
         if user_email == None or user_email == '':
             return Response({"message": "email is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
             user = User.objects.get(email=user_email)
-            UserCourseAdmin.objects.get(user=user, course=course).delete()
+            UserCourseAdmin.objects.get(user=user, course=main_course).delete()
             is_still_admin = UserCourseAdmin.objects.filter(user=user).exists()
             if not is_still_admin:
                 user.groups.remove(Group.objects.get(name='CourseAdmin'))
@@ -215,7 +247,7 @@ class ManageCourseAdminsAPIView(GenericAPIView):
 
 
 class ManageOrganizationCoursesAPIView(GenericAPIView):
-    serializer_class = CourseSerializer
+    serializer_class = MainCourseSerializer
     # Endpoint used to fetch all courses data of an organization and to add new courses to the organization and also remove courses from the organization
 
     def get_permissions(self):
@@ -241,12 +273,24 @@ class ManageOrganizationCoursesAPIView(GenericAPIView):
         course_data = CreateCourseSerializer(data=request.data)
         if course_data.is_valid():
             try:
+                course_code = course_data.validated_data['code']
+
+                main_course = MainCourse.objects.filter(
+                    code=course_code, organization=user_organization)
+                if not main_course.exists():
+                    main_course = MainCourse(
+                        code=course_code, organization=user_organization, name=course_data.validated_data['name'])
+                    main_course.save()
+                else:
+                    main_course = main_course[0]
+
                 course = Course(
                     id=course_id,
                     name=course_data.validated_data['name'],
                     description=course_data.validated_data['description'],
                     organization=user_organization,
-                    code=course_data.validated_data['code']
+                    code=course_data.validated_data['code'],
+                    main_course=main_course
                 )
             except IntegrityError:
                 return Response({"message": "Integrity Error please resubmit the request"}, status=status.HTTP_400_BAD_REQUEST)
@@ -257,12 +301,12 @@ class ManageOrganizationCoursesAPIView(GenericAPIView):
     def delete(self, request):
         user = request.user
         user_organization = get_user_profile(user).organization
-        course_id = request.data.get('course_id')
-        if course_id == None or course_id == '':
+        course_code = request.data.get('course_code')
+        if course_code == None or course_code == '':
             return Response({"message": "course id is required"}, status=status.HTTP_400_BAD_REQUEST)
         try:
-            Course.objects.get(
-                id=course_id, organization=user_organization).delete()
-        except Course.DoesNotExist:
+            MainCourse.objects.get(
+                code=course_code, organization=user_organization).delete()
+        except MainCourse.DoesNotExist:
             return Response({"message": "course doesn't exist"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"message": "course deleted successfully"}, status=status.HTTP_200_OK)

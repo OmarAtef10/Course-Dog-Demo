@@ -11,17 +11,17 @@ class AnnouncementSerializer(serializers.ModelSerializer):
 
 
 class AnnouncementFullSerializer(serializers.ModelSerializer):
-    announcement = serializers.CharField(required=True)
+    content = serializers.CharField(required=True)
     creation_date = serializers.DateTimeField(required=False)
     id = serializers.IntegerField(required=False)
 
     class Meta:
         model = Announcement
-        fields = ['announcement', 'creation_date', 'id','title']
+        fields = ['content', 'creation_date', 'id','title']
         depth = 1
 
 
 class AnnouncementCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
-        fields = ['announcement', 'creation_date']
+        fields = ['content', 'creation_date']

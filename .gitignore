@@ -15,9 +15,17 @@ Pipfile
 # Ignore Django Migrations in Development if you are working on team
 
 # Only for Development only
+
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
 uploads/
 serverdemo_env/
 coursedog_env/
+bin/
+include/
+lib/
+lib64/
+env/
+docker-compose.yml
+BSAM

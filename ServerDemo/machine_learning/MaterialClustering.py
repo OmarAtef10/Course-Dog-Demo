@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 class UKMeansClusterer:
     def vectorize(self, cluster1: Cluster, cluster2: Cluster):
-        vectorizer = CountVectorizer()
+        vectorizer = TfidfVectorizer()
 
         v1 = vectorizer.fit_transform(cluster1.get_content())
         v2 = vectorizer.transform(cluster2.get_content())

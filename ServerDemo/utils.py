@@ -2,9 +2,8 @@ from datetime import datetime
 import PyPDF2
 import inspect
 
-class PdfReader:
-    @staticmethod
-    def read(path):
+class FileReader:
+    def readpdf(self, path):
         data = ''
         pdfFile = open(path, 'rb') 
         pdfReader = PyPDF2.PdfReader(pdfFile)
@@ -15,6 +14,22 @@ class PdfReader:
             data += pageOBJ.extract_text()
         pdfFile.close()
         return data
+
+    def readtxt(self, path):
+        file = open(path, 'r')
+        content = file.read()
+        file.close()
+
+        return content
+    
+    @staticmethod
+    def read(path):
+        reader = FileReader()
+        if path.endswith('.pdf'):
+            return reader.readpdf(path)
+        else:
+            return reader.readtxt(path)
+
     
 
 class Logger:

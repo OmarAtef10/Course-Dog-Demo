@@ -1,15 +1,17 @@
 from ServerDemo.machine_learning.Cluster import Cluster
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 
 class AnnouncementClustering:
     def __init__(self, use) -> None:
         self.use = use
+        self.sim_threshold = float(os.environ.get('ANNOUNCEMENT_SIM_THRESHOLD', 0.9))
 
 
     def canAppendCluster(self, cluster: Cluster, announcemnt, sim_matrix):
         # check members
         for a in cluster.ids:
-            if not sim_matrix[a][announcemnt.id] >= 0.9: return False
+            if not sim_matrix[a][announcemnt.id] >= self.sim_threshold: return False
 
         if announcemnt.sourceId in cluster.sources: return False
 

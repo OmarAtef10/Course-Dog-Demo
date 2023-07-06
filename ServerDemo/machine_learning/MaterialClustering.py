@@ -1,9 +1,13 @@
+import os
 from .Cluster import Cluster
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 class UKMeansClusterer:
+    def __init__(self) -> None:
+        self.sim_threshold = float(os.environ.get('MATERIAL_SIM_THRESHOLD', 0.8))
+
     def vectorize(self, cluster1: Cluster, cluster2: Cluster):
         vectorizer = TfidfVectorizer()
 
@@ -29,7 +33,7 @@ class UKMeansClusterer:
         return self.calculate_similairty(vectors)
     
 
-    def should_merge(self, score): return score >= 0.8
+    def should_merge(self, score): return score >= self.sim_threshold
     
 
     def create_sim_matrix(self, clusters: dict):

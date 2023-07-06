@@ -1,7 +1,7 @@
 from django_cron import CronJobBase, Schedule
 from course.models import MainCourse, Course
 from material.models import Material
-from ServerDemo.utils import PdfReader, Logger
+from ServerDemo.utils import FileReader, Logger
 from ServerDemo.machine_learning.Preprocessor import Preprocessor
 from ServerDemo.machine_learning.Text import TextModel
 from announcement.models import Announcement
@@ -78,7 +78,7 @@ class MaterialsClusteringJob(CronJobBase):
             source_id = material.parent_course
             try:
                 logger.info(f"reading {fullpath}")
-                content = PdfReader.read(fullpath)
+                content = FileReader.read(fullpath)
                 logger.info(f"preprocessing {fullpath}")
                 content = self.preprocessor.preprocess_text(content)
             except Exception as e:

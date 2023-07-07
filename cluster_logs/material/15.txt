@@ -1,0 +1,103 @@
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 06/07/2023 10:58:55: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 06/07/2023 10:58:55: found 6 subcourses
+INFO @ get_all_materials_from_main_course - 06/07/2023 10:58:55: found 32 materials files
+INFO @ handle_unclustered_course - 06/07/2023 10:58:55: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/test_from_demo.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:55: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/test_from_demo.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:55: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/test_from_demo.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Compilers- Midterm Exam -19 Nov 2022 - Answer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Compilers- Midterm Exam -19 Nov 2022 - Answer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Compilers- Midterm Exam -19 Nov 2022 - Answer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab11 (1).pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab11 (1).pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab11 (1).pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm2023_ModelAnswer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm2023_ModelAnswer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm2023_ModelAnswer.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_TM_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:57: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#8.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#8.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#8.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#9.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#9.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#9.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part3.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:58: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_part 1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_part 1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_PDA_part 1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_Part2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_CFG_part1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#7.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#7.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#7.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:58:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#6.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#6.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#6.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Closure Property.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Closure Property.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Closure Property.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#5.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#5.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#5.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#3.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#3.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#3.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:00: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#4.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#4.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Lab#4.docx.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE_DFA_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE_DFA_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE_DFA_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_NFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_RE.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_DFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_DFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_DFA.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Languages_Grammar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Languages_Grammar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Languages_Grammar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#1.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Theory_Lab#2.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Background_Set_Graph_Logic.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Background_Set_Graph_Logic.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC23_Background_Set_Graph_Logic.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC_Course Introduction.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC_Course Introduction.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/ToC_Course Introduction.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:02: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_eUMBXkt.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:22: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_eUMBXkt.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:22: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_eUMBXkt.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_9oWAxRp.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:40: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_9oWAxRp.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:40: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_9oWAxRp.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:40: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_uL6ttsb.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_uL6ttsb.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B2_uL6ttsb.pdf
+INFO @ handle_unclustered_course - 06/07/2023 10:59:59: starting clustering on 32 materials
+INFO @ handle_unclustered_course - 06/07/2023 10:59:59: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 06/07/2023 10:59:59: successfully clustered materials

@@ -1,0 +1,140 @@
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 06/07/2023 11:30:20: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 06/07/2023 11:30:21: found 3 subcourses
+INFO @ get_all_materials_from_main_course - 06/07/2023 11:30:21: found 25 materials files
+INFO @ handle_unclustered_course - 06/07/2023 11:30:21: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm Exam with answers 2022.docx
+WARN @ handle_unclustered_course - 06/07/2023 11:30:21: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm Exam with answers 2022.docx. Skipping...'utf-8' codec can't decode byte 0xd6 in position 16: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:30:21: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:22: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:22: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lecs12-NN-Intro1.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:30:22: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lecs12-NN-Intro1.pptx. Skipping...'utf-8' codec can't decode byte 0xa2 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:30:22: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:42: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:42: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:42: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:50: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:50: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:30:50: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:03: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:03: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:03: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:21: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:21: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:21: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec11-FL-GA.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:31: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec11-FL-GA.pptx. Skipping...'utf-8' codec can't decode byte 0x84 in position 15: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:32: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:32: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:32: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec9-FL-Rules.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:34: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec9-FL-Rules.pptx. Skipping...'utf-8' codec can't decode byte 0xfc in position 16: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec8-FL-Introduction.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:34: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec8-FL-Introduction.pptx. Skipping...'utf-8' codec can't decode byte 0xb4 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:34: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:44: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec7-GP.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec7-GP.pptx. Skipping...'utf-8' codec can't decode byte 0xeb in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec6-GA-SchemaTheory.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec6-GA-SchemaTheory.pptx. Skipping...'utf-8' codec can't decode byte 0xb9 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec5-GA-FB.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec5-GA-FB.pptx. Skipping...'utf-8' codec can't decode byte 0xe2 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec4-GA-Operators-2.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec4-GA-Operators-2.pptx. Skipping...'utf-8' codec can't decode byte 0xd4 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec3-GA-Operators.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec3-GA-Operators.pptx. Skipping...'utf-8' codec can't decode byte 0xd4 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec2-GA-Intro.pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec2-GA-Intro.pptx. Skipping...'utf-8' codec can't decode byte 0xc1 in position 16: invalid start byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec1 GA-Intro .pptx
+WARN @ handle_unclustered_course - 06/07/2023 11:31:46: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec1 GA-Intro .pptx. Skipping...'utf-8' codec can't decode byte 0xd1 in position 17: invalid continuation byte
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: starting clustering on 13 materials
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 06/07/2023 11:31:46: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:05:09: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:05:10: found 3 subcourses
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:05:10: found 25 materials files
+INFO @ handle_unclustered_course - 07/07/2023 13:05:10: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm Exam with answers 2022.docx
+WARN @ handle_unclustered_course - 07/07/2023 13:05:10: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Midterm Exam with answers 2022.docx. Skipping...'utf-8' codec can't decode byte 0xd6 in position 16: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:05:10: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:11: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:11: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 4.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lecs12-NN-Intro1.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:05:11: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lecs12-NN-Intro1.pptx. Skipping...'utf-8' codec can't decode byte 0xa2 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:05:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:33: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:33: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/13 - GA25-11-2018B.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:33: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:41: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:41: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/16 - GA2-12-2018C.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:41: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/17 - GA9-12-2018A.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:05:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:16: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:16: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/10_-_GA28-10-2018B[2].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:16: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/12_-_GA25-11-2018A[1].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 3 [Fall 2020].pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec11-FL-GA.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:28: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec11-FL-GA.pptx. Skipping...'utf-8' codec can't decode byte 0x84 in position 15: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:28: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:29: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:29: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables ( 2 rule base).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:29: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Given a stock market with variables (control example).pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec9-FL-Rules.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:31: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec9-FL-Rules.pptx. Skipping...'utf-8' codec can't decode byte 0xfc in position 16: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec8-FL-Introduction.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:31: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec8-FL-Introduction.pptx. Skipping...'utf-8' codec can't decode byte 0xb4 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 2 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:31: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:33: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:33: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Introduction to Evolutionary Computing - A.E Eiben and J. Smith.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:33: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:45: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Computational Intellingence - Amit Konar.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec7-GP.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:47: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec7-GP.pptx. Skipping...'utf-8' codec can't decode byte 0xeb in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Soft Computing - Lab 1 -Fall 2020-.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:47: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec6-GA-SchemaTheory.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec6-GA-SchemaTheory.pptx. Skipping...'utf-8' codec can't decode byte 0xb9 in position 14: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec5-GA-FB.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec5-GA-FB.pptx. Skipping...'utf-8' codec can't decode byte 0xe2 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec4-GA-Operators-2.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec4-GA-Operators-2.pptx. Skipping...'utf-8' codec can't decode byte 0xd4 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec3-GA-Operators.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec3-GA-Operators.pptx. Skipping...'utf-8' codec can't decode byte 0xd4 in position 14: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec2-GA-Intro.pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec2-GA-Intro.pptx. Skipping...'utf-8' codec can't decode byte 0xc1 in position 16: invalid start byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec1 GA-Intro .pptx
+WARN @ handle_unclustered_course - 07/07/2023 13:06:48: failed to read or preprocess /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/CS464-SoftCom-2022-Lec1 GA-Intro .pptx. Skipping...'utf-8' codec can't decode byte 0xd1 in position 17: invalid continuation byte
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: starting clustering on 13 materials
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: successfully clustered materials

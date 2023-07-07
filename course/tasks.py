@@ -36,7 +36,12 @@ def download_drive_material(materials, token, course_id, user):
                 filepath = f"./course_material/{material.file_name}"
                 material.file = filepath
                 material.hash_code = calculate_file_hash(material.file)
-                material.save()
+                if course_id.main_course.materials_clusterd == False:
+                    material.save()
+                else:
+                    course_id.main_course.materials_clusterd = False
+                    course_id.main_course.save()
+                    material.save()
             except Exception as e:
                 print(e)
                 pass

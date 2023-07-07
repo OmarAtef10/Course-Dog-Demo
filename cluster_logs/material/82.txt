@@ -1,0 +1,137 @@
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 07/07/2023 12:36:10: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 07/07/2023 12:36:11: found 2 subcourses
+INFO @ get_all_materials_from_main_course - 07/07/2023 12:36:11: found 20 materials files
+INFO @ handle_unclustered_course - 07/07/2023 12:36:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:11: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:11: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:11: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:12: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:13: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:14: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:15: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:16: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:17: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:18: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:19: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:19: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:19: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 12:36:20: starting clustering on 20 materials
+INFO @ handle_unclustered_course - 07/07/2023 12:36:21: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 07/07/2023 12:36:21: successfully clustered materials
+---------------------------------------------------
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:06:48: getting all materials from courses
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:06:48: found 2 subcourses
+INFO @ get_all_materials_from_main_course - 07/07/2023 13:06:48: found 21 materials files
+INFO @ handle_unclustered_course - 07/07/2023 13:06:48: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:49: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:49: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:49: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:51: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:52: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:52: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:52: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:53: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:53: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:53: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:54: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:55: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/week9-RDF-final.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:56: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:57: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:57: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic-Gates Notes-Problems.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:57: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 01-02 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/Graph Theory - 01-02 - MATH112 - Spring2019-2020 Extension-drive.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:06:59: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:00: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:00: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Graph Theory - 03 - MATH112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:00: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive- Graph Theory - 04 - MATH 112 - Spring2019-2020.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-HamiltonPathCircuitIntroduction VideoQuestions.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-Logic Gates - On-Time  Discussion.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 01 - Graph Theory Spring2020 Extension.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:01: reading /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:02: preprocessing /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:02: successfully read /home/omar/Desktop/Course-Dog-Demo/uploads/course_material/drive-On-Time Discussion 03 - Graph Theory Spring2020 Extended.pdf
+INFO @ handle_unclustered_course - 07/07/2023 13:07:02: starting clustering on 21 materials
+INFO @ handle_unclustered_course - 07/07/2023 13:07:03: finisehd clustering, saving results
+INFO @ handle_unclustered_course - 07/07/2023 13:07:03: successfully clustered materials

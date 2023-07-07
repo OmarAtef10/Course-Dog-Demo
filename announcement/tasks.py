@@ -32,4 +32,10 @@ def load_announcements(user_id, course_id, announcements):
                 announcement = Announcement(id=entry['id'], course=course, content=entry['text'],
                                             title=entry.get('title', 'New Announcement'),
                                             creation_date=entry['creationTime'])
-                announcement.save()
+                
+                if course.main_course.announcements_clusterd == False:
+                    announcement.save()
+                else:
+                    course.main_course.announcements_clusterd = False
+                    course.main_course.save()
+                    announcement.save()

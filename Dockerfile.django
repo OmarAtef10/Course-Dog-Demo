@@ -11,6 +11,8 @@ RUN python -m ensurepip --upgrade
 RUN python -m pip install --no-cache-dir --upgrade pip
 
 ENV PROJECT_ROOT_PATH=/app
+ENV ANNOUNCEMENT_SIM_THRESHOLD=0.9
+ENV MATERIAL_SIM_THRESHOLD=0.8
 
 COPY crontab /etc/cron.d/my-cronjob
 RUN chmod 0644 /etc/cron.d/my-cronjob

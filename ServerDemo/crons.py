@@ -155,7 +155,7 @@ class AnnouncementClusteringJob(CronJobBase):
         most_recent = announcements[cluster[0]]
         others = []
         for id in cluster:
-            if most_recent.creation_date > announcements[id].creation_date:
+            if most_recent.creation_date < announcements[id].creation_date:
                 most_recent = announcements[id]
 
         for id in cluster:

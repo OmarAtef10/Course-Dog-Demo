@@ -50,7 +50,7 @@ class MaterialsClusteringJob(CronJobBase):
         most_recent = materials[cluster[0]]
         others = []
         for id in cluster:
-            if most_recent.creation_date > materials[id].creation_date:
+            if most_recent.creation_date < materials[id].creation_date:
                 most_recent = materials[id]
         for id in cluster:
             if id == most_recent.id: continue
